@@ -77,6 +77,8 @@ void keyboard(unsigned char key, int x, int y) {
         break;
 
     case 9: /* <TAB> */
+		//if hau gehitu dugu, programaren hasieran lista hutsa dagoenez ezin delako objektuen lista zeharkatu
+		//Bestela, 'segmentation fault' errorea emango luke
 		if (_first_object == 0){
 			printf("Ezin da aukeratutako objektua aldatu, oraindik ez delako objekturik kargatu\n");
 		}
@@ -129,6 +131,20 @@ void keyboard(unsigned char key, int x, int y) {
 
     case '+':
         //INPLEMENTA EZAZU CTRL + + KONBINAZIOAREN FUNTZIOANLITATEA
+		//'Ctrl' + '-' kasuaren ia berdina, bakarrik aldatzen dena da 
+		if (glutGetModifiers() == GLUT_ACTIVE_CTRL){
+            /*Decrease the projection plane; compute the new dimensions*/
+            wd=(_ortho_x_max-_ortho_x_min)*KG_STEP_ZOOM;
+            he=(_ortho_y_max-_ortho_y_min)*KG_STEP_ZOOM;
+            /*In order to avoid moving the center of the plane, we get its coordinates*/
+            midx = (_ortho_x_max+_ortho_x_min)/2;
+            midy = (_ortho_y_max+_ortho_y_min)/2;
+            /*The the new limits are set, keeping the center of the plane*/
+            _ortho_x_max = midx + wd/2;
+            _ortho_x_min = midx - wd/2;
+            _ortho_y_max = midy + he/2;
+            _ortho_y_min = midy - he/2;
+        }
         break;
 
     case '?':
