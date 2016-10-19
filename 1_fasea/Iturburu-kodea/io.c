@@ -50,6 +50,10 @@ void keyboard(unsigned char key, int x, int y) {
     case 'F':
         /*Ask for file*/
         printf("%s", KG_MSSG_SELECT_FILE);
+		//Batzuetan, 'F' sakatu beharrean beste konbinazio-tekla bat sakatuz nahi gabe, bufferrean aurretik sartutakoa gordeta geratzen da
+		//Honen ondorioz, programak ez du objektuaren helbidea zuzen hartzen.
+		//fflush() funtzioa erabiliz STDIN "garbituko" dugu.
+		fflush( stdin );
         scanf("%s", fname);
         /*Allocate memory for the structure and read the file*/
         auxiliar_object = (object3d *) malloc(sizeof (object3d));
@@ -90,27 +94,34 @@ void keyboard(unsigned char key, int x, int y) {
         break;
 
     case 127: /* <SUPR> */
-        /*Erasing an object depends on whether it is the first one or not*/
-        if (_selected_object == _first_object)
-        {
-            /*To remove the first object we just set the first as the current's next*/
-            _first_object = _first_object->next;
-            /*Once updated the pointer to the first object it is save to free the memory*/
-            free(_selected_object);
-            /*Finally, set the selected to the new first one*/
-            _selected_object = _first_object;
-        } else {
-            /*In this case we need to get the previous element to the one we want to erase*/
-            auxiliar_object = _first_object;
-            while (auxiliar_object->next != _selected_object)
-                auxiliar_object = auxiliar_object->next;
-            /*Now we bypass the element to erase*/
-            auxiliar_object->next = _selected_object->next;
-            /*free the memory*/
-            free(_selected_object);
-            /*and update the selection*/
-            _selected_object = auxiliar_object;
-        }
+		//if hau gehitu dugu, ez badaudelako objekturik kargatuta eta aukeratutakoa ezabatzen saiatzen bagara, "Segmentation Fault" errorea jaurtitzen du
+		//Horretarako, _selected_object (kargatuta dagoen aukeratutako objektua) '0' balioa duenean, errore-mezua pantailaratuko da
+		if (_selected_object == 0){
+			printf("Ezin da objekturik ezabatu ez dagoelako bat ere ez kargatuta\n");
+		}
+		else{
+			/*Erasing an object depends on whether it is the first one or not*/
+			if (_selected_object == _first_object)
+			{
+				/*To remove the first object we just set the first as the current's next*/
+				_first_object = _first_object->next;
+				/*Once updated the pointer to the first object it is save to free the memory*/
+				free(_selected_object);
+				/*Finally, set the selected to the new first one*/
+				_selected_object = _first_object;
+			} else {
+				/*In this case we need to get the previous element to the one we want to erase*/
+				auxiliar_object = _first_object;
+				while (auxiliar_object->next != _selected_object)
+					auxiliar_object = auxiliar_object->next;
+				/*Now we bypass the element to erase*/
+				auxiliar_object->next = _selected_object->next;
+				/*free the memory*/
+				free(_selected_object);
+				/*and update the selection*/
+				_selected_object = auxiliar_object;
+			}
+		}
         break;
 
     case '-':

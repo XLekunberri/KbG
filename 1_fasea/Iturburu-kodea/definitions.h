@@ -5,7 +5,7 @@
 
 /** DEFINITIONS **/
 
-#define KG_WINDOW_TITLE                     "KbG Praktika - Borja Calvo (borja.calvo@ehu.es)"
+#define KG_WINDOW_TITLE                     "KbG Praktika - Xabier Lecumberri & Iker Ortiz"
 #define KG_WINDOW_WIDTH                     600
 #define KG_WINDOW_HEIGHT                    400
 #define KG_WINDOW_X                         50
@@ -29,10 +29,10 @@
 #define KG_ORTHO_Z_MIN_INIT                -100
 #define KG_ORTHO_Z_MAX_INIT                 10000
 
-#define KG_COL_BACK_R                       0.30f
-#define KG_COL_BACK_G                       0.30f
-#define KG_COL_BACK_B                       0.30f
-#define KG_COL_BACK_A                       1.00f
+#define KG_COL_BACK_R                       0.33f
+#define KG_COL_BACK_G                       0.64f
+#define KG_COL_BACK_B                       0.64f
+#define KG_COL_BACK_A                       0.00f
 
 #define KG_COL_SELECTED_R                   1.00f
 #define KG_COL_SELECTED_G                   0.75f
