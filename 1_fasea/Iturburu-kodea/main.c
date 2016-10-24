@@ -28,7 +28,7 @@ void initialization (){
     _ortho_z_max = KG_ORTHO_Z_MAX_INIT;
 
     _window_ratio = (GLdouble) KG_WINDOW_WIDTH / (GLdouble) KG_WINDOW_HEIGHT;
-
+	
     /*Definition of the background color*/
     glClearColor(KG_COL_BACK_R, KG_COL_BACK_G, KG_COL_BACK_B, KG_COL_BACK_A);
 

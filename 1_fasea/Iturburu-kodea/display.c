@@ -18,6 +18,7 @@ extern object3d *_selected_object;
  */
 void draw_axes()
 {
+	glTranslatef(0.0, 0.0, 0.0);
     /*Draw X axis*/
     glColor3f(KG_COL_X_AXIS_R,KG_COL_X_AXIS_G,KG_COL_X_AXIS_B);
     glBegin(GL_LINES);
@@ -84,11 +85,13 @@ void display(void) {
     }
 
     /* Now we start drawing the object */
+	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
     /*First, we draw the axes*/
     draw_axes();
+	glPopMatrix();
 
     /*Now each of the objects in the list*/
     while (aux_obj != 0) {
