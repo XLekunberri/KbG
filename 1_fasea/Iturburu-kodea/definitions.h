@@ -6,8 +6,8 @@
 /** DEFINITIONS **/
 
 #define KG_WINDOW_TITLE                     "KbG Praktika - Xabier Lecumberri & Iker Ortiz"
-#define KG_WINDOW_WIDTH                     600
-#define KG_WINDOW_HEIGHT                    400
+#define KG_WINDOW_WIDTH                     960
+#define KG_WINDOW_HEIGHT                    540
 #define KG_WINDOW_X                         50
 #define KG_WINDOW_Y                         50
 
@@ -42,19 +42,19 @@
 #define KG_COL_NONSELECTED_G                1.00f
 #define KG_COL_NONSELECTED_B                1.00f
 
-#define KG_COL_X_AXIS_R                     0.0f
+#define KG_COL_X_AXIS_R                     1.0f
 #define KG_COL_X_AXIS_G                     0.0f
 #define KG_COL_X_AXIS_B                     0.0f
 
 #define KG_COL_Y_AXIS_R                     0.0f
-#define KG_COL_Y_AXIS_G                     0.0f
+#define KG_COL_Y_AXIS_G                     1.0f
 #define KG_COL_Y_AXIS_B                     0.0f
 
 #define KG_COL_Z_AXIS_R                     0.0f
 #define KG_COL_Z_AXIS_G                     0.0f
-#define KG_COL_Z_AXIS_B                     0.0f
+#define KG_COL_Z_AXIS_B                     1.0f
 
-#define KG_MAX_DOUBLE                       10E25
+#define KG_MAX_DOUBLE                       1000
 
 /** STRUCTURES **/
 
