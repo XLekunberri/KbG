@@ -23,7 +23,7 @@ endif(NOT OPENGL_FOUND)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES display.c io.c load_obj.c main.c)
+set(SOURCE_FILES display.c io.c load_obj.c main.c matrizeak.c matrizeak.h)
 add_executable(Iturburu_kodea ${SOURCE_FILES})
 
 target_link_libraries(Iturburu_kodea ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} m)

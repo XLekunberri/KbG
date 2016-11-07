@@ -1,7 +1,10 @@
 #include "definitions.h"
 #include "load_obj.h"
+#include "matrizeak.h"
+#include <malloc.h>
 #include <GL/glut.h>
 #include <stdio.h>
+
 
 extern object3d * _first_object;
 extern object3d * _selected_object;
@@ -230,19 +233,22 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
+
 void special_keyboard(int key, int x, int y){
-	float step = 10.0f;
+    GLdouble *mat;
 	glPushMatrix();
     switch (key) {	
 		case GLUT_KEY_UP:
 			printf("y+\n");
 			switch(aldaketa){
-				case 0:
-					glTranslatef(0.0f, step, 0.0f);
+				case 0://Trans
+                    mat = translazioa(0,1,0);
 					break;
-				case 1:
+				case 1://Birak
+                    mat = biraketa(0,1,0);
 					break;
-				case 2:
+				case 2://Eskal
+                    mat = eskalaketa(0,1,0);
 					break;
 			}
 			break;
@@ -250,9 +256,10 @@ void special_keyboard(int key, int x, int y){
 			printf("y-\n");
 			switch(aldaketa){
 				case 0:
-					glTranslatef(0.0f, step, 0.0f);
+                    mat = translazioa(0,-1,0);
 					break;
 				case 1:
+                    mat = biraketa(0,-1,0);
 					break;
 				case 2:
 					break;
@@ -263,9 +270,10 @@ void special_keyboard(int key, int x, int y){
 			printf("x+\n");
 			switch(aldaketa){
 				case 0:
-					glTranslatef(step, 0.0f, 0.0f);
+                    mat = translazioa(1,0,0);
 					break;
 				case 1:
+                    mat = biraketa(1,0,0);
 					break;
 				case 2:
 					break;
@@ -276,9 +284,10 @@ void special_keyboard(int key, int x, int y){
 			printf("x-\n");
 			switch(aldaketa){
 				case 0:
-					glTranslatef(step, 0.0f, 0.0f);
+                    mat = translazioa(-1,0,0);
 					break;
 				case 1:
+                    mat = biraketa(-1,0,0);
 					break;
 				case 2:
 					break;
@@ -289,9 +298,10 @@ void special_keyboard(int key, int x, int y){
 			printf("z+\n");
 			switch(aldaketa){
 				case 0:
-					glTranslatef(0.0f, 0.0f, step);
+                    mat = translazioa(0,0,1);
 					break;
 				case 1:
+                    mat = biraketa(0,0,1);
 					break;
 				case 2:
 					break;
@@ -302,18 +312,21 @@ void special_keyboard(int key, int x, int y){
 			printf("z-\n");
 			switch(aldaketa){
 				case 0:
-					glTranslatef(0.0f, 0.0f, step);
+                    mat = translazioa(0,0,-1);
 					break;
 				case 1:
+                    mat = biraketa(0,0,-1);
 					break;
 				case 2:
 					break;
 			}
 			break;
-	}
+        default:
+            printf("Espeziala: %d %c\n", key, key);
+            break;
+    }
 	
-	printf("Espeziala: %d %c\n", key, key);
+
 	glutPostRedisplay();
 	glPopMatrix();
 }
-

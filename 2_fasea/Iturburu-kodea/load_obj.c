@@ -1,11 +1,3 @@
-/*********************************************
- * File with the function to load objects    *
- * from files                                *
- * ----------------------------------------- *
- * Author: Borja Calvo (borja.calvo@ehu.es)  *
- * Date:   September 2014                    *
- *********************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

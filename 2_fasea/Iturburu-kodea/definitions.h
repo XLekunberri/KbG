@@ -112,7 +112,7 @@ struct object3d{
     face *face_table;                   /* table of faces */
     point3 min;                         /* coordinates' lower bounds */
     point3 max;                         /* coordinates' bigger bounds */
-	struct GLdouble *matrix;
+	struct GLdouble *matrix;			/* Egungo matrizea */
     struct object3d *next;              /* next element in the pile of objects */
 };
 

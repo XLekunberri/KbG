@@ -15,12 +15,7 @@ extern GLdouble _ortho_z_min,_ortho_z_max;
  * of the keys
  */
 void print_help(){
-    printf("KbG Irakasgaiaren Praktika. Programa honek 3D objektuak \n");
-    printf("aldatzen eta bistaratzen ditu.  \n\n");
-
-    printf("Egilea: Borja Calvo (borja.calvo@ehu.es) \n");
-    printf("Data: Irailak, 2014 \n");
-    printf("\n\n");
+    
     printf("FUNTZIO NAGUSIAK \n");
     printf("<?>\t\t Laguntza hau bistaratu \n");
     printf("<ESC>\t\t Programatik irten \n");
