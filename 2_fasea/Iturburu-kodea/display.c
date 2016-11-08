@@ -1,4 +1,5 @@
 #include "definitions.h"
+#include "matrizeak.h"
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -107,7 +108,7 @@ void display(void) {
         glLoadIdentity();
 
 
-        glMultMatrixd()
+        glMultMatrixd(biraketa(1,0,0));
         for (f = 0; f < aux_obj->num_faces; f++) {
             glBegin(GL_POLYGON);
             for (v = 0; v < aux_obj->face_table[f].num_vertices; v++) {

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <malloc.h>
 #include "definitions.h"
+#include "matrizeak.h"
 
 #define MAXLINE 200
 
@@ -186,6 +187,7 @@ printf("2 pasada\n");
             object_ptr->max.z = object_ptr->vertex_table[i].coord.z;
 
     }
+    object_ptr->matrix = identitatea();
     return (0);
 }
 

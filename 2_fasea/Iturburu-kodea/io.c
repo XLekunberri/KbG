@@ -13,7 +13,7 @@ extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
 
-int aldaketa;	// translazioa = 0
+int aldaketa = -1;	// translazioa = 0
 				// biraketa = 1
 				// tamaina aldatzea = 2
 
@@ -243,6 +243,7 @@ void special_keyboard(int key, int x, int y){
 			switch(aldaketa){
 				case 0://Trans
                     mat = translazioa(0,1,0);
+					
 					break;
 				case 1://Birak
                     mat = biraketa(0,1,0);
@@ -257,6 +258,7 @@ void special_keyboard(int key, int x, int y){
 			switch(aldaketa){
 				case 0:
                     mat = translazioa(0,-1,0);
+
 					break;
 				case 1:
                     mat = biraketa(0,-1,0);

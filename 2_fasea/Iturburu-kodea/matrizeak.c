@@ -4,8 +4,6 @@
 #include <GL/glu.h>
 #include <math.h>
 
-#define PI (3.141592653589793)
-
 GLdouble *mult(GLdouble *m1, GLdouble *m2) {
     GLdouble *result = malloc(sizeof(GLdouble) * 4 * 4);
     // @formatter:off
@@ -33,20 +31,13 @@ GLdouble *mult(GLdouble *m1, GLdouble *m2) {
 }
 
 GLdouble *translazioa(int x, int y, int z){
-    int h = 10;
 
-    GLdouble mat[16] = {1,0,0,0,
-                        0,1,0,0,
-                        0,0,1,0,
-                        x*h,y*h,z*h,1};
+    GLdouble mat[16];
 
-    /* Beste era batean definituta
-    mat[0] = 1;     mat[4] = 0;     mat[8]  = 0;    mat[12] = x * h;
-    mat[1] = 0;     mat[5] = 1;     mat[9]  = 0;    mat[13] = y * h;
-    mat[2] = 0;     mat[6] = 0;     mat[10] = 1;    mat[14] = z * h
+    mat[0] = 1;     mat[4] = 0;     mat[8]  = 0;    mat[12] = x * KG_TRANS_ABIAD;
+    mat[1] = 0;     mat[5] = 1;     mat[9]  = 0;    mat[13] = y * KG_TRANS_ABIAD;
+    mat[2] = 0;     mat[6] = 0;     mat[10] = 1;    mat[14] = z * KG_TRANS_ABIAD;
     mat[3] = 0;     mat[7] = 0;     mat[11] = 0;    mat[15] = 1;
-    */
-
 
     return mat;
 
@@ -54,26 +45,38 @@ GLdouble *translazioa(int x, int y, int z){
 
 GLdouble *biraketa(int x, int y, int z){
 
-    GLdouble mat[9];
-    double theta = PI/4;
-    double c = cos(theta);
-    double s = sin(theta);
-    // @formatter:off
-    mat[0] = x * x * (1-c) + c;     mat[3] = x * y * (1-c) - z*s;   mat[6] = x * z * (1-c) + y*s;
-    mat[1] = x * y * (1-c) + z*s;   mat[4] = y * y * (1-c) + c;     mat[7] = y * z * (1-c) - x*s;
-    mat[2] = x * z * (1-c) - y*s;   mat[5] = y * z * (1-c) + x*s;   mat[8] = z * z * (1-c) + c;
-    // @formatter:on
+    GLdouble mat[16];
+    double c = cos(KG_BIRAK_ANG);
+    double s = sin(KG_BIRAK_ANG);
+
+    mat[0] = x * x * (1-c) + c;     mat[4] = x * y * (1-c) - z*s;   mat[8]  = x * z * (1-c) + y*s;  mat[12] = 0;
+    mat[1] = x * y * (1-c) + z*s;   mat[5] = y * y * (1-c) + c;     mat[9]  = y * z * (1-c) - x*s;  mat[13] = 0;
+    mat[2] = x * z * (1-c) - y*s;   mat[6] = y * z * (1-c) + x*s;   mat[10] = z * z * (1-c) + c;    mat[14] = 0;
+    mat[3] = 0;                     mat[7] = 0;                     mat[11] = 0;                    mat[15] = 1;
+
     return mat;
 
 }
 
 GLdouble *eskalaketa(int x, int y, int z){
 
-    GLdouble mat[9];
-    // @formatter:off
-    mat[0] = x * 1.5;   mat[3] = 0;         mat[6] = 0;
-    mat[1] = 0;         mat[4] = y * 1.5;   mat[7] = 0;
-    mat[2] = 0;         mat[5] = 0;         mat[8] = z * 1.5;
-    // @formatter:on
+    GLdouble mat[16];
+
+    mat[0] = x * KG_ESKAL_KONS; mat[4] = 0;                   mat[8]  = 0;                  mat[12] = 0;
+    mat[1] = 0;                 mat[5] = y * KG_ESKAL_KONS;   mat[9]  = 0;                  mat[13] = 0;
+    mat[2] = 0;                 mat[6] = 0;                   mat[10] = z * KG_ESKAL_KONS;  mat[14] = 0;
+    mat[3] = 0;                 mat[7] = 0;                   mat[11] = 0;                  mat[15] = 1;
+
+    return mat;
+}
+
+GLdouble *identitatea(){
+    GLdouble mat[16];
+
+    mat[0] = 1;     mat[4] = 0;     mat[8]  = 0;    mat[12] = 0;
+    mat[1] = 0;     mat[5] = 1;     mat[9]  = 0;    mat[13] = 0;
+    mat[2] = 0;     mat[6] = 0;     mat[10] = 1;    mat[14] = 0;
+    mat[3] = 0;     mat[7] = 0;     mat[11] = 0;    mat[15] = 1;
+
     return mat;
 }

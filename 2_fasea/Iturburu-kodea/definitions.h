@@ -2,6 +2,8 @@
 #define DEFINITIONS_H
 
 #include <GL/gl.h>
+#include <math.h>
+
 
 /** DEFINITIONS **/
 
@@ -55,6 +57,12 @@
 #define KG_COL_Z_AXIS_B                     1.0f
 
 #define KG_MAX_DOUBLE                       1000
+
+#define PI                                  3.141592653589793f
+
+#define KG_TRANS_ABIAD                      10
+#define KG_BIRAK_ANG                        PI/4
+#define KG_ESKAL_KONS                       1.5f
 
 /** STRUCTURES **/
 
@@ -112,7 +120,7 @@ struct object3d{
     face *face_table;                   /* table of faces */
     point3 min;                         /* coordinates' lower bounds */
     point3 max;                         /* coordinates' bigger bounds */
-	struct GLdouble *matrix;			/* Egungo matrizea */
+	GLdouble *matrix;					/* Egungo matrizea */
     struct object3d *next;              /* next element in the pile of objects */
 };
 
