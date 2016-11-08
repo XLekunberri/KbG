@@ -60,6 +60,10 @@
 
 #define PI                                  3.141592653589793f
 
+#define MODE_TRANS							0
+#define MODE_BIRAK							1
+#define MODE_ESKAL							2
+
 #define KG_TRANS_ABIAD                      10
 #define KG_BIRAK_ANG                        PI/4
 #define KG_ESKAL_KONS                       1.5f

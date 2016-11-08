@@ -32,7 +32,7 @@ GLdouble *mult(GLdouble *m1, GLdouble *m2) {
 
 GLdouble *translazioa(int x, int y, int z){
 
-    GLdouble mat[16];
+    GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
 
     mat[0] = 1;     mat[4] = 0;     mat[8]  = 0;    mat[12] = x * KG_TRANS_ABIAD;
     mat[1] = 0;     mat[5] = 1;     mat[9]  = 0;    mat[13] = y * KG_TRANS_ABIAD;
@@ -45,7 +45,7 @@ GLdouble *translazioa(int x, int y, int z){
 
 GLdouble *biraketa(int x, int y, int z){
 
-    GLdouble mat[16];
+    GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
     double c = cos(KG_BIRAK_ANG);
     double s = sin(KG_BIRAK_ANG);
 
@@ -60,7 +60,7 @@ GLdouble *biraketa(int x, int y, int z){
 
 GLdouble *eskalaketa(int x, int y, int z){
 
-    GLdouble mat[16];
+    GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
 
     mat[0] = x * KG_ESKAL_KONS; mat[4] = 0;                   mat[8]  = 0;                  mat[12] = 0;
     mat[1] = 0;                 mat[5] = y * KG_ESKAL_KONS;   mat[9]  = 0;                  mat[13] = 0;
@@ -71,7 +71,8 @@ GLdouble *eskalaketa(int x, int y, int z){
 }
 
 GLdouble *identitatea(){
-    GLdouble mat[16];
+
+    GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
 
     mat[0] = 1;     mat[4] = 0;     mat[8]  = 0;    mat[12] = 0;
     mat[1] = 0;     mat[5] = 1;     mat[9]  = 0;    mat[13] = 0;

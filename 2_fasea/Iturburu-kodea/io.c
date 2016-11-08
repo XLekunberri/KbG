@@ -190,19 +190,19 @@ void keyboard(unsigned char key, int x, int y) {
 	case 'm':
 	case 'M':
 		printf("Translazioa aktibatuta\n");
-		aldaketa = 0;
+		aldaketa = MODE_TRANS;
 		break;
 
 	case 'b':
 	case 'B':
 		printf("Biraketa aktibatuta\n");
-		aldaketa = 1;
+		aldaketa = MODE_BIRAK;
 		break;
 
 	case 't':
 	case 'T':
 		printf("Tamaina aldatzea aktibatuta\n");
-		aldaketa = 2;
+		aldaketa = MODE_ESKAL;
 		break;
 
 	case 'g':
@@ -235,20 +235,20 @@ void keyboard(unsigned char key, int x, int y) {
 
 
 void special_keyboard(int key, int x, int y){
-    GLdouble *mat;
+    GLdouble *mat = NULL;
 	glPushMatrix();
     switch (key) {	
 		case GLUT_KEY_UP:
 			printf("y+\n");
 			switch(aldaketa){
-				case 0://Trans
+				case MODE_TRANS://Trans
                     mat = translazioa(0,1,0);
-					
+
 					break;
-				case 1://Birak
+				case MODE_BIRAK://Birak
                     mat = biraketa(0,1,0);
 					break;
-				case 2://Eskal
+				case MODE_ESKAL://Eskal
                     mat = eskalaketa(0,1,0);
 					break;
 			}
@@ -256,14 +256,14 @@ void special_keyboard(int key, int x, int y){
 		case GLUT_KEY_DOWN:
 			printf("y-\n");
 			switch(aldaketa){
-				case 0:
+				case MODE_TRANS:
                     mat = translazioa(0,-1,0);
 
 					break;
-				case 1:
+				case MODE_BIRAK:
                     mat = biraketa(0,-1,0);
 					break;
-				case 2:
+				case MODE_ESKAL:
 					break;
 			}
 			break;
@@ -271,13 +271,13 @@ void special_keyboard(int key, int x, int y){
 		case GLUT_KEY_RIGHT:
 			printf("x+\n");
 			switch(aldaketa){
-				case 0:
+				case MODE_TRANS:
                     mat = translazioa(1,0,0);
 					break;
-				case 1:
+				case MODE_BIRAK:
                     mat = biraketa(1,0,0);
 					break;
-				case 2:
+				case MODE_ESKAL:
 					break;
 			}
 			break;
@@ -285,13 +285,13 @@ void special_keyboard(int key, int x, int y){
 		case GLUT_KEY_LEFT:
 			printf("x-\n");
 			switch(aldaketa){
-				case 0:
+				case MODE_TRANS:
                     mat = translazioa(-1,0,0);
 					break;
-				case 1:
+				case MODE_BIRAK:
                     mat = biraketa(-1,0,0);
 					break;
-				case 2:
+				case MODE_ESKAL:
 					break;
 			}
 			break;
@@ -299,13 +299,13 @@ void special_keyboard(int key, int x, int y){
 		case GLUT_KEY_PAGE_UP: //av_pag
 			printf("z+\n");
 			switch(aldaketa){
-				case 0:
+				case MODE_TRANS:
                     mat = translazioa(0,0,1);
 					break;
-				case 1:
+				case MODE_BIRAK:
                     mat = biraketa(0,0,1);
 					break;
-				case 2:
+				case MODE_ESKAL:
 					break;
 			}
 			break;
@@ -313,13 +313,13 @@ void special_keyboard(int key, int x, int y){
 		case GLUT_KEY_PAGE_DOWN: //re_pag
 			printf("z-\n");
 			switch(aldaketa){
-				case 0:
+				case MODE_TRANS:
                     mat = translazioa(0,0,-1);
 					break;
-				case 1:
+				case MODE_BIRAK:
                     mat = biraketa(0,0,-1);
 					break;
-				case 2:
+				case MODE_ESKAL:
 					break;
 			}
 			break;
@@ -327,6 +327,9 @@ void special_keyboard(int key, int x, int y){
             printf("Espeziala: %d %c\n", key, key);
             break;
     }
+	if (_selected_object != 0 && mat != NULL) {
+		_selected_object->matrix = mult(_selected_object->matrix, mat);
+	}
 	
 
 	glutPostRedisplay();

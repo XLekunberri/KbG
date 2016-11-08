@@ -104,11 +104,11 @@ void display(void) {
             glColor3f(KG_COL_NONSELECTED_R,KG_COL_NONSELECTED_G,KG_COL_NONSELECTED_B);
         }
 
-        /* Draw the object; for each face create a new polygon with the corresponding vertices */
+        /* Draw the object; fFFor each face create a new polygon with the corresponding vertices */
         glLoadIdentity();
 
 
-        glMultMatrixd(biraketa(1,0,0));
+        glMultMatrixd(aux_obj->matrix);
         for (f = 0; f < aux_obj->num_faces; f++) {
             glBegin(GL_POLYGON);
             for (v = 0; v < aux_obj->face_table[f].num_vertices; v++) {
