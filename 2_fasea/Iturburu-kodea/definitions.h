@@ -60,13 +60,18 @@
 
 #define PI                                  3.141592653589793f
 
+#define MODE_GLOBAL                         0
+#define MODE_LOKAL                          1
+
 #define MODE_TRANS							0
 #define MODE_BIRAK							1
 #define MODE_ESKAL							2
 
-#define KG_TRANS_ABIAD                      10
-#define KG_BIRAK_ANG                        PI/4
-#define KG_ESKAL_KONS                       1.5f
+#define KG_TRANS_ABIAD                      0.25
+#define KG_BIRAK_ANG                        PI/16
+#define KG_ESKAL_HAND                       1.25f
+#define KG_ESKAL_TXIK                       1/KG_ESKAL_HAND
+
 
 /** STRUCTURES **/
 
