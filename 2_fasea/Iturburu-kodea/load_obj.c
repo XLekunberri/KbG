@@ -188,9 +188,10 @@ printf("2 pasada\n");
 
     }
     //Hasiearatu
-    object_ptr->matrizeak = (pila*)malloc(sizeof(pila));
-    object_ptr->matrizeak->matrix = identitatea();
-    object_ptr->matrizeak->next   = NULL;
+    object_ptr->pila_z = (pila*)malloc(sizeof(pila));
+    object_ptr->pila_z->matrix = identitatea();
+    object_ptr->pila_z->next   = NULL;
+    object_ptr->pila_y = NULL;
     return (0);
 }
 

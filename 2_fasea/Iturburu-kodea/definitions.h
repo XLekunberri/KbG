@@ -66,6 +66,7 @@
 #define MODE_TRANS							0
 #define MODE_BIRAK							1
 #define MODE_ESKAL							2
+#define MODE_ISLAP                          3
 
 #define KG_TRANS_ABIAD                      0.25
 #define KG_BIRAK_ANG                        PI/16
@@ -140,7 +141,8 @@ struct object3d{
     face *face_table;                   /* table of faces */
     point3 min;                         /* coordinates' lower bounds */
     point3 max;                         /* coordinates' bigger bounds */
-	pila *matrizeak;					/* Egungo matrizea */
+	pila *pila_z;					/* Egindako aldaketak */
+    pila *pila_y;			    /* Desegindako aldaketak */
     struct object3d *next;              /* next element in the pile of objects */
 };
 

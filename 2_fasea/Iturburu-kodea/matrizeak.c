@@ -71,6 +71,18 @@ GLdouble *eskalaketa(float x, float y, float z){
     return mat;
 }
 
+GLdouble *islapena(int x, int y, int z){
+
+    GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
+
+    mat[0] = x;     mat[4] = 0;     mat[8]  = 0;    mat[12] = 0;
+    mat[1] = 0;     mat[5] = y;     mat[9]  = 0;    mat[13] = 0;
+    mat[2] = 0;     mat[6] = 0;     mat[10] = z;    mat[14] = 0;
+    mat[3] = 0;     mat[7] = 0;     mat[11] = 0;    mat[15] = 1;
+
+    return mat;
+}
+
 GLdouble *identitatea(){
 
     GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);

@@ -10,6 +10,7 @@ GLdouble *mult(GLdouble *m1, GLdouble *m2);
 GLdouble *translazioa(int x, int y, int z);
 GLdouble *biraketa(int x, int y, int z);
 GLdouble *eskalaketa(float x, float y, float z);
+GLdouble *islapena(int x, int y, int z);
 GLdouble *identitatea();
 
 void print_matrix(GLdouble *matrix);

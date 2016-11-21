@@ -241,6 +241,14 @@ void keyboard(unsigned char key, int x, int y) {
             }
             break;
 
+        case 'i':
+        case 'I':
+            if(aldaketa != MODE_ISLAP){
+                printf("Islapena aktibatuta\n");
+                aldaketa = MODE_ISLAP;
+            }
+            break;
+
         case 'g':
         case 'G':
             if(err_sist != MODE_GLOBAL){
@@ -261,13 +269,31 @@ void keyboard(unsigned char key, int x, int y) {
         case 'O':
             break;
 
+
+        case 25: /* <CTRL + y/Y> */
+            //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
+            //'CTRL + y/Y' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
+            if(_selected_object->pila_y != NULL) {
+                //Aldaketa pila_y-tik pila_z-ra mugitu
+                pila *add_elem = _selected_object->pila_y;
+                _selected_object->pila_y = add_elem->next;
+                add_elem->next = _selected_object->pila_z;
+                _selected_object->pila_z = add_elem;
+            }
+            else{
+                printf("Ez dago aldaketarik berregiteko\n");
+            }
+            break;
+
         case 26: /* <CTRL + z/Z> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + z/Z' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            if(_selected_object->matrizeak->next != NULL) {
-                pila *del_elem = _selected_object->matrizeak;
-                _selected_object->matrizeak = del_elem->next;
-                //free(del_elem);
+            if(_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                //Aldaketa pila_z-tik pila_y-ra mugitu
+                pila *del_elem = _selected_object->pila_z;
+                _selected_object->pila_z = del_elem->next;
+                del_elem->next = _selected_object->pila_y;
+                _selected_object->pila_y = del_elem;
             }
             else{
                 printf("Ez dago aldaketarik desegiteko\n");
@@ -294,14 +320,17 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_UP:
                 printf("y+\n");
                 switch (aldaketa) {
-                    case MODE_TRANS://Trans
+                    case MODE_TRANS:
                         mat = translazioa(0, 1, 0);
                         break;
-                    case MODE_BIRAK://Birak
+                    case MODE_BIRAK:
                         mat = biraketa(0, 1, 0);
                         break;
-                    case MODE_ESKAL://Eskal
+                    case MODE_ESKAL:
                         mat = eskalaketa(1, KG_ESKAL_HAND, 1);
+                        break;
+                    case MODE_ISLAP:
+                        mat = islapena(1, -1, 1);
                         break;
                 }
                 break;
@@ -316,6 +345,9 @@ void special_keyboard(int key, int x, int y) {
                         break;
                     case MODE_ESKAL:
                         mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
+                        break;
+                    case MODE_ISLAP:
+                        mat = islapena(1, -1, 1);
                         break;
                 }
                 break;
@@ -332,6 +364,9 @@ void special_keyboard(int key, int x, int y) {
                     case MODE_ESKAL:
                         mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
                         break;
+                    case MODE_ISLAP:
+                        mat = islapena(-1, 1, 1);
+                        break;
                 }
                 break;
 
@@ -346,6 +381,9 @@ void special_keyboard(int key, int x, int y) {
                         break;
                     case MODE_ESKAL:
                         mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
+                        break;
+                    case MODE_ISLAP:
+                        mat = islapena(-1, 1, 1);
                         break;
                 }
                 break;
@@ -362,6 +400,9 @@ void special_keyboard(int key, int x, int y) {
                     case MODE_ESKAL:
                         mat = eskalaketa(1, 1, KG_ESKAL_HAND);
                         break;
+                    case MODE_ISLAP:
+                        mat = islapena(1, 1, -1);
+                        break;
                 }
                 break;
 
@@ -377,8 +418,12 @@ void special_keyboard(int key, int x, int y) {
                     case MODE_ESKAL:
                         mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
                         break;
+                    case MODE_ISLAP:
+                        mat = islapena(1, 1, -1);
+                        break;
                 }
                 break;
+
             default:
                 printf("Espeziala: %d %c\n", key, key);
                 break;
@@ -387,21 +432,25 @@ void special_keyboard(int key, int x, int y) {
 	if (_selected_object != 0 && mat != NULL) {
         switch(err_sist) {
             case MODE_GLOBAL:
-                mat = mult(mat, _selected_object->matrizeak->matrix);
+                mat = mult(mat, _selected_object->pila_z->matrix);
                 break;
             case MODE_LOKAL:
-                mat = mult(_selected_object->matrizeak->matrix, mat);
+                mat = mult(_selected_object->pila_z->matrix, mat);
                 break;
         }
+
+        //Aldaketa berria gehitu pila_z pilari
         pila *new_elem = (pila*)malloc(sizeof(pila));
         new_elem->matrix = mat;
-        new_elem->next = _selected_object->matrizeak;
-        _selected_object->matrizeak = new_elem;
+        new_elem->next = _selected_object->pila_z;
+        _selected_object->pila_z = new_elem;
 
-
+        //Aldaketabat egin dugunez, pila_y pila hustu
+        _selected_object->pila_y = NULL;
 	}
 	
 
 	glutPostRedisplay();
 	glPopMatrix();
 }
+
