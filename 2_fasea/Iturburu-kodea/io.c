@@ -28,9 +28,9 @@ int aldaketa = -1;	// translazioa = 0
 void print_help(){
 
     printf("FUNTZIO NAGUSIAK \n");
-    printf("<?>\t\t Laguntza hau bistaratu \n");
+    printf("<?>\t\t\t Laguntza hau bistaratu \n");
     printf("<ESC>\t\t Programatik irten \n");
-    printf("<F>\t\t Objektua bat kargatu\n");
+    printf("<F>\t\t\t Objektua bat kargatu\n");
     printf("<TAB>\t\t Kargaturiko objektuen artean bat hautatu\n");
     printf("<DEL>\t\t Hautatutako objektua ezabatu\n");
     printf("<CTRL + ->\t Bistaratze-eremua handitu\n");
@@ -102,6 +102,32 @@ void keyboard(unsigned char key, int x, int y) {
                 _selected_object = _first_object;
                 printf("%s\n",KG_MSSG_FILEREAD);
                 break;
+            }
+            break;
+        case 'q':
+        case 'Q':
+            fname = "../Objektuak/al.obj";
+            auxiliar_object = (object3d *) malloc(sizeof (object3d));
+            read = read_wavefront(fname, auxiliar_object);
+            switch (read) {
+                /*Errors in the reading*/
+                case 1:
+                    printf("%s: %s\n", fname, KG_MSSG_FILENOTFOUND);
+                    break;
+                case 2:
+                    printf("%s: %s\n", fname, KG_MSSG_INVALIDFILE);
+                    break;
+                case 3:
+                    printf("%s: %s\n", fname, KG_MSSG_EMPTYFILE);
+                    break;
+                    /*Read OK*/
+                case 0:
+                    /*Insert the new object in the list*/
+                    auxiliar_object->next = _first_object;
+                    _first_object = auxiliar_object;
+                    _selected_object = _first_object;
+                    printf("%s\n",KG_MSSG_FILEREAD);
+                    break;
             }
             break;
 
@@ -235,10 +261,16 @@ void keyboard(unsigned char key, int x, int y) {
         case 'O':
             break;
 
-        case 'z':
-        case 'Z':
-            if (glutGetModifiers() == GLUT_ACTIVE_CTRL){
-
+        case 26: /* <CTRL + z/Z> */
+            //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
+            //'CTRL + z/Z' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
+            if(_selected_object->matrizeak->next != NULL) {
+                pila *del_elem = _selected_object->matrizeak;
+                _selected_object->matrizeak = del_elem->next;
+                //free(del_elem);
+            }
+            else{
+                printf("Ez dago aldaketarik desegiteko\n");
             }
             break;
 
@@ -355,13 +387,18 @@ void special_keyboard(int key, int x, int y) {
 	if (_selected_object != 0 && mat != NULL) {
         switch(err_sist) {
             case MODE_GLOBAL:
-                _selected_object->matrix = mult(mat, _selected_object->matrix);
+                mat = mult(mat, _selected_object->matrizeak->matrix);
                 break;
             case MODE_LOKAL:
-                _selected_object->matrix = mult(_selected_object->matrix, mat);
+                mat = mult(_selected_object->matrizeak->matrix, mat);
                 break;
-
         }
+        pila *new_elem = (pila*)malloc(sizeof(pila));
+        new_elem->matrix = mat;
+        new_elem->next = _selected_object->matrizeak;
+        _selected_object->matrizeak = new_elem;
+
+
 	}
 	
 

@@ -187,7 +187,10 @@ printf("2 pasada\n");
             object_ptr->max.z = object_ptr->vertex_table[i].coord.z;
 
     }
-    object_ptr->matrix = identitatea();
+    //Hasiearatu
+    object_ptr->matrizeak = (pila*)malloc(sizeof(pila));
+    object_ptr->matrizeak->matrix = identitatea();
+    object_ptr->matrizeak->next   = NULL;
     return (0);
 }
 

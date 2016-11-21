@@ -1,5 +1,6 @@
 #include "definitions.h"
 #include <GL/glut.h>
+#include <stdio.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
@@ -80,4 +81,23 @@ GLdouble *identitatea(){
     mat[3] = 0;     mat[7] = 0;     mat[11] = 0;    mat[15] = 1;
 
     return mat;
+}
+
+void print_matrix(GLdouble *matrix){
+    for(int i = 0; i <= 12; i=i+4){
+        printf("%g\t",matrix[i]);
+    }
+    printf("\n");
+    for(int i = 1; i <= 13; i=i+4){
+        printf("%g\t",matrix[i]);
+    }
+    printf("\n");
+    for(int i = 2; i <= 14; i=i+4){
+        printf("%g\t",matrix[i]);
+    }
+    printf("\n");
+    for(int i = 3; i <= 15; i=i+4){
+        printf("%g\t",matrix[i]);
+    }
+    printf("\n");
 }

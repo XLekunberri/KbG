@@ -120,6 +120,17 @@ typedef struct {
 
 /****************************
  * Structure to store a     *
+ * pile of transformation   *
+ * matrixes                 *
+ ****************************/
+
+typedef struct{
+    GLdouble *matrix;
+    struct pila *next;
+} pila;
+
+/****************************
+ * Structure to store a     *
  * pile of 3D objects       *
  ****************************/
 struct object3d{
@@ -129,10 +140,12 @@ struct object3d{
     face *face_table;                   /* table of faces */
     point3 min;                         /* coordinates' lower bounds */
     point3 max;                         /* coordinates' bigger bounds */
-	GLdouble *matrix;					/* Egungo matrizea */
+	pila *matrizeak;					/* Egungo matrizea */
     struct object3d *next;              /* next element in the pile of objects */
 };
 
 typedef struct object3d object3d;
+
+
 
 #endif // DEFINITIONS_H
