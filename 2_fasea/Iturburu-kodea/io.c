@@ -193,7 +193,7 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'm':
         case 'M':
-            if(aldaketa != MODE_TRANS) {
+            if(aldaketa != MODE_TRANS){
                 printf("Translazioa aktibatuta\n");
                 aldaketa = MODE_TRANS;
             }
@@ -201,14 +201,18 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'b':
         case 'B':
-            printf("Biraketa aktibatuta\n");
-            aldaketa = MODE_BIRAK;
+            if(aldaketa != MODE_BIRAK){
+                printf("Biraketa aktibatuta\n");
+                aldaketa = MODE_BIRAK;
+            }
             break;
 
         case 't':
         case 'T':
-            printf("Tamaina aldatzea aktibatuta\n");
-            aldaketa = MODE_ESKAL;
+            if(aldaketa != MODE_ESKAL){
+                printf("Eskalaketa aktibatuta\n");
+                aldaketa = MODE_ESKAL;
+            }
             break;
 
         case 'g':
