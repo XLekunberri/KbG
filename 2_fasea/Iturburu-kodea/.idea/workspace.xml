@@ -12,11 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b12301ae-603b-420b-858c-0f8c05e1d345" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/definitions.h" afterPath="$PROJECT_DIR$/definitions.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/display.c" afterPath="$PROJECT_DIR$/display.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/display.h" afterPath="$PROJECT_DIR$/display.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/io.c" afterPath="$PROJECT_DIR$/io.c" />
     </list>
     <ignored path="Iturburu-kodea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="io.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="io.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/io.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="220" column="41" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="41" />
+            <state relative-caret-position="-1751">
+              <caret line="215" column="18" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="18" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -63,8 +60,8 @@
       <file leaf-file-name="display.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
+            <state relative-caret-position="438">
+              <caret line="178" column="60" selection-start-line="178" selection-start-column="60" selection-end-line="178" selection-end-column="60" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -75,8 +72,8 @@
       <file leaf-file-name="display.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -118,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="definitions.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="definitions.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/definitions.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="140" column="16" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
+            <state relative-caret-position="155">
+              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -142,11 +139,11 @@
         <option value="$PROJECT_DIR$/matrizeak.h" />
         <option value="$PROJECT_DIR$/matrizeak.c" />
         <option value="$PROJECT_DIR$/load_obj.c" />
-        <option value="$PROJECT_DIR$/display.h" />
         <option value="$PROJECT_DIR$/main.c" />
-        <option value="$PROJECT_DIR$/display.c" />
         <option value="$PROJECT_DIR$/definitions.h" />
         <option value="$PROJECT_DIR$/io.c" />
+        <option value="$PROJECT_DIR$/display.h" />
+        <option value="$PROJECT_DIR$/display.c" />
       </list>
     </option>
   </component>
@@ -406,12 +403,12 @@
       <workItem from="1479715478679" duration="66000" />
       <workItem from="1479715562640" duration="5099000" />
       <workItem from="1479749245630" duration="2751000" />
-      <workItem from="1479808366102" duration="3812000" />
+      <workItem from="1479808366102" duration="4451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28136000" />
+    <option name="totallyTimeSpent" value="28775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="24" width="1303" height="744" extended-state="6" />
@@ -919,24 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/display.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/load_obj.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
@@ -947,22 +926,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/definitions.h">
+    <entry file="file://$PROJECT_DIR$/io.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="140" column="16" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
+        <state relative-caret-position="-1751">
+          <caret line="215" column="18" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="18" />
           <folding>
-            <element signature="e#45#63#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/io.c">
+    <entry file="file://$PROJECT_DIR$/display.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="220" column="41" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="41" />
+        <state relative-caret-position="126">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="178" column="60" selection-start-line="178" selection-start-column="60" selection-end-line="178" selection-end-column="60" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/definitions.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
           </folding>
         </state>
       </provider>

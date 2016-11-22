@@ -170,3 +170,11 @@ void display(void) {
     /*Do the actual drawing*/
     glFlush();
 }
+
+void pantailaratu(char* text){
+    char *c;
+    glColor3f(r,g,b);
+    glRasterPos3f(x,y,z);
+    for (c=string; *c != '\0'; c++) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, *c); }
+}
