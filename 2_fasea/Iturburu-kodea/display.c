@@ -54,6 +54,48 @@ void reshape(int width, int height) {
     _window_ratio = (GLdouble) width / (GLdouble) height;
 }
 
+void draw_grid(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glColor3f(KG_COL_GRID_R, KG_COL_GRID_G, KG_COL_GRID_B);
+
+    int max_value = 1000;
+    for(int i=-max_value; i<max_value; i++){
+        //Horizontalak
+        glBegin(GL_LINES);
+        glVertex3f(-max_value, i, 0.0);
+        glVertex3f(max_value, i, 0.0);
+        glEnd();
+
+        //Bertikalak
+        glBegin(GL_LINES);
+        glVertex3f(i, -max_value, 0.0);
+        glVertex3f(i, max_value, 0.0);
+        glEnd();
+    }
+
+    //int xsize=0, ysize=0;
+    /*for(int j=0;j<10;j++)
+    {
+
+        xsize=0;
+        for(int i=0;i<50;i++)
+        {
+            glBegin(GL_POLYGON);
+            glVertex3f(-50.0+xsize, -50.0+ysize, 0.0);
+            glVertex3f(-40.0+xsize, -50.0+ysize, 0.0);
+            glVertex3f(-40.0+xsize, -40.0+ysize, 0.0);
+            glVertex3f(-50.0+xsize, -40.0+ysize, 0.0);
+            glEnd();
+            xsize+=10.0;
+        }
+        ysize+=10.0;
+    }
+    */
+    glFlush();
+
+}
+
 
 /**
  * @brief Callback display function
@@ -91,9 +133,12 @@ void display(void) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    /*First, we draw the axes*/
+    /*First, we draw the grid and then the axes*/
+    draw_grid();
     draw_axes();
+
 	glPopMatrix();
+
 
     /*Now each of the objects in the list*/
     while (aux_obj != 0) {

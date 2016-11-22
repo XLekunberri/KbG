@@ -35,11 +35,13 @@ void print_help(){
     printf("<DEL>\t\t Hautatutako objektua ezabatu\n");
     printf("<CTRL + ->\t Bistaratze-eremua handitu\n");
     printf("<CTRL + +>\t Bistaratze-eremua txikitu\n\n");
+    printf("<I,i>\t\t Objektuaren informazioa pantailaratu");
 	
 	printf("ALDAKETA FUNTZIOAK \n");
 	printf("<M,m>\t\t Translazioa aktibatu \n");
 	printf("<B,b>\t\t Biraketa aktibatu \n");
 	printf("<T,t>\t\t Tamaina aldaketa aktibatu \n");
+    printf("<R,r>\t\t Islapena aktibatu \n");
 	printf("<G,g>\t\t Aldaketa globalak aktibatu \n");
 	printf("<L,l>\t\t Aldaketa lokalak aktibatu \n");
 	printf("<O,o>\t\t Translazioa aktibatu \n");
@@ -213,6 +215,12 @@ void keyboard(unsigned char key, int x, int y) {
             print_help();
             break;
 
+        case 'i':
+        case 'I':
+            printf("Erpin kopurua: %d\n", _selected_object->num_vertices);
+            printf("Aurpegi kopurua: %d\n", _selected_object->num_faces);
+            break;
+
         case 27: /* <ESC> */
             exit(0);
             break;
@@ -241,8 +249,8 @@ void keyboard(unsigned char key, int x, int y) {
             }
             break;
 
-        case 'i':
-        case 'I':
+        case 'r':
+        case 'R':
             if(aldaketa != MODE_ISLAP){
                 printf("Islapena aktibatuta\n");
                 aldaketa = MODE_ISLAP;

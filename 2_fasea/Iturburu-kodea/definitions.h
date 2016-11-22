@@ -31,13 +31,17 @@
 #define KG_ORTHO_Z_MIN_INIT                -100
 #define KG_ORTHO_Z_MAX_INIT                 10000
 
-#define KG_COL_BACK_R                       0.33f
-#define KG_COL_BACK_G                       0.64f
-#define KG_COL_BACK_B                       0.64f
+#define KG_COL_BACK_R                       0.73f
+#define KG_COL_BACK_G                       0.73f
+#define KG_COL_BACK_B                       0.73f
 #define KG_COL_BACK_A                       0.00f
 
-#define KG_COL_SELECTED_R                   1.00f
-#define KG_COL_SELECTED_G                   0.75f
+#define KG_COL_GRID_R                       0.40f
+#define KG_COL_GRID_G                       0.40f
+#define KG_COL_GRID_B                       0.40f
+
+#define KG_COL_SELECTED_R                   0.00f
+#define KG_COL_SELECTED_G                   0.84f
 #define KG_COL_SELECTED_B                   0.00f
 
 #define KG_COL_NONSELECTED_R                1.00f
