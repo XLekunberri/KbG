@@ -171,10 +171,12 @@ void display(void) {
     glFlush();
 }
 
-void pantailaratu(char* text){
+void pantailaratu(char* string){
     char *c;
-    glColor3f(r,g,b);
-    glRasterPos3f(x,y,z);
+    glColor3f(KG_COL_TEXT_R,KG_COL_TEXT_G,KG_COL_TEXT_B);
+    //Testuaren posizioa adierazi behar da
+    //(ondo egongo litzateke KG_COL_POS_TEXT_X, _Y, _Z eta horrelakoak egitea
+    // ->>>> glRasterPos3f(x,y,z); !!!!!!!!!!!!!!!!!
     for (c=string; *c != '\0'; c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, *c); }
 }
