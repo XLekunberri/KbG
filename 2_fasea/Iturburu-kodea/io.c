@@ -5,6 +5,7 @@
 #include <malloc.h>
 #include <GL/glut.h>
 #include <stdio.h>
+#include <string.h>
 
 extern char* mezua;
 
@@ -15,12 +16,9 @@ extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
 
-int err_sist = MODE_GLOBAL; // MODE_GLOBAL
-                            // MODE_LOKAL
+int err_sist = MODE_GLOBAL;
 
-int aldaketa = -1;	// translazioa = 0
-				    // biraketa = 1
-                    // tamaina aldatzea = 2
+int aldaketa = MODE_DEFAULT;
 
 
 /**
@@ -140,23 +138,22 @@ void keyboard(unsigned char key, int x, int y) {
         case 9: /* <TAB> */
             //if hau gehitu dugu, programaren hasieran lista hutsa dagoenez ezin delako objektuen lista zeharkatu
             //Bestela, 'segmentation fault' errorea emango luke
-            if (_first_object == 0){
-                printf("Ezin da aukeratutako objektua aldatu, oraindik ez delako objekturik kargatu\n");
-            }
-            else{
+            if (_first_object != 0){
                 _selected_object = _selected_object->next;
                 /*The selection is circular, thus if we move out of the list we go back to the first element*/
-                if (_selected_object == 0) _selected_object = _first_object;
+                if (_selected_object == 0){
+                    _selected_object = _first_object;
+                }
+            }
+            else{
+                sprintf(mezua, "Ezin da aukeratutako objektua aldatu, oraindik ez delako objekturik kargatu");
             }
             break;
 
         case 127: /* <SUPR> */
             //if hau gehitu dugu, ez badaudelako objekturik kargatuta eta aukeratutakoa ezabatzen saiatzen bagara, "Segmentation Fault" errorea jaurtitzen du
             //Horretarako, _selected_object (kargatuta dagoen aukeratutako objektua) '0' balioa duenean, errore-mezua pantailaratuko da
-            if (_selected_object == 0){
-                printf("Ezin da objekturik ezabatu ez dagoelako bat ere ez kargatuta\n");
-            }
-            else{
+            if (_selected_object != 0){
                 /*Erasing an object depends on whether it is the first one or not*/
                 if (_selected_object == _first_object)
                 {
@@ -178,6 +175,10 @@ void keyboard(unsigned char key, int x, int y) {
                     /*and update the selection*/
                     _selected_object = auxiliar_object;
                 }
+                sprintf(mezua, "Objektua ezabatuta");
+            }
+            else{
+                sprintf(mezua, "Ez dago objekturik kargatuta");
             }
             break;
 
@@ -216,6 +217,7 @@ void keyboard(unsigned char key, int x, int y) {
             break;
 
         case '?':
+            sprintf(mezua, "Laguntza terminalean pantailaratu da");
             print_help();
             break;
 
@@ -223,14 +225,11 @@ void keyboard(unsigned char key, int x, int y) {
         case 'I':
             if (_selected_object != 0) {
 
-                printf("Erpin kopurua: %d\nAurpegi kopurua: %d\n",
-                       _selected_object->num_vertices, _selected_object->num_faces);
-
                 sprintf(mezua, "Objektu honek %d erpin eta %d aurpegi ditu",
                         _selected_object->num_vertices, _selected_object->num_faces);
             }
             else{
-                printf("Ez dago objekturik kargatuta\n");
+                sprintf(mezua, "Ez dago objekturik kargatuta");
             }
             break;
 
@@ -241,7 +240,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 'm':
         case 'M':
             if(aldaketa != MODE_TRANS){
-                printf("Translazioa aktibatuta\n");
+                sprintf(mezua, "Translazioa aktibatuta");
                 aldaketa = MODE_TRANS;
             }
             break;
@@ -249,7 +248,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 'b':
         case 'B':
             if(aldaketa != MODE_BIRAK){
-                printf("Biraketa aktibatuta\n");
+                sprintf(mezua, "Biraketa aktibatuta");
                 aldaketa = MODE_BIRAK;
             }
             break;
@@ -257,7 +256,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 't':
         case 'T':
             if(aldaketa != MODE_ESKAL){
-                printf("Eskalaketa aktibatuta\n");
+                sprintf(mezua, "Eskalaketa aktibatuta");
                 aldaketa = MODE_ESKAL;
             }
             break;
@@ -265,7 +264,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 'r':
         case 'R':
             if(aldaketa != MODE_ISLAP){
-                printf("Islapena aktibatuta\n");
+                sprintf(mezua, "Islapena aktibatuta");
                 aldaketa = MODE_ISLAP;
             }
             break;
@@ -273,7 +272,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 'g':
         case 'G':
             if(err_sist != MODE_GLOBAL){
-                printf("Erreferentzi sistema globala aktibatuta\n");
+                sprintf(mezua, "Erreferentzi-sistema globala aktibatuta");
                 err_sist = MODE_GLOBAL;
             }
             break;
@@ -281,43 +280,52 @@ void keyboard(unsigned char key, int x, int y) {
         case 'l':
         case 'L':
             if(err_sist != MODE_LOKAL){
-                printf("Erreferentzi sistema lokala aktibatuta\n");
+                sprintf(mezua, "Erreferentzi sistema lokala aktibatuta");
                 err_sist = MODE_LOKAL;
             }
             break;
 
         case 'o':
-        case 'O':
+        case 'O':;
+            sprintf(mezua, "%s", _selected_object->izena);
             break;
 
 
         case 25: /* <CTRL + y/Y> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + y/Y' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            if(_selected_object->pila_y != NULL) {
-                //Aldaketa pila_y-tik pila_z-ra mugitu
-                pila *add_elem = _selected_object->pila_y;
-                _selected_object->pila_y = add_elem->next;
-                add_elem->next = _selected_object->pila_z;
-                _selected_object->pila_z = add_elem;
+            if(_selected_object != 0){
+                if (_selected_object->pila_y != NULL) {
+                    //Aldaketa pila_y-tik pila_z-ra mugitu
+                    pila *add_elem = _selected_object->pila_y;
+                    _selected_object->pila_y = add_elem->next;
+                    add_elem->next = _selected_object->pila_z;
+                    _selected_object->pila_z = add_elem;
+                } else {
+                    sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                }
             }
             else{
-                printf("Ez dago aldaketarik berregiteko\n");
+                sprintf(mezua, "Ez dago objekturik kargatuta");
             }
             break;
 
         case 26: /* <CTRL + z/Z> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + z/Z' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            if(_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
-                //Aldaketa pila_z-tik pila_y-ra mugitu
-                pila *del_elem = _selected_object->pila_z;
-                _selected_object->pila_z = del_elem->next;
-                del_elem->next = _selected_object->pila_y;
-                _selected_object->pila_y = del_elem;
+            if( _selected_object != 0 ) {
+                if (_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                    //Aldaketa pila_z-tik pila_y-ra mugitu
+                    pila *del_elem = _selected_object->pila_z;
+                    _selected_object->pila_z = del_elem->next;
+                    del_elem->next = _selected_object->pila_y;
+                    _selected_object->pila_y = del_elem;
+                } else {
+                    sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                }
             }
             else{
-                printf("Ez dago aldaketarik desegiteko\n");
+                sprintf(mezua, "Ez dago objekturik kargatuta");
             }
             break;
 
@@ -333,145 +341,164 @@ void keyboard(unsigned char key, int x, int y) {
 void special_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
     glPushMatrix();
-    if (aldaketa == -1) {
-        printf("Aukeratu transformazio bat\n");
+
+    switch (key) {
+        case GLUT_KEY_UP:
+            printf("y+\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(0, 1, 0);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(0, 1, 0);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(1, KG_ESKAL_HAND, 1);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(1, -1, 1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+            }
+            break;
+        case GLUT_KEY_DOWN:
+            printf("y-\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(0, -1, 0);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(0, -1, 0);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(1, -1, 1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+
+            }
+            break;
+
+        case GLUT_KEY_RIGHT:
+            printf("x+\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(1, 0, 0);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(1, 0, 0);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(-1, 1, 1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_LEFT:
+            printf("x-\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(-1, 0, 0);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(-1, 0, 0);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(-1, 1, 1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_UP: //av_pag
+            printf("z+\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(0, 0, 1);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(0, 0, 1);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(1, 1, KG_ESKAL_HAND);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(1, 1, -1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_DOWN: //re_pag
+            printf("z-\n");
+            switch (aldaketa) {
+                case MODE_TRANS:
+                    mat = translazioa(0, 0, -1);
+                    break;
+                case MODE_BIRAK:
+                    mat = biraketa(0, 0, -1);
+                    break;
+                case MODE_ESKAL:
+                    mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
+                    break;
+                case MODE_ISLAP:
+                    mat = islapena(1, 1, -1);
+                    break;
+                case MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+            }
+            break;
+
+        default:
+            printf("Espeziala: %d %c\n", key, key);
+            break;
     }
-    else{
-        switch (key) {
-            case GLUT_KEY_UP:
-                printf("y+\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(0, 1, 0);
+	if (_selected_object != 0){
+            if(mat != NULL){
+                switch (err_sist) {
+                    case MODE_GLOBAL:
+                        mat = mult(mat, _selected_object->pila_z->matrix);
                         break;
-                    case MODE_BIRAK:
-                        mat = biraketa(0, 1, 0);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(1, KG_ESKAL_HAND, 1);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(1, -1, 1);
+                    case MODE_LOKAL:
+                        mat = mult(_selected_object->pila_z->matrix, mat);
                         break;
                 }
-                break;
-            case GLUT_KEY_DOWN:
-                printf("y-\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(0, -1, 0);
-                        break;
-                    case MODE_BIRAK:
-                        mat = biraketa(0, -1, 0);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(1, -1, 1);
-                        break;
-                }
-                break;
 
-            case GLUT_KEY_RIGHT:
-                printf("x+\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(1, 0, 0);
-                        break;
-                    case MODE_BIRAK:
-                        mat = biraketa(1, 0, 0);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(-1, 1, 1);
-                        break;
-                }
-                break;
+                //Aldaketa berria gehitu pila_z pilari
+                pila *new_elem = (pila *) malloc(sizeof(pila));
+                new_elem->matrix = mat;
+                new_elem->next = _selected_object->pila_z;
+                _selected_object->pila_z = new_elem;
 
-            case GLUT_KEY_LEFT:
-                printf("x-\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(-1, 0, 0);
-                        break;
-                    case MODE_BIRAK:
-                        mat = biraketa(-1, 0, 0);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(-1, 1, 1);
-                        break;
-                }
-                break;
-
-            case GLUT_KEY_PAGE_UP: //av_pag
-                printf("z+\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(0, 0, 1);
-                        break;
-                    case MODE_BIRAK:
-                        mat = biraketa(0, 0, 1);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(1, 1, KG_ESKAL_HAND);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(1, 1, -1);
-                        break;
-                }
-                break;
-
-            case GLUT_KEY_PAGE_DOWN: //re_pag
-                printf("z-\n");
-                switch (aldaketa) {
-                    case MODE_TRANS:
-                        mat = translazioa(0, 0, -1);
-                        break;
-                    case MODE_BIRAK:
-                        mat = biraketa(0, 0, -1);
-                        break;
-                    case MODE_ESKAL:
-                        mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
-                        break;
-                    case MODE_ISLAP:
-                        mat = islapena(1, 1, -1);
-                        break;
-                }
-                break;
-
-            default:
-                printf("Espeziala: %d %c\n", key, key);
-                break;
-        }
-    }
-	if (_selected_object != 0 && mat != NULL) {
-        switch(err_sist) {
-            case MODE_GLOBAL:
-                mat = mult(mat, _selected_object->pila_z->matrix);
-                break;
-            case MODE_LOKAL:
-                mat = mult(_selected_object->pila_z->matrix, mat);
-                break;
-        }
-
-        //Aldaketa berria gehitu pila_z pilari
-        pila *new_elem = (pila*)malloc(sizeof(pila));
-        new_elem->matrix = mat;
-        new_elem->next = _selected_object->pila_z;
-        _selected_object->pila_z = new_elem;
-
-        //Aldaketabat egin dugunez, pila_y pila hustu
-        _selected_object->pila_y = NULL;
+                //Aldaketabat egin dugunez, pila_y pila hustu
+                _selected_object->pila_y = NULL;
+            }
 	}
-	
+    else if (key != GLUT_CTRL){
+        sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
+    }
 
-	glutPostRedisplay();
+    glutPostRedisplay();
 	glPopMatrix();
 }
 

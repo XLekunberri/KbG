@@ -173,6 +173,8 @@ void display(void) {
         }
         aux_obj = aux_obj->next;
     }
+
+    /*Make the viewport*/
     glLoadIdentity();
     glViewport(0,0,KG_WINDOW_WIDTH, 24);
     glMatrixMode(GL_PROJECTION);
@@ -188,7 +190,9 @@ void display(void) {
     glVertex2d(-1, 1);
     glEnd();
 
+    /*Print at the viewport*/
     pantailaratu(mezua);
+    mezua[0] = '\0';
 
     /*Do the actual drawing*/
     glFlush();

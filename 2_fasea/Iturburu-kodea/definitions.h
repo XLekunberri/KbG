@@ -44,8 +44,8 @@
 #define KG_COL_TEXT_G                       0.00f
 #define KG_COL_TEXT_B                       0.00f
 
-#define KG_POS_TEXT_X                       -1
-#define KG_POS_TEXT_Y                       -0.8
+#define KG_POS_TEXT_X                      -0.99f
+#define KG_POS_TEXT_Y                      -0.50f
 
 #define KG_COL_SELECTED_R                   0.00f
 #define KG_COL_SELECTED_G                   0.84f
@@ -74,6 +74,7 @@
 #define MODE_GLOBAL                         0
 #define MODE_LOKAL                          1
 
+#define MODE_DEFAULT                       -1
 #define MODE_TRANS							0
 #define MODE_BIRAK							1
 #define MODE_ESKAL							2
@@ -83,6 +84,8 @@
 #define KG_BIRAK_ANG                        PI/16
 #define KG_ESKAL_HAND                       1.25f
 #define KG_ESKAL_TXIK                       1/KG_ESKAL_HAND
+
+#define GLUT_CTRL                           114
 
 
 /** STRUCTURES **/
@@ -146,6 +149,7 @@ typedef struct{
  * pile of 3D objects       *
  ****************************/
 struct object3d{
+    char *izena;
     GLint num_vertices;                 /* number of vertices in the object*/
     vertex *vertex_table;               /* table of vertices */
     GLint num_faces;                    /* number of faces in the object */

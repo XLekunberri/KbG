@@ -30,9 +30,36 @@ static int sreadint2(char * lerroa, int * zenbakiak) {
 	while ((*s != ' ')&&(*s !='\0')) s++;  // jump vector normal information
         zenbakiak[kont++] = zbk;
     }
-printf("%d numbers in the line\n",kont);
+    printf("%d numbers in the line\n",kont);
     return (kont);
 }
+
+//SEGMENTATION FAULT EMATEN DU :(
+void setIzena(char **izena, char *helbidea){
+    int end_ind = strlen(helbidea);
+    int start_ind = end_ind;
+    while( (start_ind != 0) && (helbidea[start_ind]!='/') ){
+        start_ind--;
+    }
+    int luzera = (end_ind-start_ind)+1;
+
+    (*izena)=(char*)malloc(sizeof(char)*luzera);
+
+    if(helbidea[start_ind]=='/'){
+        start_ind++;
+    }
+
+    sprintf(izena, helbidea+start_ind);
+    /*
+    int i = 0, j = start_ind+1;
+    while(i<luzera){
+        (*izena)[i] = helbidea[j];
+        i++;j++;
+    }
+    */
+
+}
+
 /**
  * @brief Function to read wavefront files (*.obj)
  * @param file_name Path of the file to be read
@@ -86,7 +113,7 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
         }
     }
     fclose(obj_file);
-printf("1 pasada: num vert = %d (%d), num faces = %d(%d) \n",num_vertices,count_vertices,num_faces,count_faces);
+    printf("1 pasada: num vert = %d (%d), num faces = %d(%d) \n",num_vertices,count_vertices,num_faces,count_faces);
     if ((num_vertices != -1 && num_vertices != count_vertices) || (num_faces != -1 && num_faces != count_faces)) {
         printf("WARNING: full file format: (%s)\n", file_name);
         //return (2);
@@ -131,14 +158,14 @@ printf("1 pasada: num vert = %d (%d), num faces = %d(%d) \n",num_vertices,count_
                     line_1[i - 2] = line[i];
 		line_1[i-2] = '\0';
                 face_table[j].num_vertices = sreadint2(line_1, values);
-//printf("f %d vertices\n",face_table[j].num_vertices);
+                //printf("f %d vertices\n",face_table[j].num_vertices);
                 face_table[j].vertex_table = (int *) malloc(face_table[j].num_vertices * sizeof (int));
                 for (i = 0; i < face_table[j].num_vertices; i++) {
                     face_table[j].vertex_table[i] = values[i] - 1;
-//printf(" %d ",values[i] - 1);
+                    //printf(" %d ",values[i] - 1);
                     vertex_table[face_table[j].vertex_table[i]].num_faces++;
                     }
-//printf("\n");
+                //printf("\n");
                 j++;
                 }
               break;
@@ -147,7 +174,7 @@ printf("1 pasada: num vert = %d (%d), num faces = %d(%d) \n",num_vertices,count_
 
     fclose(obj_file);
 
-printf("2 pasada\n");
+    printf("2 pasada\n");
 
     /*
      * Information read is introduced in the structure */
@@ -187,7 +214,12 @@ printf("2 pasada\n");
             object_ptr->max.z = object_ptr->vertex_table[i].coord.z;
 
     }
-    //Hasiearatu
+
+    //Hasieratu
+
+    setIzena(&(object_ptr->izena), file_name);
+
+
     object_ptr->pila_z = (pila*)malloc(sizeof(pila));
     object_ptr->pila_z->matrix = identitatea();
     object_ptr->pila_z->next   = NULL;

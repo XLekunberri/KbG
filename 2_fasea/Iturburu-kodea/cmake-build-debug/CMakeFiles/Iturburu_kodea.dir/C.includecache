@@ -43,6 +43,8 @@ GL/glut.h
 -
 stdio.h
 -
+string.h
+-
 
 /home/iker/Escritorio/3_maila/KbG/2_erdia/2_fasea/Iturburu-kodea/io.h
 
