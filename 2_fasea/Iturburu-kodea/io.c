@@ -6,6 +6,7 @@
 #include <GL/glut.h>
 #include <stdio.h>
 
+extern char* mezua;
 
 extern object3d * _first_object;
 extern object3d * _selected_object;
@@ -106,6 +107,7 @@ void keyboard(unsigned char key, int x, int y) {
                 printf("%s\n",KG_MSSG_FILEREAD);
                 break;
             }
+            sprintf(mezua, "Objektua kargatuta");
             break;
         case 'q':
         case 'Q':
@@ -132,10 +134,7 @@ void keyboard(unsigned char key, int x, int y) {
                     printf("%s\n",KG_MSSG_FILEREAD);
                     break;
             }
-            char *mezua = (char*)malloc(sizeof(char)*6);
-            mezua[0] = 'a';
-            mezua[1] = '\0';
-            pantailaratu(mezua);
+            sprintf(mezua, "Al.obj kargatuta");
             break;
 
         case 9: /* <TAB> */
@@ -222,8 +221,17 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'i':
         case 'I':
-            printf("Erpin kopurua: %d\n", _selected_object->num_vertices);
-            printf("Aurpegi kopurua: %d\n", _selected_object->num_faces);
+            if (_selected_object != 0) {
+
+                printf("Erpin kopurua: %d\nAurpegi kopurua: %d\n",
+                       _selected_object->num_vertices, _selected_object->num_faces);
+
+                sprintf(mezua, "Objektu honek %d erpin eta %d aurpegi ditu",
+                        _selected_object->num_vertices, _selected_object->num_faces);
+            }
+            else{
+                printf("Ez dago objekturik kargatuta\n");
+            }
             break;
 
         case 27: /* <ESC> */

@@ -16,6 +16,10 @@ GLdouble _ortho_z_min,_ortho_z_max;         /*Variables for the control of the o
 object3d * _first_object= 0;                /*List of objects*/
 object3d * _selected_object = 0;            /*Object currently selected*/
 
+char* mezua;
+
+
+
 /** GENERAL INITIALIZATION **/
 void initialization (){
 
@@ -55,6 +59,9 @@ int main(int argc, char** argv) {
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
 	glutSpecialFunc(special_keyboard);
+
+    mezua = (char*)malloc(sizeof(char)*1024);
+    mezua[0] = '\0';
 
     /* this initialization has to be AFTER the creation of the window */
     initialization();

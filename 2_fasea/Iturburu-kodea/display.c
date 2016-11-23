@@ -5,6 +5,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
+
+
 /** EXTERNAL VARIABLES **/
 
 extern GLdouble _window_ratio;
@@ -14,6 +16,8 @@ extern GLdouble _ortho_z_min,_ortho_z_max;
 
 extern object3d *_first_object;
 extern object3d *_selected_object;
+
+extern char* mezua;
 
 /**
  * @brief Function to draw the axes
@@ -184,6 +188,7 @@ void display(void) {
     glVertex2d(-1, 1);
     glEnd();
 
+    pantailaratu(mezua);
 
     /*Do the actual drawing*/
     glFlush();
@@ -192,7 +197,8 @@ void display(void) {
 void pantailaratu(char* string){
     char *c;
     glColor3f(KG_COL_TEXT_R,KG_COL_TEXT_G,KG_COL_TEXT_B);
-    glRasterPos2d(KG_POS_TEXT_X, KG_POS_TEXT_Y);
+    glRasterPos2f(KG_POS_TEXT_X, KG_POS_TEXT_Y);
     for (c=string; *c != '\0'; c++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, *c); }
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    }
 }

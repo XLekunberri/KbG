@@ -44,8 +44,8 @@
 #define KG_COL_TEXT_G                       0.00f
 #define KG_COL_TEXT_B                       0.00f
 
-#define KG_POS_TEXT_X                       0.0f
-#define KG_POS_TEXT_Y                       0.0f
+#define KG_POS_TEXT_X                       -1
+#define KG_POS_TEXT_Y                       -0.8
 
 #define KG_COL_SELECTED_R                   0.00f
 #define KG_COL_SELECTED_G                   0.84f
