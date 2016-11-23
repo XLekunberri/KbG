@@ -38,6 +38,7 @@ static int sreadint2(char * lerroa, int * zenbakiak) {
 void setIzena(char **izena, char *helbidea){
     int end_ind = strlen(helbidea);
     int start_ind = end_ind;
+
     while( (start_ind != 0) && (helbidea[start_ind]!='/') ){
         start_ind--;
     }
@@ -49,7 +50,7 @@ void setIzena(char **izena, char *helbidea){
         start_ind++;
     }
 
-    sprintf(izena, helbidea+start_ind);
+    sprintf(*izena, helbidea+start_ind);
     /*
     int i = 0, j = start_ind+1;
     while(i<luzera){

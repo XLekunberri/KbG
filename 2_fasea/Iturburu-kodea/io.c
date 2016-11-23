@@ -132,7 +132,7 @@ void keyboard(unsigned char key, int x, int y) {
                     printf("%s\n",KG_MSSG_FILEREAD);
                     break;
             }
-            sprintf(mezua, "Al.obj kargatuta");
+            sprintf(mezua, "al.obj kargatuta");
             break;
 
         case 9: /* <TAB> */
@@ -144,6 +144,7 @@ void keyboard(unsigned char key, int x, int y) {
                 if (_selected_object == 0){
                     _selected_object = _first_object;
                 }
+                sprintf(mezua, "%s objektua aukeratuta", _selected_object->izena);
             }
             else{
                 sprintf(mezua, "Ezin da aukeratutako objektua aldatu, oraindik ez delako objekturik kargatu");
@@ -157,6 +158,7 @@ void keyboard(unsigned char key, int x, int y) {
                 /*Erasing an object depends on whether it is the first one or not*/
                 if (_selected_object == _first_object)
                 {
+                    sprintf(mezua, "%s objektua ezabatuta", _first_object->izena);
                     /*To remove the first object we just set the first as the current's next*/
                     _first_object = _first_object->next;
                     /*Once updated the pointer to the first object it is save to free the memory*/
@@ -170,12 +172,12 @@ void keyboard(unsigned char key, int x, int y) {
                         auxiliar_object = auxiliar_object->next;
                     /*Now we bypass the element to erase*/
                     auxiliar_object->next = _selected_object->next;
+                    sprintf(mezua, "%s objektua ezabatuta", _selected_object->izena);
                     /*free the memory*/
                     free(_selected_object);
                     /*and update the selection*/
                     _selected_object = auxiliar_object;
                 }
-                sprintf(mezua, "Objektua ezabatuta");
             }
             else{
                 sprintf(mezua, "Ez dago objekturik kargatuta");
@@ -225,8 +227,8 @@ void keyboard(unsigned char key, int x, int y) {
         case 'I':
             if (_selected_object != 0) {
 
-                sprintf(mezua, "Objektu honek %d erpin eta %d aurpegi ditu",
-                        _selected_object->num_vertices, _selected_object->num_faces);
+                sprintf(mezua, "%s objektuak %d erpin eta %d aurpegi ditu",
+                        _selected_object->izena, _selected_object->num_vertices, _selected_object->num_faces);
             }
             else{
                 sprintf(mezua, "Ez dago objekturik kargatuta");
@@ -287,7 +289,6 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'o':
         case 'O':;
-            sprintf(mezua, "%s", _selected_object->izena);
             break;
 
 
