@@ -1,6 +1,7 @@
 #include "definitions.h"
 #include "load_obj.h"
 #include "matrizeak.h"
+#include "display.h"
 #include <malloc.h>
 #include <GL/glut.h>
 #include <stdio.h>
@@ -131,6 +132,10 @@ void keyboard(unsigned char key, int x, int y) {
                     printf("%s\n",KG_MSSG_FILEREAD);
                     break;
             }
+            char *mezua = (char*)malloc(sizeof(char)*6);
+            mezua[0] = 'a';
+            mezua[1] = '\0';
+            pantailaratu(mezua);
             break;
 
         case 9: /* <TAB> */

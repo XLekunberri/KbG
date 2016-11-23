@@ -101,6 +101,8 @@ void draw_grid(){
  * @brief Callback display function
  */
 void display(void) {
+    glViewport(0,24,KG_WINDOW_WIDTH, KG_WINDOW_HEIGHT);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     GLint v_index, v, f;
     object3d *aux_obj = _first_object;
 
@@ -167,6 +169,22 @@ void display(void) {
         }
         aux_obj = aux_obj->next;
     }
+    glLoadIdentity();
+    glViewport(0,0,KG_WINDOW_WIDTH, 24);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    glColor3d(1,1,1);
+    glBegin(GL_QUADS);
+    glVertex2d(-1,-1);
+    glVertex2d( 1,-1);
+    glVertex2d( 1, 1);
+    glVertex2d(-1, 1);
+    glEnd();
+
+
     /*Do the actual drawing*/
     glFlush();
 }
@@ -174,9 +192,7 @@ void display(void) {
 void pantailaratu(char* string){
     char *c;
     glColor3f(KG_COL_TEXT_R,KG_COL_TEXT_G,KG_COL_TEXT_B);
-    //Testuaren posizioa adierazi behar da
-    //(ondo egongo litzateke KG_COL_POS_TEXT_X, _Y, _Z eta horrelakoak egitea
-    // ->>>> glRasterPos3f(x,y,z); !!!!!!!!!!!!!!!!!
+    glRasterPos2d(KG_POS_TEXT_X, KG_POS_TEXT_Y);
     for (c=string; *c != '\0'; c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, *c); }
 }
