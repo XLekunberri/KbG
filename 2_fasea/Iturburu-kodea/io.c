@@ -199,7 +199,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
             }
-            else{
+            else if(aldaketa == MODE_ESKAL){
                 GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
                 mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
                 aldaketakAplikatu(mat, key);
@@ -222,7 +222,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
             }
-            else{
+            else if(aldaketa == MODE_ESKAL){
                 GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
                 mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
                 aldaketakAplikatu(mat, key);
