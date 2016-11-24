@@ -16,9 +16,9 @@ extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
 
-int err_sist = MODE_GLOBAL;
+int err_sist = KG_MODE_GLOBAL;
 
-int aldaketa = MODE_DEFAULT;
+int aldaketa = KG_MODE_DEFAULT;
 
 
 /**
@@ -110,7 +110,7 @@ void keyboard(unsigned char key, int x, int y) {
             break;
         case 'q':
         case 'Q':
-            fname = QUICK_LOAD;
+            fname = KG_QUICK_LOAD;
             auxiliar_object = (object3d *) malloc(sizeof (object3d));
             read = read_wavefront(fname, auxiliar_object);
             switch (read) {
@@ -199,7 +199,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
             }
-            else if(aldaketa == MODE_ESKAL){
+            else if(aldaketa == KG_MODE_ESKAL){
                 GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
                 mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
                 aldaketakAplikatu(mat, key);
@@ -222,7 +222,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
             }
-            else if(aldaketa == MODE_ESKAL){
+            else if(aldaketa == KG_MODE_ESKAL){
                 GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
                 mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
                 aldaketakAplikatu(mat, key);
@@ -252,49 +252,49 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'm':
         case 'M':
-            if(aldaketa != MODE_TRANS){
+            if(aldaketa != KG_MODE_TRANS){
                 sprintf(mezua, "Translazioa aktibatuta");
-                aldaketa = MODE_TRANS;
+                aldaketa = KG_MODE_TRANS;
             }
             break;
 
         case 'b':
         case 'B':
-            if(aldaketa != MODE_BIRAK){
+            if(aldaketa != KG_MODE_BIRAK){
                 sprintf(mezua, "Biraketa aktibatuta");
-                aldaketa = MODE_BIRAK;
+                aldaketa = KG_MODE_BIRAK;
             }
             break;
 
         case 't':
         case 'T':
-            if(aldaketa != MODE_ESKAL){
+            if(aldaketa != KG_MODE_ESKAL){
                 sprintf(mezua, "Eskalaketa aktibatuta");
-                aldaketa = MODE_ESKAL;
+                aldaketa = KG_MODE_ESKAL;
             }
             break;
 
         case 'r':
         case 'R':
-            if(aldaketa != MODE_ISLAP){
+            if(aldaketa != KG_MODE_ISLAP){
                 sprintf(mezua, "Islapena aktibatuta");
-                aldaketa = MODE_ISLAP;
+                aldaketa = KG_MODE_ISLAP;
             }
             break;
 
         case 'g':
         case 'G':
-            if(err_sist != MODE_GLOBAL){
+            if(err_sist != KG_MODE_GLOBAL){
                 sprintf(mezua, "Erreferentzi-sistema globala aktibatuta");
-                err_sist = MODE_GLOBAL;
+                err_sist = KG_MODE_GLOBAL;
             }
             break;
 
         case 'l':
         case 'L':
-            if(err_sist != MODE_LOKAL){
+            if(err_sist != KG_MODE_LOKAL){
                 sprintf(mezua, "Erreferentzi sistema lokala aktibatuta");
-                err_sist = MODE_LOKAL;
+                err_sist = KG_MODE_LOKAL;
             }
             break;
 
@@ -357,38 +357,38 @@ void special_keyboard(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_UP:
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(0, 1, 0);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(1, 0, 0);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(1, -1, 1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
             }
             break;
         case GLUT_KEY_DOWN:
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(0, -1, 0);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(-1, 0, 0);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(1, KG_ESKAL_HAND, 1);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(1, -1, 1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
 
@@ -397,19 +397,19 @@ void special_keyboard(int key, int x, int y) {
 
         case GLUT_KEY_RIGHT:
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(1, 0, 0);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(0, 1, 0);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(-1, 1, 1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
             }
@@ -417,19 +417,19 @@ void special_keyboard(int key, int x, int y) {
 
         case GLUT_KEY_LEFT:
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(-1, 0, 0);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(0, -1, 0);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(-1, 1, 1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
             }
@@ -437,19 +437,19 @@ void special_keyboard(int key, int x, int y) {
 
         case GLUT_KEY_PAGE_UP: //av_pag
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(0, 0, 1);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(0, 0, 1);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(1, 1, -1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
             }
@@ -457,19 +457,19 @@ void special_keyboard(int key, int x, int y) {
 
         case GLUT_KEY_PAGE_DOWN: //re_pag
             switch (aldaketa) {
-                case MODE_TRANS:
+                case KG_MODE_TRANS:
                     mat = translazioa(0, 0, -1);
                     break;
-                case MODE_BIRAK:
+                case KG_MODE_BIRAK:
                     mat = biraketa(0, 0, -1);
                     break;
-                case MODE_ESKAL:
+                case KG_MODE_ESKAL:
                     mat = eskalaketa(1, 1, KG_ESKAL_HAND);
                     break;
-                case MODE_ISLAP:
+                case KG_MODE_ISLAP:
                     mat = islapena(1, 1, -1);
                     break;
-                case MODE_DEFAULT:
+                case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
             }
@@ -488,10 +488,10 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     if (_selected_object != 0){
         if(mat != NULL){
             switch (err_sist) {
-                case MODE_GLOBAL:
+                case KG_MODE_GLOBAL:
                     mat = mult(mat, _selected_object->pila_z->matrix);
                     break;
-                case MODE_LOKAL:
+                case KG_MODE_LOKAL:
                     mat = mult(_selected_object->pila_z->matrix, mat);
                     break;
             }

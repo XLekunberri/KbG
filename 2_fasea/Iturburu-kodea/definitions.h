@@ -19,7 +19,7 @@
 #define KG_MSSG_EMPTYFILE                   "Fitxategia utsik dago"
 #define KG_MSSG_FILEREAD                    "Fitxategiaren irakurketa buruta"
 
-#define QUICK_LOAD                          "../Objektuak/al.obj"
+#define KG_QUICK_LOAD                          "../Objektuak/al.obj"
 
 #define KG_STEP_MOVE                        5.0f
 #define KG_STEP_ROTATE                      10.0f
@@ -73,14 +73,14 @@
 
 #define PI                                  3.141592653589793f
 
-#define MODE_GLOBAL                         0
-#define MODE_LOKAL                          1
+#define KG_MODE_GLOBAL                         0
+#define KG_MODE_LOKAL                          1
 
-#define MODE_DEFAULT                       -1
-#define MODE_TRANS							0
-#define MODE_BIRAK							1
-#define MODE_ESKAL							2
-#define MODE_ISLAP                          3
+#define KG_MODE_DEFAULT                       -1
+#define KG_MODE_TRANS							0
+#define KG_MODE_BIRAK							1
+#define KG_MODE_ESKAL							2
+#define KG_MODE_ISLAP                          3
 
 #define KG_TRANS_ABIAD                      0.25
 #define KG_BIRAK_ANG                        PI/16
