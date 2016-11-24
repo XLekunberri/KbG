@@ -77,25 +77,6 @@ void draw_grid(){
         glVertex3f(i, max_value, 0.0);
         glEnd();
     }
-
-    //int xsize=0, ysize=0;
-    /*for(int j=0;j<10;j++)
-    {
-
-        xsize=0;
-        for(int i=0;i<50;i++)
-        {
-            glBegin(GL_POLYGON);
-            glVertex3f(-50.0+xsize, -50.0+ysize, 0.0);
-            glVertex3f(-40.0+xsize, -50.0+ysize, 0.0);
-            glVertex3f(-40.0+xsize, -40.0+ysize, 0.0);
-            glVertex3f(-50.0+xsize, -40.0+ysize, 0.0);
-            glEnd();
-            xsize+=10.0;
-        }
-        ysize+=10.0;
-    }
-    */
     glFlush();
 
 }
