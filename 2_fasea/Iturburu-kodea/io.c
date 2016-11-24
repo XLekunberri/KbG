@@ -34,8 +34,9 @@ void print_help(){
     printf("<TAB>\t\t Kargaturiko objektuen artean bat hautatu\n");
     printf("<DEL>\t\t Hautatutako objektua ezabatu\n");
     printf("<CTRL + ->\t Bistaratze-eremua handitu\n");
-    printf("<CTRL + +>\t Bistaratze-eremua txikitu\n\n");
-    printf("<I,i>\t\t Objektuaren informazioa pantailaratu");
+    printf("<CTRL + +>\t Bistaratze-eremua txikitu\n");
+    printf("<I,i>\t\t Objektuaren informazioa pantailaratu\n");
+    printf("<Q,q>)\t\t Defektuz dagoen objektua kargau\n\n");
 	
 	printf("ALDAKETA FUNTZIOAK \n");
 	printf("<M,m>\t\t Translazioa aktibatu \n");
@@ -109,7 +110,7 @@ void keyboard(unsigned char key, int x, int y) {
             break;
         case 'q':
         case 'Q':
-            fname = "../Objektuak/al.obj";
+            fname = QUICK_LOAD;
             auxiliar_object = (object3d *) malloc(sizeof (object3d));
             read = read_wavefront(fname, auxiliar_object);
             switch (read) {
@@ -345,13 +346,12 @@ void special_keyboard(int key, int x, int y) {
 
     switch (key) {
         case GLUT_KEY_UP:
-            printf("y+\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(0, 1, 0);
                     break;
                 case MODE_BIRAK:
-                    mat = biraketa(0, 1, 0);
+                    mat = biraketa(1, 0, 0);
                     break;
                 case MODE_ESKAL:
                     mat = eskalaketa(1, KG_ESKAL_HAND, 1);
@@ -365,13 +365,12 @@ void special_keyboard(int key, int x, int y) {
             }
             break;
         case GLUT_KEY_DOWN:
-            printf("y-\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(0, -1, 0);
                     break;
                 case MODE_BIRAK:
-                    mat = biraketa(0, -1, 0);
+                    mat = biraketa(-1, 0, 0);
                     break;
                 case MODE_ESKAL:
                     mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
@@ -387,13 +386,12 @@ void special_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_RIGHT:
-            printf("x+\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(1, 0, 0);
                     break;
                 case MODE_BIRAK:
-                    mat = biraketa(1, 0, 0);
+                    mat = biraketa(0, 1, 0);
                     break;
                 case MODE_ESKAL:
                     mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
@@ -408,13 +406,12 @@ void special_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_LEFT:
-            printf("x-\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(-1, 0, 0);
                     break;
                 case MODE_BIRAK:
-                    mat = biraketa(-1, 0, 0);
+                    mat = biraketa(0, -1, 0);
                     break;
                 case MODE_ESKAL:
                     mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
@@ -429,7 +426,6 @@ void special_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_PAGE_UP: //av_pag
-            printf("z+\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(0, 0, 1);
@@ -438,7 +434,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(0, 0, 1);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(1, 1, KG_ESKAL_HAND);
+                    mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(1, 1, -1);
@@ -450,7 +446,6 @@ void special_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_PAGE_DOWN: //re_pag
-            printf("z-\n");
             switch (aldaketa) {
                 case MODE_TRANS:
                     mat = translazioa(0, 0, -1);
@@ -459,7 +454,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(0, 0, -1);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(1, 1, KG_ESKAL_TXIK);
+                    mat = eskalaketa(1, 1, KG_ESKAL_HAND);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(1, 1, -1);

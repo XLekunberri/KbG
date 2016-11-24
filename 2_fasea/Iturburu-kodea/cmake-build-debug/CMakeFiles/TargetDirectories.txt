@@ -1,0 +1,3 @@
+/home/xabiier/Clase/KBG/2. Zatia/2_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/xabiier/Clase/KBG/2. Zatia/2_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/xabiier/Clase/KBG/2. Zatia/2_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir

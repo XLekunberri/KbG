@@ -19,6 +19,8 @@
 #define KG_MSSG_EMPTYFILE                   "Fitxategia utsik dago"
 #define KG_MSSG_FILEREAD                    "Fitxategiaren irakurketa buruta"
 
+#define QUICK_LOAD                          "../Objektuak/al.obj"
+
 #define KG_STEP_MOVE                        5.0f
 #define KG_STEP_ROTATE                      10.0f
 #define KG_STEP_ZOOM                        0.75
