@@ -199,6 +199,11 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
             }
+            else{
+                GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
+                mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
+                aldaketakAplikatu(mat, key);
+            }
             break;
 
         case '+':
@@ -216,6 +221,11 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_x_min = midx - wd/2;
                 _ortho_y_max = midy + he/2;
                 _ortho_y_min = midy - he/2;
+            }
+            else{
+                GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
+                mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
+                aldaketakAplikatu(mat, key);
             }
             break;
 
@@ -464,37 +474,40 @@ void special_keyboard(int key, int x, int y) {
                     break;
             }
             break;
-
         default:
             printf("Espeziala: %d %c\n", key, key);
             break;
     }
-	if (_selected_object != 0){
-            if(mat != NULL){
-                switch (err_sist) {
-                    case MODE_GLOBAL:
-                        mat = mult(mat, _selected_object->pila_z->matrix);
-                        break;
-                    case MODE_LOKAL:
-                        mat = mult(_selected_object->pila_z->matrix, mat);
-                        break;
-                }
-
-                //Aldaketa berria gehitu pila_z pilari
-                pila *new_elem = (pila *) malloc(sizeof(pila));
-                new_elem->matrix = mat;
-                new_elem->next = _selected_object->pila_z;
-                _selected_object->pila_z = new_elem;
-
-                //Aldaketabat egin dugunez, pila_y pila hustu
-                _selected_object->pila_y = NULL;
-            }
-	}
-    else if (key != GLUT_CTRL){
-        sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
-    }
+    aldaketakAplikatu(mat, key);
 
     glutPostRedisplay();
 	glPopMatrix();
+}
+
+void aldaketakAplikatu(GLdouble *mat, int key){
+    if (_selected_object != 0){
+        if(mat != NULL){
+            switch (err_sist) {
+                case MODE_GLOBAL:
+                    mat = mult(mat, _selected_object->pila_z->matrix);
+                    break;
+                case MODE_LOKAL:
+                    mat = mult(_selected_object->pila_z->matrix, mat);
+                    break;
+            }
+
+            //Aldaketa berria gehitu pila_z pilari
+            pila *new_elem = (pila *) malloc(sizeof(pila));
+            new_elem->matrix = mat;
+            new_elem->next = _selected_object->pila_z;
+            _selected_object->pila_z = new_elem;
+
+            //Aldaketabat egin dugunez, pila_y pila hustu
+            _selected_object->pila_y = NULL;
+        }
+    }
+    else if (key != GLUT_CTRL){
+        sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
+    }
 }
 
