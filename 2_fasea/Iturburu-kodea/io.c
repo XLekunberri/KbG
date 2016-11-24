@@ -354,7 +354,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(1, 0, 0);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(1, KG_ESKAL_HAND, 1);
+                    mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(1, -1, 1);
@@ -373,7 +373,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(-1, 0, 0);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(1, KG_ESKAL_TXIK, 1);
+                    mat = eskalaketa(1, KG_ESKAL_HAND, 1);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(1, -1, 1);
@@ -394,7 +394,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(0, 1, 0);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
+                    mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(-1, 1, 1);
@@ -414,7 +414,7 @@ void special_keyboard(int key, int x, int y) {
                     mat = biraketa(0, -1, 0);
                     break;
                 case MODE_ESKAL:
-                    mat = eskalaketa(KG_ESKAL_TXIK, 1, 1);
+                    mat = eskalaketa(KG_ESKAL_HAND, 1, 1);
                     break;
                 case MODE_ISLAP:
                     mat = islapena(-1, 1, 1);
