@@ -19,6 +19,8 @@
 #define KG_MSSG_EMPTYFILE                   "Fitxategia utsik dago"
 #define KG_MSSG_FILEREAD                    "Fitxategiaren irakurketa buruta"
 
+#define KG_QUICK_LOAD                          "../Objektuak/al.obj"
+
 #define KG_STEP_MOVE                        5.0f
 #define KG_STEP_ROTATE                      10.0f
 #define KG_STEP_ZOOM                        0.75
@@ -71,14 +73,14 @@
 
 #define PI                                  3.141592653589793f
 
-#define MODE_GLOBAL                         0
-#define MODE_LOKAL                          1
+#define KG_MODE_GLOBAL                      0
+#define KG_MODE_LOKAL                       1
 
-#define MODE_DEFAULT                       -1
-#define MODE_TRANS							0
-#define MODE_BIRAK							1
-#define MODE_ESKAL							2
-#define MODE_ISLAP                          3
+#define KG_MODE_DEFAULT                    -1
+#define KG_MODE_TRANS						0
+#define KG_MODE_BIRAK						1
+#define KG_MODE_ESKAL						2
+#define KG_MODE_ISLAP                       3
 
 #define KG_TRANS_ABIAD                      0.25
 #define KG_BIRAK_ANG                        PI/16
@@ -87,6 +89,17 @@
 
 #define GLUT_CTRL                           114
 
+#define KG_KAM_ORTO                         0
+#define KG_KAM_OBJ                          1
+#define KG_KAM_IBIL                         2
+
+#define KG_KAM_FOV                          90
+#define KG_KAM_AP                           16/9
+#define KG_KAM_N                            0
+#define KG_KAM_F                            50
+
+#define KG_OBJ                              0
+#define KG_KAM                              1
 
 /** STRUCTURES **/
 
@@ -156,12 +169,20 @@ struct object3d{
     face *face_table;                   /* table of faces */
     point3 min;                         /* coordinates' lower bounds */
     point3 max;                         /* coordinates' bigger bounds */
-	pila *pila_z;					/* Egindako aldaketak */
-    pila *pila_y;			    /* Desegindako aldaketak */
+	pila *pila_z;					    /* egindako aldaketak */
+    pila *pila_y;			            /* desegindako aldaketak */
     struct object3d *next;              /* next element in the pile of objects */
 };
 
 typedef struct object3d object3d;
+
+struct camera3d{
+    GLdouble *eye;                          /* position of the camera */
+    GLdouble *center;                       /* where is the camera looking at */
+    GLdouble *up;                           /* normal vector of the camera */
+};
+
+typedef struct camera3d camera3d;
 
 
 

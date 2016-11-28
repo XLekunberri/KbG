@@ -1,6 +1,4 @@
 /home/iker/JetBrains/clion-2016.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea
--- Found GLUT: /usr/lib/x86_64-linux-gnu/libglut.so  
--- Found OpenGL: /usr/lib/x86_64-linux-gnu/libGL.so  
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug
