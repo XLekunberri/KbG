@@ -1,0 +1,3 @@
+/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir
