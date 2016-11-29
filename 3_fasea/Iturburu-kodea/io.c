@@ -381,7 +381,6 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
-
 void special_keyboard(int key, int x, int y) {
 
     glPushMatrix();
@@ -529,7 +528,143 @@ void objektu_keyboard(int key, int x, int y) {
 }
 
 void kamera_keyboard(int key, int x, int y) {
+    GLdouble *mat = NULL;
+    switch (key) {
+        case GLUT_KEY_UP:
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = translazioa(0, 0, -1);
+                    break;
+            }
+            break;
+        case GLUT_KEY_DOWN:
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = translazioa(0, 0, 1);
+                    break;
+            }
+            break;
 
+        case GLUT_KEY_RIGHT:
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = biraketa(0, -1, 0);
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_LEFT:
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = biraketa(0, 1, 0);
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_UP: //av_pag
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = biraketa(-1, 0, 0);
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_DOWN: //re_pag
+            switch(selected){
+                case KG_KAM_OBJ:
+                    switch(aldaketa){
+                        case KG_MODE_TRANS:
+                            break;
+                        case KG_MODE_BIRAK:
+                            break;
+                        case KG_MODE_DEFAULT:
+                            sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                            break;
+                        default:
+                            sprintf(mezua, "Ezin da aldaketa hori kamerara aplikatu");
+                            break;
+                    }
+                    break;
+                case KG_KAM_IBIL:
+                    mat = biraketa(1, 0, 0);
+                    break;
+            }
+            break;
+        default:
+            printf("Espeziala: %d %c\n", key, key);
+            break;
+    }
+    kameraAldatu(mat, key);
 }
 
 void aldaketakAplikatu(GLdouble *mat, int key){
@@ -557,4 +692,8 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     else if (key != GLUT_CTRL){
         sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
     }
+}
+
+void kameraAldatu(GLdouble *mat, int key){
+
 }

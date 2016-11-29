@@ -12,20 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b12301ae-603b-420b-858c-0f8c05e1d345" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/display.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/display.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/io.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/io.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/load_obj.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/load_obj.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/main.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Iturburu_kodea" afterPath="$PROJECT_DIR$/cmake-build-debug/Iturburu_kodea" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/definitions.h" afterPath="$PROJECT_DIR$/definitions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/display.c" afterPath="$PROJECT_DIR$/display.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/display.h" afterPath="$PROJECT_DIR$/display.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/io.c" afterPath="$PROJECT_DIR$/io.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/io.h" afterPath="$PROJECT_DIR$/io.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matrizeak.c" afterPath="$PROJECT_DIR$/matrizeak.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matrizeak.h" afterPath="$PROJECT_DIR$/matrizeak.h" />
     </list>
     <ignored path="Iturburu-kodea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +42,27 @@
       <file leaf-file-name="io.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/io.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="309" column="0" lean-forward="true" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="658" column="44" lean-forward="true" selection-start-line="658" selection-start-column="44" selection-end-line="658" selection-end-column="44" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#501#585#0" expanded="false" />
+                <element signature="e#501#2062#0" expanded="false" />
+                <element signature="e#2064#2307#0" expanded="false" />
+                <element signature="e#2064#15035#0" expanded="false" />
+                <element signature="e#15037#15334#0" expanded="false" />
+                <element signature="e#24818#25722#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="io.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/io.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,8 +90,8 @@
       <file leaf-file-name="display.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="106" column="18" lean-forward="true" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
+            <state relative-caret-position="216">
+              <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -102,8 +112,8 @@
       <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="60" column="36" lean-forward="false" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -114,10 +124,17 @@
       <file leaf-file-name="matrizeak.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matrizeak.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1314">
-              <caret line="73" column="14" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+            <state relative-caret-position="234">
+              <caret line="61" column="39" lean-forward="false" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#123#2563#0" expanded="false" />
+                <element signature="e#2565#3075#0" expanded="false" />
+                <element signature="e#3520#4167#0" expanded="false" />
+                <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+                <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+                <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+                <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -126,8 +143,8 @@
       <file leaf-file-name="matrizeak.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matrizeak.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            <state relative-caret-position="162">
+              <caret line="9" column="55" lean-forward="false" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
               <folding>
                 <element signature="e#71#95#0" expanded="true" />
               </folding>
@@ -138,7 +155,7 @@
       <file leaf-file-name="definitions.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/definitions.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
+            <state relative-caret-position="2146">
               <caret line="181" column="77" lean-forward="false" selection-start-line="181" selection-start-column="77" selection-end-line="181" selection-end-column="77" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
@@ -154,7 +171,19 @@
       <find>printf(</find>
       <find>Ez dago aldaketarik aukeratuta, aukeratu bat</find>
       <find>'c'</find>
+      <find>kamera</find>
+      <find>camera</find>
+      <find>kam_obj</find>
+      <find>b1</find>
+      <find>b2</find>
     </findStrings>
+    <replaceStrings>
+      <replace>camera</replace>
+      <replace>kam_obj</replace>
+      <replace>kam_ibil</replace>
+      <replace>m</replace>
+      <replace>v</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -162,16 +191,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/matrizeak.h" />
-        <option value="$PROJECT_DIR$/matrizeak.c" />
         <option value="$PROJECT_DIR$/display.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/load_obj.h" />
         <option value="$PROJECT_DIR$/load_obj.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/display.c" />
-        <option value="$PROJECT_DIR$/io.c" />
         <option value="$PROJECT_DIR$/definitions.h" />
+        <option value="$PROJECT_DIR$/io.h" />
+        <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/matrizeak.c" />
+        <option value="$PROJECT_DIR$/matrizeak.h" />
+        <option value="$PROJECT_DIR$/io.c" />
       </list>
     </option>
   </component>
@@ -426,11 +456,12 @@
       <workItem from="1480320499171" duration="50000" />
       <workItem from="1480320651527" duration="3010000" />
       <workItem from="1480323701428" duration="1875000" />
+      <workItem from="1480413058406" duration="4514000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45440000" />
+    <option name="totallyTimeSpent" value="49954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="24" width="1303" height="744" extended-state="6" />
@@ -492,6 +523,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
+      <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -512,6 +544,13 @@
           <caret line="30" column="1" lean-forward="false" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -542,6 +581,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -560,6 +605,12 @@
           <caret line="247" column="5" lean-forward="false" selection-start-line="247" selection-start-column="5" selection-end-line="247" selection-end-column="5" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -598,6 +649,13 @@
           <caret line="30" column="1" lean-forward="false" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -628,6 +686,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -646,6 +710,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -684,6 +754,13 @@
           <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -714,6 +791,12 @@
           <caret line="244" column="26" lean-forward="false" selection-start-line="244" selection-start-column="26" selection-end-line="244" selection-end-column="26" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -762,6 +845,13 @@
           <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -782,6 +872,12 @@
           <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -830,6 +926,13 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -845,35 +948,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp" />
-    <entry file="file://$PROJECT_DIR$/io.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/matrizeak.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="73" column="14" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/stdio.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1768">
           <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/load_obj.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,16 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrizeak.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding>
-            <element signature="e#71#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/display.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -903,20 +971,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/GL/gl.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="216" column="8" lean-forward="false" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/GL/freeglut_std.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="134" column="49" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/load_obj.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -929,17 +1002,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/GL/freeglut_std.h">
+    <entry file="file://$PROJECT_DIR$/io.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="134" column="49" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="49" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="60" column="36" lean-forward="false" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matrizeak.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="61" column="39" lean-forward="false" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#2563#0" expanded="false" />
+            <element signature="e#2565#3075#0" expanded="false" />
+            <element signature="e#3520#4167#0" expanded="false" />
+            <marker date="1480417605945" expanded="false" signature="3119:3518" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4216:4571" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4612:4959" ph="{...}" />
+            <marker date="1480417605945" expanded="false" signature="4984:5331" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matrizeak.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" lean-forward="false" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+          <folding>
+            <element signature="e#71#95#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/definitions.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="2146">
           <caret line="181" column="77" lean-forward="false" selection-start-line="181" selection-start-column="77" selection-end-line="181" selection-end-column="77" />
           <folding>
             <element signature="e#45#63#0" expanded="true" />
@@ -947,22 +1067,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="106" column="18" lean-forward="true" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/io.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="309" column="0" lean-forward="true" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
+        <state relative-caret-position="324">
+          <caret line="658" column="44" lean-forward="true" selection-start-line="658" selection-start-column="44" selection-end-line="658" selection-end-column="44" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#501#585#0" expanded="false" />
+            <element signature="e#501#2062#0" expanded="false" />
+            <element signature="e#2064#2307#0" expanded="false" />
+            <element signature="e#2064#15035#0" expanded="false" />
+            <element signature="e#15037#15334#0" expanded="false" />
+            <element signature="e#24818#25722#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -7,6 +7,8 @@
 #include <GL/glu.h>
 
 GLdouble *mult(GLdouble *m1, GLdouble *m2);
+GLdouble *multBek(GLdouble *b1, GLdouble *b2, int ord);
+
 GLdouble *translazioa(int x, int y, int z);
 GLdouble *biraketa(int x, int y, int z);
 GLdouble *eskalaketa(float x, float y, float z);
