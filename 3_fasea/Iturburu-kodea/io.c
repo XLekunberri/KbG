@@ -16,7 +16,10 @@ extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
 
-extern int kamera;
+extern int kamera; //Zein kamera gauden erabitzen
+
+extern camera3d* kam_obj;
+extern camera3d* kam_ibil;
 
 int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
@@ -695,5 +698,18 @@ void aldaketakAplikatu(GLdouble *mat, int key){
 }
 
 void kameraAldatu(GLdouble *mat, int key){
-
+    switch(selected){
+        case KG_KAM_OBJ:
+            switch(err_sist){
+                case KG_MODE_GLOBAL:
+                    mat = mult(mat, kam_obj->pila_z->matrix);
+                    break;
+                case KG_MODE_LOKAL:
+                    mat = mult(kam_obj->pila_z->matrix, mat);
+                    break;
+            }
+            break;
+        case KG_KAM_IBIL:
+            break;
+    }
 }

@@ -5,6 +5,7 @@
 #include "display.h"
 #include "io.h"
 #include "definitions.h"
+#include "matrizeak.h"
 
 /** GLOBAL VARIABLES **/
 
@@ -18,8 +19,8 @@ object3d * _selected_object = 0;            /*Object currently selected*/
 
 char* mezua;
 
-camera3d kam_obj;
-camera3d kam_ibil;
+camera3d* kam_obj;
+camera3d* kam_ibil;
 
 
 
@@ -43,6 +44,35 @@ void initialization (){
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
+void kamerakHasieratu(){
+    /* Objektu kamera hasieratu */
+    kam_obj->eye = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    for(int i=0; i < 3; i++) kam_obj->eye[i] = 0;
+    kam_obj->center = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    for(int i=0; i < 3; i++) kam_obj->center[i] = 1;
+    kam_obj->up = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    kam_obj->up[0]=0; kam_obj->up[1]=1; kam_obj->up[2]=0;
+
+    kam_obj->pila_z = (pila*)malloc(sizeof(pila));
+    kam_obj->pila_z->matrix = identitatea();
+    kam_obj->pila_z->next   = NULL;
+    kam_obj->pila_y = NULL;
+
+    /* Kamera ibiltaria hasieratu */
+    kam_ibil->eye = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    for(int i=0; i < 3; i++) kam_ibil->eye[i] = 0;
+    kam_ibil->center = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    for(int i=0; i < 3; i++) kam_ibil->center[i] = 1;
+    kam_ibil->up = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    kam_ibil->up[0]=0; kam_ibil->up[1]=1; kam_ibil->up[2]=0;
+
+    kam_ibil->pila_z = (pila*)malloc(sizeof(pila));
+    kam_ibil->pila_z->matrix = identitatea();
+    kam_ibil->pila_z->next   = NULL;
+    kam_ibil->pila_y = NULL;
+
+}
+
 
 /** MAIN FUNCTION **/
 int main(int argc, char** argv) {
@@ -50,22 +80,8 @@ int main(int argc, char** argv) {
     mezua = (char*)malloc(sizeof(char)*1024);
     mezua[0] = '\0';
 
-    /* Objektu kamera hasieratu */
-    kam_obj.eye = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    for(int i=0; i < 3; i++) kam_obj.eye[i] = 0;
-    kam_obj.center = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    for(int i=0; i < 3; i++) kam_obj.center[i] = 1;
-    kam_obj.up = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    kam_obj.up[0]=0; kam_obj.up[1]=1; kam_obj.up[2]=0;
-
-    /* Kamera ibiltaria hasieratu */
-    kam_ibil.eye = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    for(int i=0; i < 3; i++) kam_ibil.eye[i] = 0;
-    kam_ibil.center = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    for(int i=0; i < 3; i++) kam_ibil.center[i] = 1;
-    kam_ibil.up = (GLdouble*)malloc(sizeof(GLdouble)*3);
-    kam_ibil.up[0]=0; kam_ibil.up[1]=1; kam_ibil.up[2]=0;
-
+    // Garbiago egoteko kanpoan eginda, funtzio batean
+    kamerakHasieratu();
 
     /*First of all, print the help information*/
     print_help();

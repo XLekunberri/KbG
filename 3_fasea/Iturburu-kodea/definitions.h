@@ -177,9 +177,11 @@ struct object3d{
 typedef struct object3d object3d;
 
 struct camera3d{
-    GLdouble *eye;                          /* position of the camera */
-    GLdouble *center;                       /* where is the camera looking at */
-    GLdouble *up;                           /* normal vector of the camera */
+    GLdouble *eye;                      /* position of the camera */
+    GLdouble *center;                   /* where is the camera looking at */
+    GLdouble *up;                       /* normal vector of the camera */
+    pila *pila_z;					    /* egindako aldaketak */
+    pila *pila_y;			            /* desegindako aldaketak */
 };
 
 typedef struct camera3d camera3d;
