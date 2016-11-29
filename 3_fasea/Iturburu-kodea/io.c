@@ -772,34 +772,38 @@ void aldaketakAplikatu(GLdouble *mat, int key){
 }
 
 void kameraAldatu(GLdouble *mat, int key){
-    GLdouble *matEm = (GLdouble*)malloc(sizeof(GLdouble)*16);
-    pila *new_elem = (pila *) malloc(sizeof(pila));
-    switch(kamera){
-        case KG_KAM_OBJ:
-            switch(err_sist){
-                case KG_MODE_GLOBAL:
-                    matEm = mult(mat, kam_obj->pila_z->matrix);
-                    break;
-                case KG_MODE_LOKAL:
-                    matEm = mult(kam_obj->pila_z->matrix, mat);
-                    break;
-            }
 
-            new_elem->matrix = matEm;
-            new_elem->next = kam_obj->pila_z;
-            kam_obj->pila_z = new_elem;
+    if(mat != NULL) {
+        GLdouble *matEm;
+        GLdouble *bek;
+        pila *new_elem = (pila *) malloc(sizeof(pila));
+        switch (kamera) {
+            case KG_KAM_OBJ:
+                switch (err_sist) {
+                    case KG_MODE_GLOBAL:
+                        matEm = mult(mat, kam_obj->pila_z->matrix);
+                        break;
+                    case KG_MODE_LOKAL:
+                        matEm = mult(kam_obj->pila_z->matrix, mat);
+                        break;
+                }
+                //Pilak eguneratu
+                new_elem->matrix = matEm;
+                new_elem->next = kam_obj->pila_z;
+                kam_obj->pila_z = new_elem;
+                kam_obj->pila_y = NULL;
 
-            kam_obj->pila_y = NULL;
+                break;
+            case KG_KAM_IBIL:
+                matEm = mult(kam_obj->pila_z->matrix, mat);
 
-            break;
-        case KG_KAM_IBIL:
-            matEm = mult(kam_obj->pila_z->matrix, mat);
+                //Pilak eguneratu
+                new_elem->matrix = matEm;
+                new_elem->next = kam_ibil->pila_z;
+                kam_ibil->pila_z = new_elem;
+                kam_ibil->pila_y = NULL;
 
-            new_elem->matrix = matEm;
-            new_elem->next = kam_ibil->pila_z;
-            kam_ibil->pila_z = new_elem;
-
-            kam_ibil->pila_y = NULL;
-            break;
+                break;
+        }
     }
 }

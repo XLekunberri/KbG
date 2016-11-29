@@ -21,6 +21,9 @@ extern object3d *_selected_object;
 
 extern char* mezua;
 
+extern camera3d* kam_obj;
+extern camera3d* kam_ibil;
+
 /**
  * @brief Function to draw the axes
  */
@@ -97,19 +100,45 @@ void display(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
     /* Define the projection */
+    GLdouble *eye, *center, *up;
+
     switch(kamera){
         case KG_KAM_ORTO:
             glMatrixMode(GL_PROJECTION);
             break;
-        case KG_KAM_OBJ://ALDATU BEHAR DA
+        case KG_KAM_OBJ:
             glMatrixMode(GL_MODELVIEW);
             gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
+
+            eye = multBek(kam_obj->pila_z->matrix, kam_obj->eye);
+            center = multBek(kam_obj->pila_z->matrix, kam_obj->center);
+            up = multBek(kam_obj->pila_z->matrix, kam_obj->up);
+
+            printf("eye:\n");
+            print_vector(eye);
+            printf("center:\n");
+            print_vector(center);
+            printf("up:\n");
+            print_vector(up);
+
+            gluLookAt(eye[0]/eye[3],       eye[1]/eye[3],       eye[2]/eye[3],
+                      center[0]/center[3], center[1]/center[3], center[2]/center[3],
+                      up[0]/up[3],         up[1]/up[3],         up[2]/up[3]);
             break;
         case KG_KAM_IBIL://ALDATU BEHAR DA
             glMatrixMode(GL_MODELVIEW);
+            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
+
+            eye = multBek(kam_ibil->pila_z->matrix, kam_ibil->eye);
+            center = multBek(kam_ibil->pila_z->matrix, kam_ibil->center);
+            up = multBek(kam_ibil->pila_z->matrix, kam_ibil->up);
+
+            gluLookAt(eye[0]/eye[3],       eye[1]/eye[3],       eye[2]/eye[3],
+                      center[0]/center[3], center[1]/center[3], center[2]/center[3],
+                      up[0]/up[3],         up[1]/up[3],         up[2]/up[3]);
             break;
     }
-    glMatrixMode(GL_PROJECTION);
+    //glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
     /*When the window is wider than our original projection plane we extend the plane in the X axis*/

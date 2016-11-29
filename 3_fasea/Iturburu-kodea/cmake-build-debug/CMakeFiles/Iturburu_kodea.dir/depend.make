@@ -19,6 +19,7 @@ CMakeFiles/Iturburu_kodea.dir/main.c.o: ../definitions.h
 CMakeFiles/Iturburu_kodea.dir/main.c.o: ../display.h
 CMakeFiles/Iturburu_kodea.dir/main.c.o: ../io.h
 CMakeFiles/Iturburu_kodea.dir/main.c.o: ../main.c
+CMakeFiles/Iturburu_kodea.dir/main.c.o: ../matrizeak.h
 
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o: ../definitions.h
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o: ../matrizeak.c
