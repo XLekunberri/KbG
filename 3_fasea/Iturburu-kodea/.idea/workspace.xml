@@ -12,9 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b12301ae-603b-420b-858c-0f8c05e1d345" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/definitions.h" afterPath="$PROJECT_DIR$/definitions.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/display.c" afterPath="$PROJECT_DIR$/display.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/io.c" afterPath="$PROJECT_DIR$/io.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
     </list>
     <ignored path="Iturburu-kodea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,19 +33,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="io.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="io.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/io.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4910">
-              <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            <state relative-caret-position="1196">
+              <caret line="790" column="0" lean-forward="true" selection-start-line="790" selection-start-column="0" selection-end-line="790" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <element signature="e#586#670#0" expanded="false" />
                 <element signature="e#586#2147#0" expanded="false" />
                 <element signature="e#2149#2392#0" expanded="false" />
-                <element signature="e#15122#15419#0" expanded="false" />
-                <element signature="e#15421#19829#0" expanded="false" />
-                <element signature="e#19831#24901#0" expanded="false" />
+                <element signature="e#19235#19532#0" expanded="false" />
+                <element signature="e#19534#23942#0" expanded="false" />
+                <element signature="e#23944#29014#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -82,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="display.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="display.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/display.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+            <state relative-caret-position="360">
+              <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -162,14 +161,17 @@
       <find>b2</find>
       <find>object_ptr</find>
       <find>.</find>
+      <find>_selected_object</find>
+      <find>mat</find>
       <find>kam_obj</find>
     </findStrings>
     <replaceStrings>
       <replace>camera</replace>
       <replace>m</replace>
       <replace>v</replace>
-      <replace>kam_obj</replace>
       <replace>-&gt;</replace>
+      <replace>kam_obj</replace>
+      <replace>matEm</replace>
       <replace>kam_ibil</replace>
     </replaceStrings>
   </component>
@@ -183,13 +185,13 @@
         <option value="$PROJECT_DIR$/load_obj.h" />
         <option value="$PROJECT_DIR$/load_obj.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/display.c" />
         <option value="$PROJECT_DIR$/io.h" />
         <option value="$PROJECT_DIR$/matrizeak.c" />
         <option value="$PROJECT_DIR$/matrizeak.h" />
         <option value="$PROJECT_DIR$/definitions.h" />
         <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/io.c" />
+        <option value="$PROJECT_DIR$/display.c" />
       </list>
     </option>
   </component>
@@ -455,12 +457,12 @@
       <workItem from="1480320651527" duration="3010000" />
       <workItem from="1480323701428" duration="1875000" />
       <workItem from="1480413058406" duration="4514000" />
-      <workItem from="1480421881176" duration="1199000" />
+      <workItem from="1480421881176" duration="2185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51153000" />
+    <option name="totallyTimeSpent" value="52139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="24" width="1303" height="744" extended-state="6" />
@@ -573,9 +575,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -597,9 +599,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,9 +680,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -702,9 +704,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -783,9 +785,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -864,9 +866,9 @@
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1010,16 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/load_obj.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1065,16 +1057,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/io.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4910">
-          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        <state relative-caret-position="1196">
+          <caret line="790" column="0" lean-forward="true" selection-start-line="790" selection-start-column="0" selection-end-line="790" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#586#670#0" expanded="false" />
             <element signature="e#586#2147#0" expanded="false" />
             <element signature="e#2149#2392#0" expanded="false" />
-            <element signature="e#15122#15419#0" expanded="false" />
-            <element signature="e#15421#19829#0" expanded="false" />
-            <element signature="e#19831#24901#0" expanded="false" />
+            <element signature="e#19235#19532#0" expanded="false" />
+            <element signature="e#19534#23942#0" expanded="false" />
+            <element signature="e#23944#29014#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>

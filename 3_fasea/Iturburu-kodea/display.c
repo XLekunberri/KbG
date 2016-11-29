@@ -101,11 +101,11 @@ void display(void) {
         case KG_KAM_ORTO:
             glMatrixMode(GL_PROJECTION);
             break;
-        case KG_KAM_OBJ:
+        case KG_KAM_OBJ://ALDATU BEHAR DA
             glMatrixMode(GL_MODELVIEW);
             gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
             break;
-        case KG_KAM_IBIL:
+        case KG_KAM_IBIL://ALDATU BEHAR DA
             glMatrixMode(GL_MODELVIEW);
             break;
     }

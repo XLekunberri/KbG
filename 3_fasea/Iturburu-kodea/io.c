@@ -341,38 +341,112 @@ void keyboard(unsigned char key, int x, int y) {
         case 25: /* <CTRL + y/Y> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + y/Y' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            if(_selected_object != 0){
-                if (_selected_object->pila_y != NULL) {
-                    //Aldaketa pila_y-tik pila_z-ra mugitu
-                    pila *add_elem = _selected_object->pila_y;
-                    _selected_object->pila_y = add_elem->next;
-                    add_elem->next = _selected_object->pila_z;
-                    _selected_object->pila_z = add_elem;
-                } else {
-                    sprintf(mezua, "Ez dago aldaketarik berregiteko");
-                }
-            }
-            else{
-                sprintf(mezua, "Ez dago objekturik kargatuta");
+            switch(selected) {
+                case KG_OBJ:
+                    if (_selected_object != 0) {
+                        if (_selected_object->pila_y != NULL) {
+                            //Aldaketa pila_y-tik pila_z-ra mugitu
+                            pila *add_elem = _selected_object->pila_y;
+                            _selected_object->pila_y = add_elem->next;
+                            add_elem->next = _selected_object->pila_z;
+                            _selected_object->pila_z = add_elem;
+                        } else {
+                            sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                        }
+                    } else {
+                        sprintf(mezua, "Ez dago objekturik kargatuta");
+                    }
+                    break;
+                case KG_KAM:
+                    switch(kamera){
+                        case KG_KAM_OBJ:
+                            if (kam_obj != 0) {
+                                if (kam_obj->pila_y != NULL) {
+                                    //Aldaketa pila_y-tik pila_z-ra mugitu
+                                    pila *add_elem = kam_obj->pila_y;
+                                    kam_obj->pila_y = add_elem->next;
+                                    add_elem->next = kam_obj->pila_z;
+                                    kam_obj->pila_z = add_elem;
+                                } else {
+                                    sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                                }
+                            } else {
+                                sprintf(mezua, "Ez dago objekturik kargatuta");
+                            }
+                            break;
+                        case KG_KAM_IBIL:
+                            if (kam_ibil != 0) {
+                                if (kam_ibil->pila_y != NULL) {
+                                    //Aldaketa pila_y-tik pila_z-ra mugitu
+                                    pila *add_elem = kam_ibil->pila_y;
+                                    kam_ibil->pila_y = add_elem->next;
+                                    add_elem->next = kam_ibil->pila_z;
+                                    kam_ibil->pila_z = add_elem;
+                                } else {
+                                    sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                                }
+                            } else {
+                                sprintf(mezua, "Ez dago objekturik kargatuta");
+                            }
+                            break;
+                    }
+                    break;
             }
             break;
 
         case 26: /* <CTRL + z/Z> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + z/Z' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            if( _selected_object != 0 ) {
-                if (_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
-                    //Aldaketa pila_z-tik pila_y-ra mugitu
-                    pila *del_elem = _selected_object->pila_z;
-                    _selected_object->pila_z = del_elem->next;
-                    del_elem->next = _selected_object->pila_y;
-                    _selected_object->pila_y = del_elem;
-                } else {
-                    sprintf(mezua, "Ez dago aldaketarik desegiteko");
-                }
-            }
-            else{
-                sprintf(mezua, "Ez dago objekturik kargatuta");
+            switch(selected) {
+                case KG_OBJ:
+                    if (_selected_object != 0) {
+                        if (_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                            //Aldaketa pila_z-tik pila_y-ra mugitu
+                            pila *del_elem = _selected_object->pila_z;
+                            _selected_object->pila_z = del_elem->next;
+                            del_elem->next = _selected_object->pila_y;
+                            _selected_object->pila_y = del_elem;
+                        } else {
+                            sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                        }
+                    } else {
+                        sprintf(mezua, "Ez dago objekturik kargatuta");
+                    }
+                    break;
+                case KG_KAM:
+                    switch(kamera){
+                        case KG_KAM_OBJ:
+                            if (kam_obj != 0) {
+                                if (kam_obj->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                    //Aldaketa pila_z-tik pila_y-ra mugitu
+                                    pila *del_elem = kam_obj->pila_z;
+                                    kam_obj->pila_z = del_elem->next;
+                                    del_elem->next = kam_obj->pila_y;
+                                    kam_obj->pila_y = del_elem;
+                                } else {
+                                    sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                                }
+                            } else {
+                                sprintf(mezua, "Ez dago objekturik kargatuta");
+                            }
+                            break;
+                        case KG_KAM_IBIL:
+                            if (kam_ibil != 0) {
+                                if (kam_ibil->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                    //Aldaketa pila_z-tik pila_y-ra mugitu
+                                    pila *del_elem = kam_ibil->pila_z;
+                                    kam_ibil->pila_z = del_elem->next;
+                                    del_elem->next = kam_ibil->pila_y;
+                                    kam_ibil->pila_y = del_elem;
+                                } else {
+                                    sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                                }
+                            } else {
+                                sprintf(mezua, "Ez dago objekturik kargatuta");
+                            }
+                            break;
+                    }
+                    break;
             }
             break;
 
@@ -698,18 +772,34 @@ void aldaketakAplikatu(GLdouble *mat, int key){
 }
 
 void kameraAldatu(GLdouble *mat, int key){
-    switch(selected){
+    GLdouble *matEm = (GLdouble*)malloc(sizeof(GLdouble)*16);
+    pila *new_elem = (pila *) malloc(sizeof(pila));
+    switch(kamera){
         case KG_KAM_OBJ:
             switch(err_sist){
                 case KG_MODE_GLOBAL:
-                    mat = mult(mat, kam_obj->pila_z->matrix);
+                    matEm = mult(mat, kam_obj->pila_z->matrix);
                     break;
                 case KG_MODE_LOKAL:
-                    mat = mult(kam_obj->pila_z->matrix, mat);
+                    matEm = mult(kam_obj->pila_z->matrix, mat);
                     break;
             }
+
+            new_elem->matrix = matEm;
+            new_elem->next = kam_obj->pila_z;
+            kam_obj->pila_z = new_elem;
+
+            kam_obj->pila_y = NULL;
+
             break;
         case KG_KAM_IBIL:
+            matEm = mult(kam_obj->pila_z->matrix, mat);
+
+            new_elem->matrix = matEm;
+            new_elem->next = kam_ibil->pila_z;
+            kam_ibil->pila_z = new_elem;
+
+            kam_ibil->pila_y = NULL;
             break;
     }
 }
