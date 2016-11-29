@@ -608,7 +608,7 @@ void kamera_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
     switch (key) {
         case GLUT_KEY_UP:
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -629,7 +629,7 @@ void kamera_keyboard(int key, int x, int y) {
             }
             break;
         case GLUT_KEY_DOWN:
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -651,7 +651,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_RIGHT:
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -673,7 +673,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_LEFT:
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -695,7 +695,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_PAGE_UP: //av_pag
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -717,7 +717,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
 
         case GLUT_KEY_PAGE_DOWN: //re_pag
-            switch(selected){
+            switch(kamera){
                 case KG_KAM_OBJ:
                     switch(aldaketa){
                         case KG_MODE_TRANS:
@@ -772,13 +772,18 @@ void aldaketakAplikatu(GLdouble *mat, int key){
 }
 
 void kameraAldatu(GLdouble *mat, int key){
-
+    //if(mat == NULL) sprintf(mezua,"MATRIZEA NULL DA!!!!!!!!!");
     if(mat != NULL) {
         GLdouble *matEm;
-        GLdouble *bek;
-        pila *new_elem = (pila *) malloc(sizeof(pila));
+        pila *new_elem = (pila*)malloc(sizeof(pila));
+        printf("Aldaketa matrizea:\n");
+        print_matrix(mat);
         switch (kamera) {
             case KG_KAM_OBJ:
+                /* POR ALGUNA RAZON NO IMPRIME ESTO, NIÑO JESUS SALVAME
+                printf("pila_z matrizea:\n");
+                print_matrix(kam_obj->pila_z->matrix);
+                 */
                 switch (err_sist) {
                     case KG_MODE_GLOBAL:
                         matEm = mult(mat, kam_obj->pila_z->matrix);
@@ -788,6 +793,9 @@ void kameraAldatu(GLdouble *mat, int key){
                         break;
                 }
                 //Pilak eguneratu
+                printf("Emaitza matrizea:\n");
+                print_matrix(matEm);
+
                 new_elem->matrix = matEm;
                 new_elem->next = kam_obj->pila_z;
                 kam_obj->pila_z = new_elem;
@@ -797,6 +805,8 @@ void kameraAldatu(GLdouble *mat, int key){
             case KG_KAM_IBIL:
                 matEm = mult(kam_obj->pila_z->matrix, mat);
 
+                printf("Emaitza matrizea:\n");
+                print_matrix(matEm);
                 //Pilak eguneratu
                 new_elem->matrix = matEm;
                 new_elem->next = kam_ibil->pila_z;

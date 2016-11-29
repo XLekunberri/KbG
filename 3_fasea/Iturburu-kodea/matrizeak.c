@@ -39,8 +39,7 @@ GLdouble *multBek(GLdouble *m, GLdouble *v){
     result[1] = m[1]*v[0] + m[5]*v[1] + m[9] *v[2] + m[13]*v[3];
     result[2] = m[2]*v[0] + m[6]*v[1] + m[10]*v[2] + m[14]*v[3];
     result[3] = m[3]*v[0] + m[7]*v[1] + m[11]*v[2] + m[15]*v[3];
-    printf("Behinbehinekoa:\n");
-    print_vector(result);
+
     return (result);
 }
 
@@ -117,6 +116,7 @@ void print_matrix(GLdouble *matrix){
     for(int i=2; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
     printf("\n");
     for(int i=3; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
+    printf("\n");
 }
 
 void print_vector(GLdouble *vector){

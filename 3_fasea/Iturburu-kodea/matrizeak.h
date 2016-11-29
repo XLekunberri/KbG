@@ -15,6 +15,7 @@ GLdouble *eskalaketa(float x, float y, float z);
 GLdouble *islapena(int x, int y, int z);
 GLdouble *identitatea();
 
+void print_matrix(GLdouble *matrix);
 void print_vector(GLdouble *vector);
 
 #endif //ITURBURU_KODEA_MATRIZEAK_H
