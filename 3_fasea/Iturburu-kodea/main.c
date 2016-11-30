@@ -81,6 +81,8 @@ void kamerakHasieratu(){
     kam_ibil->pila_z->next   = NULL;
     kam_ibil->pila_y = NULL;
 
+    kam_ibil->y_pi = 0;
+
 }
 
 

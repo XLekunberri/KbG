@@ -182,6 +182,7 @@ struct camera3d{
     GLdouble *up;                       /* normal vector of the camera */
     pila *pila_z;					    /* egindako aldaketak */
     pila *pila_y;			            /* desegindako aldaketak */
+    int y_pi;                           /* Jakiteko y ardatzean zenbat biratu dugun */
 };
 
 typedef struct camera3d camera3d;

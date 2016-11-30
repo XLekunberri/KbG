@@ -86,6 +86,21 @@ void draw_grid(){
 
 }
 
+void kokatuKamera(GLdouble *eye, GLdouble *center, GLdouble *up){
+    switch(kamera){
+        case KG_KAM_OBJ:
+            gluLookAt(eye[0],       eye[1],       eye[2],
+                      center[0],    center[1],    center[2],
+                      up[0],        up[1],        up[2]);
+            break;
+        case KG_KAM_IBIL:
+            gluLookAt(eye[0],       eye[1],       eye[2],
+                      center[0],    center[1],    center[2],
+                      up[0],        up[1],        up[2]);
+            break;
+    }
+}
+
 
 /**
  * @brief Callback display function
@@ -106,6 +121,7 @@ void display(void) {
         case KG_KAM_ORTO:
             glMatrixMode(GL_PROJECTION);
             break;
+
         case KG_KAM_OBJ:
             glMatrixMode(GL_MODELVIEW);
             gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
@@ -114,18 +130,10 @@ void display(void) {
             center = multBek(kam_obj->pila_z->matrix, kam_obj->center);
             up = multBek(kam_obj->pila_z->matrix, kam_obj->up);
 
-            printf("eye:\n");
-            print_vector(eye);
-            printf("center:\n");
-            print_vector(center);
-            printf("up:\n");
-            print_vector(up);
-
-            gluLookAt(eye[0]/eye[3],       eye[1]/eye[3],       eye[2]/eye[3],
-                      center[0]/center[3], center[1]/center[3], center[2]/center[3],
-                      up[0]/up[3],         up[1]/up[3],         up[2]/up[3]);
+            kokatuKamera(eye, center, up);
             break;
-        case KG_KAM_IBIL://ALDATU BEHAR DA
+
+        case KG_KAM_IBIL:
             glMatrixMode(GL_MODELVIEW);
             gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
 
@@ -140,9 +148,7 @@ void display(void) {
             printf("up:\n");
             print_vector(up);
 
-            gluLookAt(eye[0]/eye[3],       eye[1]/eye[3],       eye[2]/eye[3],
-                      center[0]/center[3], center[1]/center[3], center[2]/center[3],
-                      up[0],         up[1],         up[2]);
+            kokatuKamera(eye, center, up);
             break;
     }
     glMatrixMode(GL_PROJECTION);
@@ -168,24 +174,10 @@ void display(void) {
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
-    // kameraKokatu()
-    switch(kamera){
-        case KG_KAM_ORTO:
-            glLoadIdentity();
-            break;
-        case KG_KAM_OBJ:
-            glLoadIdentity();
-            gluLookAt(eye[0],       eye[1],       eye[2],
-                      center[0], center[1], center[2],
-                      up[0],         up[1],         up[2]);
-            break;
-        case KG_KAM_IBIL://ALDATU BEHAR DA
-            glLoadIdentity();
-            gluLookAt(eye[0],       eye[1],       eye[2],
-                      center[0], center[1], center[2],
-                      up[0],         up[1],         up[2]);
-            break;
-    }
+
+    glLoadIdentity();
+    kokatuKamera(eye, center, up);
+
 
     /*First, we draw the grid and then the axes*/
     draw_grid();
@@ -206,24 +198,7 @@ void display(void) {
 
         /* Draw the object; fFFor each face create a new polygon with the corresponding vertices */
         glLoadIdentity();
-        // kameraKokatu()
-        switch(kamera){
-            case KG_KAM_ORTO:
-                glLoadIdentity();
-                break;
-            case KG_KAM_OBJ:
-                glLoadIdentity();
-                gluLookAt(eye[0],       eye[1],       eye[2],
-                          center[0], center[1], center[2],
-                          up[0],         up[1],         up[2]);
-                break;
-            case KG_KAM_IBIL://ALDATU BEHAR DA
-                glLoadIdentity();
-                gluLookAt(eye[0],       eye[1],       eye[2],
-                          center[0], center[1], center[2],
-                          up[0],         up[1],         up[2]);
-                break;
-        }
+        kokatuKamera(eye, center, up);
 
         glMultMatrixd(aux_obj->pila_z->matrix);
         for (f = 0; f < aux_obj->num_faces; f++) {

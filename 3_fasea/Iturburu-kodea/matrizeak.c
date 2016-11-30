@@ -43,7 +43,7 @@ GLdouble *multBek(GLdouble *m, GLdouble *v){
     return (result);
 }
 
-GLdouble *translazioa(int x, int y, int z){
+GLdouble *translazioa(double x, double y, double z){
 
     GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
 

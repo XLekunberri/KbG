@@ -606,6 +606,9 @@ void objektu_keyboard(int key, int x, int y) {
 
 void kamera_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
+    double x_ard, z_ard;
+    double angelua;
+    int biratu = 0;
     switch (key) {
         case GLUT_KEY_UP:
             switch(kamera){
@@ -624,7 +627,12 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    mat = translazioa(0, 0, -1);
+                    biratu = 0;
+                    angelua = (kam_ibil->y_pi / 16) * PI;
+                    x_ard = sin(angelua);
+                    z_ard = -cos(angelua);
+                    sprintf(mezua, "x_ard: %g  z_ard: %g", x_ard, z_ard);
+                    mat = translazioa(x_ard, 0, z_ard);
                     break;
             }
             break;
@@ -645,7 +653,12 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    mat = translazioa(0, 0, 1);
+                    biratu = 0;
+                    angelua = (kam_ibil->y_pi / 16) * PI;
+                    x_ard = sin(angelua);
+                    z_ard = -cos(angelua);
+                    sprintf(mezua, "x_ard: %g  z_ard: %g", x_ard, z_ard);
+                    mat = translazioa(-x_ard, 0, -z_ard);
                     break;
             }
             break;
@@ -667,7 +680,9 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 1;
                     mat = biraketa(0, -1, 0);
+                    angeluaAldatu(-1);
                     break;
             }
             break;
@@ -689,7 +704,9 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 1;
                     mat = biraketa(0, 1, 0);
+                    angeluaAldatu(1);
                     break;
             }
             break;
@@ -711,6 +728,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 0;
                     mat = biraketa(-1, 0, 0);
                     break;
             }
@@ -733,6 +751,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 0;
                     mat = biraketa(1, 0, 0);
                     break;
             }
@@ -741,7 +760,7 @@ void kamera_keyboard(int key, int x, int y) {
             printf("Espeziala: %d %c\n", key, key);
             break;
     }
-    kameraAldatu(mat, key);
+    kameraAldatu(mat, biratu);
 }
 
 void aldaketakAplikatu(GLdouble *mat, int key){
@@ -771,7 +790,7 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     }
 }
 
-void kameraAldatu(GLdouble *mat, int key){
+void kameraAldatu(GLdouble *mat, int biratu){
     if(mat == NULL) sprintf(mezua,"MATRIZEA NULL DA!!!!!!!!!");
     if(mat != NULL) {
         GLdouble *matEm;
@@ -780,10 +799,6 @@ void kameraAldatu(GLdouble *mat, int key){
         print_matrix(mat);
         switch (kamera) {
             case KG_KAM_OBJ:
-                /* POR ALGUNA RAZON NO IMPRIME ESTO, NIÑO JESUS SALVAME
-                printf("pila_z matrizea:\n");
-                print_matrix(kam_obj->pila_z->matrix);
-                 */
                 switch (err_sist) {
                     case KG_MODE_GLOBAL:
                         matEm = mult(mat, kam_obj->pila_z->matrix);
@@ -801,24 +816,27 @@ void kameraAldatu(GLdouble *mat, int key){
                 break;
             case KG_KAM_IBIL:
 
+                if(!biratu){
+                    matEm = mult(kam_ibil->pila_z->matrix, mat);
+                }
+                else{
+                    matEm = mult(mat,kam_ibil->pila_z->matrix);
+                }
 
-                matEm = mult(kam_ibil->pila_z->matrix, mat);
-
-                printf("Emaitza matrizea:\n");
-                print_matrix(matEm);
-
-                printf("pila_z matrizea lehen:\n");
-                print_matrix(kam_ibil->pila_z->matrix);
                 //Pilak eguneratu
                 new_elem->matrix = matEm;
                 new_elem->next = kam_ibil->pila_z;
                 kam_ibil->pila_z = new_elem;
                 kam_ibil->pila_y = NULL;
-                printf("pila_z matrizea gero:\n");
-                print_matrix(kam_ibil->pila_z->matrix);
-
 
                 break;
         }
+    }
+}
+
+void angeluaAldatu(int n){
+    kam_ibil->y_pi = kam_ibil->y_pi + n;
+    if( (kam_ibil->y_pi == 32) || (kam_ibil->y_pi == -32) ){
+        kam_ibil->y_pi = 0;
     }
 }

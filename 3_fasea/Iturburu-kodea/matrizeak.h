@@ -9,7 +9,7 @@
 GLdouble *mult(GLdouble *m1, GLdouble *m2);
 GLdouble *multBek(GLdouble *m, GLdouble *v);
 
-GLdouble *translazioa(int x, int y, int z);
+GLdouble *translazioa(double x, double y, double z);
 GLdouble *biraketa(int x, int y, int z);
 GLdouble *eskalaketa(float x, float y, float z);
 GLdouble *islapena(int x, int y, int z);
