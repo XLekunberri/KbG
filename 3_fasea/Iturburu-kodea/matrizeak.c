@@ -109,13 +109,21 @@ GLdouble *identitatea(){
 
 void print_matrix(GLdouble *matrix){
 
-    for(int i=0; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
+    for(int i=0; i<16;i=i+4){
+        printf("%g\t",(double)matrix[i]);
+    }
     printf("\n");
-    for(int i=1; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
+    for(int i=1; i<16;i=i+4){
+        printf("%g\t",(double)matrix[i]);
+    }
     printf("\n");
-    for(int i=2; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
+    for(int i=2; i<16;i=i+4){
+        printf("%g\t",(double)matrix[i]);
+    }
     printf("\n");
-    for(int i=3; i<16;i=i+4) printf("%g\t",(double)matrix[i]);
+    for(int i=3; i<16;i=i+4){
+        printf("%g\t",(double)matrix[i]);
+    }
     printf("\n");
 }
 

@@ -133,12 +133,19 @@ void display(void) {
             center = multBek(kam_ibil->pila_z->matrix, kam_ibil->center);
             up = multBek(kam_ibil->pila_z->matrix, kam_ibil->up);
 
+            printf("eye:\n");
+            print_vector(eye);
+            printf("center:\n");
+            print_vector(center);
+            printf("up:\n");
+            print_vector(up);
+
             gluLookAt(eye[0]/eye[3],       eye[1]/eye[3],       eye[2]/eye[3],
                       center[0]/center[3], center[1]/center[3], center[2]/center[3],
-                      up[0]/up[3],         up[1]/up[3],         up[2]/up[3]);
+                      up[0],         up[1],         up[2]);
             break;
     }
-    //glMatrixMode(GL_PROJECTION);
+    glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
     /*When the window is wider than our original projection plane we extend the plane in the X axis*/
@@ -161,7 +168,9 @@ void display(void) {
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    if(kamera==KG_KAM_ORTO){
+        glLoadIdentity();
+    }
 
     /*First, we draw the grid and then the axes*/
     draw_grid();

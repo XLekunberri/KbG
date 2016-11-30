@@ -53,7 +53,7 @@ void kamerakHasieratu(){
     kam_obj->eye[3] = 1;
 
     kam_obj->center = (GLdouble*)malloc(sizeof(GLdouble)*4);
-    for(int i=0; i < 4; i++) kam_obj->center[i] = 1;
+    kam_obj->center[0]=0; kam_obj->center[1]=0; kam_obj->center[2]=-5; kam_obj->center[3]=1;
 
     kam_obj->up = (GLdouble*)malloc(sizeof(GLdouble)*4);
     kam_obj->up[0]=0; kam_obj->up[1]=1; kam_obj->up[2]=0; kam_obj->up[3]=0;
@@ -71,7 +71,7 @@ void kamerakHasieratu(){
     kam_ibil->eye[3] = 1;
 
     kam_ibil->center = (GLdouble*)malloc(sizeof(GLdouble)*4);
-    for(int i=0; i < 4; i++) kam_ibil->center[i] = 1;
+    kam_ibil->center[0]=0; kam_ibil->center[1]=0; kam_ibil->center[2]=-5; kam_ibil->center[3]=1;
 
     kam_ibil->up = (GLdouble*)malloc(sizeof(GLdouble)*4);
     kam_ibil->up[0]=0; kam_ibil->up[1]=1; kam_ibil->up[2]=0; kam_ibil->up[3]=0;

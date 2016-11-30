@@ -772,7 +772,7 @@ void aldaketakAplikatu(GLdouble *mat, int key){
 }
 
 void kameraAldatu(GLdouble *mat, int key){
-    //if(mat == NULL) sprintf(mezua,"MATRIZEA NULL DA!!!!!!!!!");
+    if(mat == NULL) sprintf(mezua,"MATRIZEA NULL DA!!!!!!!!!");
     if(mat != NULL) {
         GLdouble *matEm;
         pila *new_elem = (pila*)malloc(sizeof(pila));
@@ -793,9 +793,6 @@ void kameraAldatu(GLdouble *mat, int key){
                         break;
                 }
                 //Pilak eguneratu
-                printf("Emaitza matrizea:\n");
-                print_matrix(matEm);
-
                 new_elem->matrix = matEm;
                 new_elem->next = kam_obj->pila_z;
                 kam_obj->pila_z = new_elem;
@@ -803,15 +800,23 @@ void kameraAldatu(GLdouble *mat, int key){
 
                 break;
             case KG_KAM_IBIL:
-                matEm = mult(kam_obj->pila_z->matrix, mat);
+
+
+                matEm = mult(kam_ibil->pila_z->matrix, mat);
 
                 printf("Emaitza matrizea:\n");
                 print_matrix(matEm);
+
+                printf("pila_z matrizea lehen:\n");
+                print_matrix(kam_ibil->pila_z->matrix);
                 //Pilak eguneratu
                 new_elem->matrix = matEm;
                 new_elem->next = kam_ibil->pila_z;
                 kam_ibil->pila_z = new_elem;
                 kam_ibil->pila_y = NULL;
+                printf("pila_z matrizea gero:\n");
+                print_matrix(kam_ibil->pila_z->matrix);
+
 
                 break;
         }
