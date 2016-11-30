@@ -168,8 +168,23 @@ void display(void) {
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
-    if(kamera==KG_KAM_ORTO){
-        glLoadIdentity();
+    // kameraKokatu()
+    switch(kamera){
+        case KG_KAM_ORTO:
+            glLoadIdentity();
+            break;
+        case KG_KAM_OBJ:
+            glLoadIdentity();
+            gluLookAt(eye[0],       eye[1],       eye[2],
+                      center[0], center[1], center[2],
+                      up[0],         up[1],         up[2]);
+            break;
+        case KG_KAM_IBIL://ALDATU BEHAR DA
+            glLoadIdentity();
+            gluLookAt(eye[0],       eye[1],       eye[2],
+                      center[0], center[1], center[2],
+                      up[0],         up[1],         up[2]);
+            break;
     }
 
     /*First, we draw the grid and then the axes*/
@@ -191,6 +206,24 @@ void display(void) {
 
         /* Draw the object; fFFor each face create a new polygon with the corresponding vertices */
         glLoadIdentity();
+        // kameraKokatu()
+        switch(kamera){
+            case KG_KAM_ORTO:
+                glLoadIdentity();
+                break;
+            case KG_KAM_OBJ:
+                glLoadIdentity();
+                gluLookAt(eye[0],       eye[1],       eye[2],
+                          center[0], center[1], center[2],
+                          up[0],         up[1],         up[2]);
+                break;
+            case KG_KAM_IBIL://ALDATU BEHAR DA
+                glLoadIdentity();
+                gluLookAt(eye[0],       eye[1],       eye[2],
+                          center[0], center[1], center[2],
+                          up[0],         up[1],         up[2]);
+                break;
+        }
 
         glMultMatrixd(aux_obj->pila_z->matrix);
         for (f = 0; f < aux_obj->num_faces; f++) {
