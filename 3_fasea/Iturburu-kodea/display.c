@@ -87,8 +87,15 @@ void draw_grid(){
 }
 
 void kokatuKamera(GLdouble *eye, GLdouble *center, GLdouble *up){
+    printf("eye\n");
+    print_vector(eye);
+    printf("center\n");
+    print_vector(center);
+    printf("up\n");
+    print_vector(up);
     switch(kamera){
         case KG_KAM_OBJ:
+
             gluLookAt(eye[0],       eye[1],       eye[2],
                       center[0],    center[1],    center[2],
                       up[0],        up[1],        up[2]);
@@ -120,22 +127,37 @@ void display(void) {
     switch(kamera){
         case KG_KAM_ORTO:
             glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            if ((_ortho_x_max - _ortho_x_min) / (_ortho_y_max - _ortho_y_min) < _window_ratio) {
+                /* New width */
+                GLdouble wd = (_ortho_y_max - _ortho_y_min) * _window_ratio;
+                /* Midpoint in the X axis */
+                GLdouble midpt = (_ortho_x_min + _ortho_x_max) / 2;
+                /*Definition of the projection*/
+                glOrtho(midpt - (wd / 2), midpt + (wd / 2), _ortho_y_min, _ortho_y_max, _ortho_z_min, _ortho_z_max);
+            } else {/* In the opposite situation we extend the Y axis */
+                /* New height */
+                GLdouble he = (_ortho_x_max - _ortho_x_min) / _window_ratio;
+                /* Midpoint in the Y axis */
+                GLdouble midpt = (_ortho_y_min + _ortho_y_max) / 2;
+                /*Definition of the projection*/
+                glOrtho(_ortho_x_min, _ortho_x_max, midpt - (he / 2), midpt + (he / 2), _ortho_z_min, _ortho_z_max);
+            }
             break;
 
         case KG_KAM_OBJ:
-            glMatrixMode(GL_MODELVIEW);
-            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
 
             eye = multBek(kam_obj->pila_z->matrix, kam_obj->eye);
             center = multBek(kam_obj->pila_z->matrix, kam_obj->center);
             up = multBek(kam_obj->pila_z->matrix, kam_obj->up);
 
-            kokatuKamera(eye, center, up);
+            //kokatuKamera(eye, center, up);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
             break;
 
         case KG_KAM_IBIL:
-            glMatrixMode(GL_MODELVIEW);
-            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
 
             eye = multBek(kam_ibil->pila_z->matrix, kam_ibil->eye);
             center = multBek(kam_ibil->pila_z->matrix, kam_ibil->center);
@@ -148,35 +170,22 @@ void display(void) {
             printf("up:\n");
             print_vector(up);
 
-            kokatuKamera(eye, center, up);
+            //kokatuKamera(eye, center, up);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
             break;
     }
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
 
-    /*When the window is wider than our original projection plane we extend the plane in the X axis*/
-    if ((_ortho_x_max - _ortho_x_min) / (_ortho_y_max - _ortho_y_min) < _window_ratio) {
-        /* New width */
-        GLdouble wd = (_ortho_y_max - _ortho_y_min) * _window_ratio;
-        /* Midpoint in the X axis */
-        GLdouble midpt = (_ortho_x_min + _ortho_x_max) / 2;
-        /*Definition of the projection*/
-        glOrtho(midpt - (wd / 2), midpt + (wd / 2), _ortho_y_min, _ortho_y_max, _ortho_z_min, _ortho_z_max);
-    } else {/* In the opposite situation we extend the Y axis */
-        /* New height */
-        GLdouble he = (_ortho_x_max - _ortho_x_min) / _window_ratio;
-        /* Midpoint in the Y axis */
-        GLdouble midpt = (_ortho_y_min + _ortho_y_max) / 2;
-        /*Definition of the projection*/
-        glOrtho(_ortho_x_min, _ortho_x_max, midpt - (he / 2), midpt + (he / 2), _ortho_z_min, _ortho_z_max);
-    }
 
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
 
     glLoadIdentity();
-    kokatuKamera(eye, center, up);
+    if(kamera != KG_KAM_ORTO) {
+        kokatuKamera(eye, center, up);
+    }
 
 
     /*First, we draw the grid and then the axes*/
@@ -198,7 +207,9 @@ void display(void) {
 
         /* Draw the object; fFFor each face create a new polygon with the corresponding vertices */
         glLoadIdentity();
-        kokatuKamera(eye, center, up);
+        if(kamera != KG_KAM_ORTO) {
+            kokatuKamera(eye, center, up);
+        }
 
         glMultMatrixd(aux_obj->pila_z->matrix);
         for (f = 0; f < aux_obj->num_faces; f++) {

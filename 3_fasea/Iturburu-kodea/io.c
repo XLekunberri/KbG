@@ -606,17 +606,16 @@ void objektu_keyboard(int key, int x, int y) {
 
 void kamera_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
-    double x_ard, z_ard;
-    double angelua;
-    int biratu = 0;
     switch (key) {
         case GLUT_KEY_UP:
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(0, 1, 0);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(1, 0, 0);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -627,22 +626,19 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
-                    angelua = (kam_ibil->y_pi / 16) * PI;
-                    x_ard = sin(angelua);
-                    z_ard = -cos(angelua);
-                    sprintf(mezua, "x_ard: %g  z_ard: %g", x_ard, z_ard);
-                    mat = translazioa(x_ard, 0, z_ard);
+                    mat = translazioa(0, 0, -1);
                     break;
             }
             break;
         case GLUT_KEY_DOWN:
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(0, -1, 0);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(-1, 0, 0);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -653,23 +649,20 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
-                    angelua = (kam_ibil->y_pi / 16) * PI;
-                    x_ard = sin(angelua);
-                    z_ard = -cos(angelua);
-                    sprintf(mezua, "x_ard: %g  z_ard: %g", x_ard, z_ard);
-                    mat = translazioa(-x_ard, 0, -z_ard);
+                    mat = translazioa(0, 0, -1);
                     break;
             }
             break;
 
         case GLUT_KEY_RIGHT:
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(1, 0, 0);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(0, 1, 0);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -680,20 +673,20 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 1;
                     mat = biraketa(0, -1, 0);
-                    angeluaAldatu(-1);
                     break;
             }
             break;
 
         case GLUT_KEY_LEFT:
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(-1, 0, 0);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(0, -1, 0);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -704,20 +697,20 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 1;
                     mat = biraketa(0, 1, 0);
-                    angeluaAldatu(1);
                     break;
             }
             break;
 
         case GLUT_KEY_PAGE_UP: //av_pag
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(0, 0, 1);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(0, 0, 1);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -728,19 +721,20 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
                     mat = biraketa(-1, 0, 0);
                     break;
             }
             break;
 
         case GLUT_KEY_PAGE_DOWN: //re_pag
-            switch(kamera){
+            switch (kamera) {
                 case KG_KAM_OBJ:
-                    switch(aldaketa){
+                    switch (aldaketa) {
                         case KG_MODE_TRANS:
+                            mat = translazioa(0, 0, -1);
                             break;
                         case KG_MODE_BIRAK:
+                            mat = biraketa(0, 0, -1);
                             break;
                         case KG_MODE_DEFAULT:
                             sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
@@ -751,7 +745,6 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
                     mat = biraketa(1, 0, 0);
                     break;
             }
@@ -760,7 +753,9 @@ void kamera_keyboard(int key, int x, int y) {
             printf("Espeziala: %d %c\n", key, key);
             break;
     }
-    kameraAldatu(mat, biratu);
+    if (mat != NULL) {
+        kameraAldatu(mat);
+    }
 }
 
 void aldaketakAplikatu(GLdouble *mat, int key){
@@ -790,53 +785,40 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     }
 }
 
-void kameraAldatu(GLdouble *mat, int biratu){
-    if(mat == NULL) sprintf(mezua,"MATRIZEA NULL DA!!!!!!!!!");
-    if(mat != NULL) {
-        GLdouble *matEm;
-        pila *new_elem = (pila*)malloc(sizeof(pila));
-        printf("Aldaketa matrizea:\n");
-        print_matrix(mat);
-        switch (kamera) {
-            case KG_KAM_OBJ:
-                switch (err_sist) {
-                    case KG_MODE_GLOBAL:
-                        matEm = mult(mat, kam_obj->pila_z->matrix);
-                        break;
-                    case KG_MODE_LOKAL:
-                        matEm = mult(kam_obj->pila_z->matrix, mat);
-                        break;
-                }
-                //Pilak eguneratu
-                new_elem->matrix = matEm;
-                new_elem->next = kam_obj->pila_z;
-                kam_obj->pila_z = new_elem;
-                kam_obj->pila_y = NULL;
+void kameraAldatu(GLdouble *mat){
+    GLdouble *matEm;
+    pila *new_elem = (pila*)malloc(sizeof(pila));
+    printf("Aldaketa matrizea:\n");
+    print_matrix(mat);
+    switch (kamera) {
+        case KG_KAM_OBJ:
+            switch (err_sist) {
+                case KG_MODE_GLOBAL:
+                    matEm = mult(mat, kam_obj->pila_z->matrix);
+                    break;
+                case KG_MODE_LOKAL:
+                    matEm = mult(kam_obj->pila_z->matrix, mat);
+                    break;
+            }
+            printf("Kameraren matrizea\n");
+            print_matrix(matEm);
+            //Pilak eguneratu
+            new_elem->matrix = matEm;
+            new_elem->next = kam_obj->pila_z;
+            kam_obj->pila_z = new_elem;
+            kam_obj->pila_y = NULL;
 
-                break;
-            case KG_KAM_IBIL:
+            break;
+        case KG_KAM_IBIL:
 
-                if(!biratu){
-                    matEm = mult(kam_ibil->pila_z->matrix, mat);
-                }
-                else{
-                    matEm = mult(mat,kam_ibil->pila_z->matrix);
-                }
+            matEm = mult(kam_ibil->pila_z->matrix, mat);
+            //Pilak eguneratu
+            new_elem->matrix = matEm;
+            new_elem->next = kam_ibil->pila_z;
+            kam_ibil->pila_z = new_elem;
+            kam_ibil->pila_y = NULL;
 
-                //Pilak eguneratu
-                new_elem->matrix = matEm;
-                new_elem->next = kam_ibil->pila_z;
-                kam_ibil->pila_z = new_elem;
-                kam_ibil->pila_y = NULL;
-
-                break;
-        }
+            break;
     }
-}
 
-void angeluaAldatu(int n){
-    kam_ibil->y_pi = kam_ibil->y_pi + n;
-    if( (kam_ibil->y_pi == 32) || (kam_ibil->y_pi == -32) ){
-        kam_ibil->y_pi = 0;
-    }
 }
