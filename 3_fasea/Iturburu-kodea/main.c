@@ -45,11 +45,16 @@ void initialization (){
 }
 
 void kamerakHasieratu(){
+
+    /* Hasierako posizioko matrizea egin */
+    GLdouble* lag = translazioa(0,0,22);
+    GLdouble* has = mult(identitatea(),lag);
+
     /* Objektu kamera hasieratu */
     kam_obj = (camera3d*)malloc(sizeof(camera3d));
 
     kam_obj->eye = (GLdouble*)malloc(sizeof(GLdouble)*4);
-    kam_obj->eye[0]=0; kam_obj->eye[1]=0; kam_obj->eye[2]=8; kam_obj->eye[3]=1;
+    kam_obj->eye[0]=0; kam_obj->eye[1]=0; kam_obj->eye[2]=0; kam_obj->eye[3]=1;
 
     kam_obj->center = (GLdouble*)malloc(sizeof(GLdouble)*4);
     kam_obj->center[0]=0; kam_obj->center[1]=0; kam_obj->center[2]=-5; kam_obj->center[3]=1;
@@ -58,15 +63,16 @@ void kamerakHasieratu(){
     kam_obj->up[0]=0; kam_obj->up[1]=1; kam_obj->up[2]=0; kam_obj->up[3]=0;
 
     kam_obj->pila_z = (pila*)malloc(sizeof(pila));
-    kam_obj->pila_z->matrix = identitatea();
+    kam_obj->pila_z->matrix = has;
     kam_obj->pila_z->next   = NULL;
     kam_obj->pila_y = NULL;
+    kam_obj->angelua = 0;
 
     /* Kamera ibiltaria hasieratu */
     kam_ibil = (camera3d*)malloc(sizeof(camera3d));
 
     kam_ibil->eye = (GLdouble*)malloc(sizeof(GLdouble)*4);
-    kam_ibil->eye[0]=0; kam_ibil->eye[1]=0; kam_ibil->eye[2]=8; kam_ibil->eye[3]=1;
+    kam_ibil->eye[0]=0; kam_ibil->eye[1]=0; kam_ibil->eye[2]=0; kam_ibil->eye[3]=1;
 
     kam_ibil->center = (GLdouble*)malloc(sizeof(GLdouble)*4);
     kam_ibil->center[0]=0; kam_ibil->center[1]=0; kam_ibil->center[2]=-5; kam_ibil->center[3]=1;
@@ -75,9 +81,10 @@ void kamerakHasieratu(){
     kam_ibil->up[0]=0; kam_ibil->up[1]=1; kam_ibil->up[2]=0; kam_ibil->up[3]=0;
 
     kam_ibil->pila_z = (pila*)malloc(sizeof(pila));
-    kam_ibil->pila_z->matrix = identitatea();
+    kam_ibil->pila_z->matrix = has;
     kam_ibil->pila_z->next   = NULL;
     kam_ibil->pila_y = NULL;
+    kam_ibil->angelua = 0;
 
 }
 

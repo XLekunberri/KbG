@@ -11,5 +11,7 @@ void aldaketakAplikatu(GLdouble *mat, int key);
 void kameraAldatu(GLdouble *mat, int biratu);
 void print_help();
 
+void angeluaAldatu(int aldaketa);
+
 
 #endif // IO_H

@@ -94,7 +94,7 @@
 #define KG_KAM_IBIL                         2
 
 #define KG_KAM_FOV                          90
-#define KG_KAM_AP                           16/9
+#define KG_KAM_AP                           1.9
 #define KG_KAM_N                            0
 #define KG_KAM_F                            1000
 
@@ -182,6 +182,7 @@ struct camera3d{
     GLdouble *up;                       /* normal vector of the camera */
     pila *pila_z;					    /* egindako aldaketak */
     pila *pila_y;			            /* desegindako aldaketak */
+    int angelua;                        /* x non x*pi angelua den*/
 };
 
 typedef struct camera3d camera3d;

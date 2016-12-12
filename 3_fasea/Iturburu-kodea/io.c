@@ -606,6 +606,8 @@ void objektu_keyboard(int key, int x, int y) {
 
 void kamera_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
+    double angelua, z_ard, x_ard;
+    int biratu = 0;
     switch (key) {
         case GLUT_KEY_UP:
             switch (kamera) {
@@ -626,7 +628,11 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    mat = translazioa(0, 0, -1);
+                    biratu = 0;
+                    angelua = kam_ibil->angelua*PI;
+                    z_ard = -cos(angelua);
+                    x_ard = -sin(angelua);
+                    mat = translazioa(x_ard, 0, z_ard);
                     break;
             }
             break;
@@ -649,7 +655,11 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    mat = translazioa(0, 0, -1);
+                    biratu = 0;
+                    angelua = kam_ibil->angelua*PI;
+                    z_ard = cos(angelua);
+                    x_ard = sin(angelua);
+                    mat = translazioa(x_ard, 0, z_ard);
                     break;
             }
             break;
@@ -673,6 +683,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 1;
                     mat = biraketa(0, -1, 0);
                     break;
             }
@@ -697,6 +708,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 1;
                     mat = biraketa(0, 1, 0);
                     break;
             }
@@ -721,6 +733,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 0;
                     mat = biraketa(-1, 0, 0);
                     break;
             }
@@ -745,6 +758,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
+                    biratu = 0;
                     mat = biraketa(1, 0, 0);
                     break;
             }
@@ -754,7 +768,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
     }
     if (mat != NULL) {
-        kameraAldatu(mat);
+        kameraAldatu(mat, biratu);
     }
 }
 
@@ -785,7 +799,7 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     }
 }
 
-void kameraAldatu(GLdouble *mat){
+void kameraAldatu(GLdouble *mat, int biratu){
     GLdouble *matEm;
     pila *new_elem = (pila*)malloc(sizeof(pila));
     printf("Aldaketa matrizea:\n");
@@ -810,8 +824,14 @@ void kameraAldatu(GLdouble *mat){
 
             break;
         case KG_KAM_IBIL:
-
-            matEm = mult(kam_ibil->pila_z->matrix, mat);
+            switch (biratu) {
+                case 0:
+                    matEm = mult(mat, kam_ibil->pila_z->matrix);
+                    break;
+                case 1:
+                    matEm = mult(kam_ibil->pila_z->matrix, mat);
+                    break;
+            }
             //Pilak eguneratu
             new_elem->matrix = matEm;
             new_elem->next = kam_ibil->pila_z;
@@ -821,4 +841,11 @@ void kameraAldatu(GLdouble *mat){
             break;
     }
 
+}
+
+void angeluaAldatu(int aldaketa){
+    kam_ibil->angelua += aldaketa;
+    if(aldaketa == 16 || aldaketa == -16){
+        kam_ibil->angelua = 0;
+    }
 }
