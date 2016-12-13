@@ -382,6 +382,12 @@ void keyboard(unsigned char key, int x, int y) {
                                     kam_ibil->pila_y = add_elem->next;
                                     add_elem->next = kam_ibil->pila_z;
                                     kam_ibil->pila_z = add_elem;
+
+                                    //Aldaketa pila_pi_y-tik pila_pi_z-ra mugitu
+                                    add_elem = kam_ibil->pila_pi_y;
+                                    kam_ibil->pila_pi_y = add_elem->next;
+                                    add_elem->next = kam_ibil->pila_pi_z;
+                                    kam_ibil->pila_pi_z = add_elem;
                                 } else {
                                     sprintf(mezua, "Ez dago aldaketarik berregiteko");
                                 }
@@ -433,11 +439,19 @@ void keyboard(unsigned char key, int x, int y) {
                         case KG_KAM_IBIL:
                             if (kam_ibil != 0) {
                                 if (kam_ibil->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+
                                     //Aldaketa pila_z-tik pila_y-ra mugitu
                                     pila *del_elem = kam_ibil->pila_z;
                                     kam_ibil->pila_z = del_elem->next;
                                     del_elem->next = kam_ibil->pila_y;
                                     kam_ibil->pila_y = del_elem;
+
+                                    //Aldaketa pila_pi_z-tik pila_pi_y-ra mugitu
+                                    del_elem = kam_ibil->pila_pi_z;
+                                    kam_ibil->pila_pi_z = del_elem->next;
+                                    del_elem->next = kam_ibil->pila_pi_y;
+                                    kam_ibil->pila_pi_y = del_elem;
+
                                 } else {
                                     sprintf(mezua, "Ez dago aldaketarik desegiteko");
                                 }
@@ -607,7 +621,7 @@ void objektu_keyboard(int key, int x, int y) {
 void kamera_keyboard(int key, int x, int y) {
     GLdouble *mat = NULL;
     double angelua, z_ard, x_ard;
-    int biratu = 0;
+    int lokala = 0;
     switch (key) {
         case GLUT_KEY_UP:
             switch (kamera) {
@@ -628,10 +642,10 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
-                    angelua = kam_ibil->angelua*PI;
-                    z_ard = -cos(angelua);
-                    x_ard = -sin(angelua);
+                    lokala = 0;
+                    angelua = *(kam_ibil->pila_pi_z->matrix)*PI/16;
+                    z_ard = -sin(angelua);
+                    x_ard = -cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
                     break;
             }
@@ -655,10 +669,10 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
-                    angelua = kam_ibil->angelua*PI;
-                    z_ard = cos(angelua);
-                    x_ard = sin(angelua);
+                    lokala = 0;
+                    angelua = *(kam_ibil->pila_pi_z->matrix)*PI/16;
+                    z_ard = sin(angelua);
+                    x_ard = cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
                     break;
             }
@@ -683,7 +697,8 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 1;
+                    lokala = 1;
+                    angeluaAldatu(1);
                     mat = biraketa(0, -1, 0);
                     break;
             }
@@ -708,7 +723,8 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 1;
+                    lokala = 1;
+                    angeluaAldatu(-1);
                     mat = biraketa(0, 1, 0);
                     break;
             }
@@ -733,7 +749,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
+                    lokala = 1;
                     mat = biraketa(-1, 0, 0);
                     break;
             }
@@ -758,7 +774,7 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    biratu = 0;
+                    lokala = 1;
                     mat = biraketa(1, 0, 0);
                     break;
             }
@@ -768,7 +784,7 @@ void kamera_keyboard(int key, int x, int y) {
             break;
     }
     if (mat != NULL) {
-        kameraAldatu(mat, biratu);
+        kameraAldatu(mat, lokala);
     }
 }
 
@@ -799,7 +815,7 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     }
 }
 
-void kameraAldatu(GLdouble *mat, int biratu){
+void kameraAldatu(GLdouble *mat, int lokala){
     GLdouble *matEm;
     pila *new_elem = (pila*)malloc(sizeof(pila));
     printf("Aldaketa matrizea:\n");
@@ -824,7 +840,7 @@ void kameraAldatu(GLdouble *mat, int biratu){
 
             break;
         case KG_KAM_IBIL:
-            switch (biratu) {
+            switch (lokala) {
                 case 0:
                     matEm = mult(mat, kam_ibil->pila_z->matrix);
                     break;
@@ -844,8 +860,13 @@ void kameraAldatu(GLdouble *mat, int biratu){
 }
 
 void angeluaAldatu(int aldaketa){
-    kam_ibil->angelua += aldaketa;
-    if(aldaketa == 16 || aldaketa == -16){
-        kam_ibil->angelua = 0;
+    pila *new_elem = (pila*)malloc(sizeof(pila));
+    new_elem->matrix = (GLdouble*)malloc(sizeof(GLdouble));
+    *(new_elem->matrix) = *(kam_ibil->pila_pi_z->matrix) + aldaketa;
+    if(*(new_elem->matrix) == KG_HAS_ANG+16 || *(new_elem->matrix) == KG_HAS_ANG-16){
+        *(new_elem->matrix) = KG_HAS_ANG;
     }
+    new_elem->next = kam_ibil->pila_pi_z;
+    kam_ibil->pila_pi_z = new_elem;
+
 }

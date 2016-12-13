@@ -101,6 +101,8 @@
 #define KG_OBJ                              0
 #define KG_KAM                              1
 
+#define KG_HAS_ANG                          8
+
 /** STRUCTURES **/
 
 /****************************
@@ -182,7 +184,8 @@ struct camera3d{
     GLdouble *up;                       /* normal vector of the camera */
     pila *pila_z;					    /* egindako aldaketak */
     pila *pila_y;			            /* desegindako aldaketak */
-    int angelua;                        /* x non x*pi angelua den*/
+    pila *pila_pi_z;                    /* Eguneko angelua gordetzen duen pila */
+    pila *pila_pi_y;                    /* Desegindako angelua gordetzen duen pila */
 };
 
 typedef struct camera3d camera3d;

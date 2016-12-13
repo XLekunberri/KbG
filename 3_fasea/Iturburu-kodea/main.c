@@ -66,7 +66,6 @@ void kamerakHasieratu(){
     kam_obj->pila_z->matrix = has;
     kam_obj->pila_z->next   = NULL;
     kam_obj->pila_y = NULL;
-    kam_obj->angelua = 0;
 
     /* Kamera ibiltaria hasieratu */
     kam_ibil = (camera3d*)malloc(sizeof(camera3d));
@@ -84,8 +83,12 @@ void kamerakHasieratu(){
     kam_ibil->pila_z->matrix = has;
     kam_ibil->pila_z->next   = NULL;
     kam_ibil->pila_y = NULL;
-    kam_ibil->angelua = 0;
 
+    kam_ibil->pila_pi_z = (pila*)malloc(sizeof(pila));
+    kam_ibil->pila_pi_z->matrix = (GLdouble*)malloc(sizeof(GLdouble));
+    *(kam_ibil->pila_pi_z->matrix) = KG_HAS_ANG;
+    kam_ibil->pila_pi_z->next = NULL;
+    kam_ibil->pila_pi_y = NULL;
 }
 
 
