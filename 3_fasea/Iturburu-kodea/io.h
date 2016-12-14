@@ -12,6 +12,7 @@ void kameraAldatu(GLdouble *mat, int lokala);
 void print_help();
 
 void angeluaAldatu(int aldaketa);
+int mugituDaiteke(int nora);
 
 
 #endif // IO_H

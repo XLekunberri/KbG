@@ -382,12 +382,6 @@ void keyboard(unsigned char key, int x, int y) {
                                     kam_ibil->pila_y = add_elem->next;
                                     add_elem->next = kam_ibil->pila_z;
                                     kam_ibil->pila_z = add_elem;
-
-                                    //Aldaketa pila_pi_y-tik pila_pi_z-ra mugitu
-                                    add_elem = kam_ibil->pila_pi_y;
-                                    kam_ibil->pila_pi_y = add_elem->next;
-                                    add_elem->next = kam_ibil->pila_pi_z;
-                                    kam_ibil->pila_pi_z = add_elem;
                                 } else {
                                     sprintf(mezua, "Ez dago aldaketarik berregiteko");
                                 }
@@ -445,13 +439,6 @@ void keyboard(unsigned char key, int x, int y) {
                                     kam_ibil->pila_z = del_elem->next;
                                     del_elem->next = kam_ibil->pila_y;
                                     kam_ibil->pila_y = del_elem;
-
-                                    //Aldaketa pila_pi_z-tik pila_pi_y-ra mugitu
-                                    del_elem = kam_ibil->pila_pi_z;
-                                    kam_ibil->pila_pi_z = del_elem->next;
-                                    del_elem->next = kam_ibil->pila_pi_y;
-                                    kam_ibil->pila_pi_y = del_elem;
-
                                 } else {
                                     sprintf(mezua, "Ez dago aldaketarik desegiteko");
                                 }
@@ -643,7 +630,7 @@ void kamera_keyboard(int key, int x, int y) {
                     break;
                 case KG_KAM_IBIL:
                     lokala = 0;
-                    angelua = *(kam_ibil->pila_pi_z->matrix)*PI/16;
+                    angelua = kam_ibil->angelua*PI/16;
                     z_ard = -sin(angelua);
                     x_ard = -cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
@@ -670,7 +657,7 @@ void kamera_keyboard(int key, int x, int y) {
                     break;
                 case KG_KAM_IBIL:
                     lokala = 0;
-                    angelua = *(kam_ibil->pila_pi_z->matrix)*PI/16;
+                    angelua = kam_ibil->angelua*PI/16;
                     z_ard = sin(angelua);
                     x_ard = cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
@@ -749,8 +736,15 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    lokala = 1;
                     mat = biraketa(-1, 0, 0);
+                    if(mugituDaiteke(KG_DOWN)){
+                        lokala = 1;
+                    }
+                    else{
+                        mat = NULL;
+                    }
+
+
                     break;
             }
             break;
@@ -774,8 +768,13 @@ void kamera_keyboard(int key, int x, int y) {
                     }
                     break;
                 case KG_KAM_IBIL:
-                    lokala = 1;
                     mat = biraketa(1, 0, 0);
+                    if(mugituDaiteke(KG_UP)) {
+                        lokala = 1;
+                    }
+                    else{
+                        mat = NULL;
+                    }
                     break;
             }
             break;
@@ -860,13 +859,27 @@ void kameraAldatu(GLdouble *mat, int lokala){
 }
 
 void angeluaAldatu(int aldaketa){
-    pila *new_elem = (pila*)malloc(sizeof(pila));
-    new_elem->matrix = (GLdouble*)malloc(sizeof(GLdouble));
-    *(new_elem->matrix) = *(kam_ibil->pila_pi_z->matrix) + aldaketa;
-    if(*(new_elem->matrix) == KG_HAS_ANG+16 || *(new_elem->matrix) == KG_HAS_ANG-16){
-        *(new_elem->matrix) = KG_HAS_ANG;
+    kam_ibil->angelua = kam_ibil->angelua + aldaketa;
+    if( kam_ibil->angelua == KG_HAS_ANG+16 || kam_ibil->angelua == KG_HAS_ANG-16){
+        kam_ibil->angelua = KG_HAS_ANG;
     }
-    new_elem->next = kam_ibil->pila_pi_z;
-    kam_ibil->pila_pi_z = new_elem;
+}
 
+int mugituDaiteke(int nora){
+    int mugitu = 0;
+    switch (nora){
+        case KG_UP:
+            if(kam_ibil->mugapena <= 8){
+                kam_ibil->mugapena = kam_ibil->mugapena + 1;
+                mugitu = 1;
+            }
+            break;
+        case KG_DOWN:
+            if(kam_ibil->mugapena >= -8){
+                kam_ibil->mugapena = kam_ibil->mugapena - 1;
+                mugitu = 1;
+            }
+            break;
+    }
+    return(mugitu);
 }

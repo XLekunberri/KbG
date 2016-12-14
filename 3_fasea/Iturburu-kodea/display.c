@@ -169,6 +169,7 @@ void display(void) {
             print_vector(center);
             printf("up:\n");
             print_vector(up);
+            //sprintf(mezua, "center: %f %f %f\tup: %f %f %f", center[0], center[1],center[2], up[0], up[1], up[2]);
 
             //kokatuKamera(eye, center, up);
             glMatrixMode(GL_PROJECTION);
