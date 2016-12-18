@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/iker/JetBrains/clion-2016.2.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/xabiier/Programas/CLion/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/iker/JetBrains/clion-2016.2.3/bin/cmake/bin/cmake -E remove -f
+RM = /home/xabiier/Programas/CLion/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea
+CMAKE_SOURCE_DIR = "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Iturburu_kodea.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/Iturburu_kodea.dir/flags.make
 
 CMakeFiles/Iturburu_kodea.dir/display.c.o: CMakeFiles/Iturburu_kodea.dir/flags.make
 CMakeFiles/Iturburu_kodea.dir/display.c.o: ../display.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Iturburu_kodea.dir/display.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/display.c.o   -c /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Iturburu_kodea.dir/display.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/display.c.o   -c "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.c"
 
 CMakeFiles/Iturburu_kodea.dir/display.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Iturburu_kodea.dir/display.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.c > CMakeFiles/Iturburu_kodea.dir/display.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.c" > CMakeFiles/Iturburu_kodea.dir/display.c.i
 
 CMakeFiles/Iturburu_kodea.dir/display.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Iturburu_kodea.dir/display.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.c -o CMakeFiles/Iturburu_kodea.dir/display.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.c" -o CMakeFiles/Iturburu_kodea.dir/display.c.s
 
 CMakeFiles/Iturburu_kodea.dir/display.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/Iturburu_kodea.dir/display.c.o.provides.build: CMakeFiles/Iturburu_ko
 
 CMakeFiles/Iturburu_kodea.dir/io.c.o: CMakeFiles/Iturburu_kodea.dir/flags.make
 CMakeFiles/Iturburu_kodea.dir/io.c.o: ../io.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Iturburu_kodea.dir/io.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/io.c.o   -c /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Iturburu_kodea.dir/io.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/io.c.o   -c "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.c"
 
 CMakeFiles/Iturburu_kodea.dir/io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Iturburu_kodea.dir/io.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.c > CMakeFiles/Iturburu_kodea.dir/io.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.c" > CMakeFiles/Iturburu_kodea.dir/io.c.i
 
 CMakeFiles/Iturburu_kodea.dir/io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Iturburu_kodea.dir/io.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.c -o CMakeFiles/Iturburu_kodea.dir/io.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.c" -o CMakeFiles/Iturburu_kodea.dir/io.c.s
 
 CMakeFiles/Iturburu_kodea.dir/io.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/Iturburu_kodea.dir/io.c.o.provides.build: CMakeFiles/Iturburu_kodea.d
 
 CMakeFiles/Iturburu_kodea.dir/load_obj.c.o: CMakeFiles/Iturburu_kodea.dir/flags.make
 CMakeFiles/Iturburu_kodea.dir/load_obj.c.o: ../load_obj.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Iturburu_kodea.dir/load_obj.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/load_obj.c.o   -c /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Iturburu_kodea.dir/load_obj.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/load_obj.c.o   -c "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.c"
 
 CMakeFiles/Iturburu_kodea.dir/load_obj.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Iturburu_kodea.dir/load_obj.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.c > CMakeFiles/Iturburu_kodea.dir/load_obj.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.c" > CMakeFiles/Iturburu_kodea.dir/load_obj.c.i
 
 CMakeFiles/Iturburu_kodea.dir/load_obj.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Iturburu_kodea.dir/load_obj.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.c -o CMakeFiles/Iturburu_kodea.dir/load_obj.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.c" -o CMakeFiles/Iturburu_kodea.dir/load_obj.c.s
 
 CMakeFiles/Iturburu_kodea.dir/load_obj.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/Iturburu_kodea.dir/load_obj.c.o.provides.build: CMakeFiles/Iturburu_k
 
 CMakeFiles/Iturburu_kodea.dir/main.c.o: CMakeFiles/Iturburu_kodea.dir/flags.make
 CMakeFiles/Iturburu_kodea.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Iturburu_kodea.dir/main.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/main.c.o   -c /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Iturburu_kodea.dir/main.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/main.c.o   -c "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/main.c"
 
 CMakeFiles/Iturburu_kodea.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Iturburu_kodea.dir/main.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/main.c > CMakeFiles/Iturburu_kodea.dir/main.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/main.c" > CMakeFiles/Iturburu_kodea.dir/main.c.i
 
 CMakeFiles/Iturburu_kodea.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Iturburu_kodea.dir/main.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/main.c -o CMakeFiles/Iturburu_kodea.dir/main.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/main.c" -o CMakeFiles/Iturburu_kodea.dir/main.c.s
 
 CMakeFiles/Iturburu_kodea.dir/main.c.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/Iturburu_kodea.dir/main.c.o.provides.build: CMakeFiles/Iturburu_kodea
 
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o: CMakeFiles/Iturburu_kodea.dir/flags.make
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o: ../matrizeak.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o   -c /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o   -c "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.c"
 
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Iturburu_kodea.dir/matrizeak.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.c > CMakeFiles/Iturburu_kodea.dir/matrizeak.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.c" > CMakeFiles/Iturburu_kodea.dir/matrizeak.c.i
 
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Iturburu_kodea.dir/matrizeak.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.c -o CMakeFiles/Iturburu_kodea.dir/matrizeak.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.c" -o CMakeFiles/Iturburu_kodea.dir/matrizeak.c.s
 
 CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o.requires:
 
@@ -200,7 +200,7 @@ Iturburu_kodea: /usr/lib/x86_64-linux-gnu/libglut.so
 Iturburu_kodea: /usr/lib/x86_64-linux-gnu/libXmu.so
 Iturburu_kodea: /usr/lib/x86_64-linux-gnu/libXi.so
 Iturburu_kodea: CMakeFiles/Iturburu_kodea.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Iturburu_kodea"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Iturburu_kodea"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Iturburu_kodea.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -221,6 +221,6 @@ CMakeFiles/Iturburu_kodea.dir/clean:
 .PHONY : CMakeFiles/Iturburu_kodea.dir/clean
 
 CMakeFiles/Iturburu_kodea.dir/depend:
-	cd /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug /home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Iturburu_kodea.dir/depend
 

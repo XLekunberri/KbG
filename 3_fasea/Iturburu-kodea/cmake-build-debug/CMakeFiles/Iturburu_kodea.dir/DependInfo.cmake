@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.c" "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/display.c.o"
-  "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.c" "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/io.c.o"
-  "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.c" "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/load_obj.c.o"
-  "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/main.c" "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/main.c.o"
-  "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.c" "/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o"
+  "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.c" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/display.c.o"
+  "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.c" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/io.c.o"
+  "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.c" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/load_obj.c.o"
+  "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/main.c" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/main.c.o"
+  "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.c" "/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/CMakeFiles/Iturburu_kodea.dir/matrizeak.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

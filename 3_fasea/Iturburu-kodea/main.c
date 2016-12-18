@@ -106,7 +106,10 @@ int main(int argc, char** argv) {
     glutInitWindowSize(KG_WINDOW_WIDTH, KG_WINDOW_HEIGHT);
     glutInitWindowPosition(KG_WINDOW_X, KG_WINDOW_Y);
     glutCreateWindow(KG_WINDOW_TITLE);
-    glEnable(GL_DEPTH_TEST);
+
+    //glEnable(GL_DEPTH_TEST);
+
+
 
     /* set the callback functions */
     glutDisplayFunc(display);

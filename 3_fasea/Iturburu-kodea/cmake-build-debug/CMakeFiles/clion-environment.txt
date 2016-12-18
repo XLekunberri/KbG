@@ -1,1 +1,1 @@
-CMake: 3.6.2@/home/iker/JetBrains/clion-2016.2.3/bin/cmake/bin/cmake
+CMake: 3.6.2@/home/xabiier/Programas/CLion/bin/cmake/bin/cmake

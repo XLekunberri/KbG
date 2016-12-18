@@ -135,10 +135,16 @@ typedef struct {
  * Structure to store       *
  * objects' vertices         *
  ****************************/
+
+typedef  struct{
+    vector3 vector;
+    GLint face_ind;
+} normal;
+
 typedef struct {
     point3 coord;                       /* coordinates,x, y, z */
     GLint num_faces;                    /* number of faces that share this vertex */
-    vector3 normal;                   /* normal vector of the vertex */
+    normal normala;                   /* normal vector of the vertex */
 } vertex;
 
 /****************************

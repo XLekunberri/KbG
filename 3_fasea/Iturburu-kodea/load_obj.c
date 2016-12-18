@@ -61,7 +61,7 @@ void setIzena(char **izena, char *helbidea){
 
 }
 
-void normalaKalkulatu(face *aurpegia, vertex *erpin_taula){
+void normalaKalkulatu(face *aurpegia, vertex *erpin_taula, int ind){
 
     // Aurpegiaren 3 erpin hartu
     vertex *erpina1 = &(erpin_taula[aurpegia->vertex_table[0]]);
@@ -97,7 +97,8 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula){
     //Bektore normala aurpegiaren erpin guztietan gorde
 
     for(int i=0; i < aurpegia->num_vertices; i++){
-        erpin_taula[i].normal = axb;
+        erpin_taula[i].normala.vector = axb;
+        erpin_taula[i].normala.face_ind = ind;
     }
 }
 
@@ -110,7 +111,7 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula){
 int read_wavefront(char * file_name, object3d * object_ptr) {
     vertex *vertex_table;
     face *face_table;
-    GLdouble *normal = (GLdouble*)malloc(sizeof(GLdouble)*3);
+    vector3 normal;
     int num_vertices = -1, num_faces = -1, count_vertices = 0, count_faces = 0;
     FILE *obj_file;
     char line[MAXLINE], line_1[MAXLINE], aux[45];
@@ -207,6 +208,7 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
                     //printf(" %d ",values[i] - 1);
                     vertex_table[face_table[j].vertex_table[i]].num_faces++;
                     }
+
                 //printf("\n");
                 j++;
                 }
@@ -214,11 +216,8 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
         }
     }
 
-    fclose(obj_file);
-
-
-    for(int i = 0; i<num_faces; i++){
-        normalaKalkulatu(&(face_table[i]), vertex_table);
+    for(int ind = 0; ind < num_faces; ind++){
+        normalaKalkulatu(&(face_table[ind]), vertex_table, ind);
     }
 
     printf("2 pasada\n");

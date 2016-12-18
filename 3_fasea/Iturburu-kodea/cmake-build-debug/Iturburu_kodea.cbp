@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
+				<Option working_dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
+				<Option working_dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
+				<Option working_dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Iturburu_kodea">
-				<Option output="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Iturburu_kodea" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
+				<Option output="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Iturburu_kodea" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 Iturburu_kodea"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 Iturburu_kodea"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Iturburu_kodea/fast">
-				<Option output="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Iturburu_kodea" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
+				<Option output="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Iturburu_kodea" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,41 +77,41 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 Iturburu_kodea/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 Iturburu_kodea/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xabiier/Clase/KBG/2.\ Zatia/3_fasea/Iturburu-kodea/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.c">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.c">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/display.h">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/display.h">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.c">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.c">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/io.h">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/io.h">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.c">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.c">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/load_obj.h">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/load_obj.h">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/main.c">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/main.c">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.c">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.c">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/matrizeak.h">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/matrizeak.h">
 			<Option target="Iturburu_kodea"/>
 		</Unit>
-		<Unit filename="/home/iker/Escritorio/3_maila/KbG/2_erdia/3_fasea/Iturburu-kodea/CMakeLists.txt">
+		<Unit filename="/home/xabiier/Clase/KBG/2. Zatia/3_fasea/Iturburu-kodea/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
