@@ -218,7 +218,7 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
 
 
     for(int i = 0; i<num_faces; i++){
-        normalaKalkulatu(face_table[i], vertex_table);
+        normalaKalkulatu(&(face_table[i]), vertex_table);
     }
 
     printf("2 pasada\n");
