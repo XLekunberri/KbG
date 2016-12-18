@@ -76,8 +76,6 @@ void keyboard(unsigned char key, int x, int y) {
     object3d *auxiliar_object = 0;
     GLdouble wd,he,midx,midy;
 	
-	printf("%d %c\n", key, key);
-	
     switch (key) {
         case 'f':
         case 'F':
@@ -337,6 +335,32 @@ void keyboard(unsigned char key, int x, int y) {
             }
             break;
 
+        case 'a':
+        case 'A':
+            sprintf(mezua,"a tekla");
+            break;
+
+        case '1':
+            sprintf(mezua,"1 tekla");
+            break;
+        case '2':
+            sprintf(mezua,"2 tekla");
+            break;
+        case '3':
+            sprintf(mezua,"3 tekla");
+            break;
+        case '4':
+            sprintf(mezua,"4 tekla");
+            break;
+        case '5':
+            sprintf(mezua,"5 tekla");
+            break;
+
+
+        case 13: /* <ENTER> */
+            sprintf(mezua, "ENTER");
+            break;
+
 
         case 25: /* <CTRL + y/Y> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
@@ -462,6 +486,29 @@ void keyboard(unsigned char key, int x, int y) {
 void special_keyboard(int key, int x, int y) {
 
     glPushMatrix();
+    switch(key){
+        case GLUT_KEY_F1:
+            sprintf(mezua,"F1 tekla\n");
+            break;
+        case GLUT_KEY_F2:
+            sprintf(mezua,"F2 tekla");
+            break;
+        case GLUT_KEY_F3:
+            sprintf(mezua,"F3 tekla");
+            break;
+        case GLUT_KEY_F4:
+            sprintf(mezua,"F4 tekla");
+            break;
+        case GLUT_KEY_F5:
+            sprintf(mezua,"F5 tekla");
+            break;
+        case GLUT_KEY_F11:
+            sprintf(mezua,"F11 tekla");
+            break;
+        case GLUT_KEY_F12:
+            sprintf(mezua,"F12 tekla");
+            break;
+    }
     switch(selected){
         case KG_OBJ:
             objektu_keyboard(key,x,y);
@@ -469,6 +516,7 @@ void special_keyboard(int key, int x, int y) {
         case KG_KAM:
             kamera_keyboard(key,x,y);
             break;
+
     }
 
 
@@ -810,7 +858,7 @@ void aldaketakAplikatu(GLdouble *mat, int key){
         }
     }
     else if (key != GLUT_CTRL){
-        sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
+        //sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
     }
 }
 

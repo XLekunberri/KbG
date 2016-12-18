@@ -64,7 +64,7 @@ void reshape(int width, int height) {
 }
 
 void draw_grid(){
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glColor3f(KG_COL_GRID_R, KG_COL_GRID_G, KG_COL_GRID_B);
 
@@ -216,10 +216,18 @@ void display(void) {
         for (f = 0; f < aux_obj->num_faces; f++) {
             glBegin(GL_POLYGON);
             for (v = 0; v < aux_obj->face_table[f].num_vertices; v++) {
+
+                /*
+                glVertex3d(aux_obj->x,
+                           y,
+                           z);
+                */
+
                 v_index = aux_obj->face_table[f].vertex_table[v];
                 glVertex3d(aux_obj->vertex_table[v_index].coord.x,
                         aux_obj->vertex_table[v_index].coord.y,
                         aux_obj->vertex_table[v_index].coord.z);
+
 
             }
             glEnd();

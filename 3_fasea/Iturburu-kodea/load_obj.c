@@ -34,7 +34,7 @@ static int sreadint2(char * lerroa, int * zenbakiak) {
     return (kont);
 }
 
-//SEGMENTATION FAULT EMATEN DU :(
+
 void setIzena(char **izena, char *helbidea){
     int end_ind = strlen(helbidea);
     int start_ind = end_ind;
@@ -61,6 +61,46 @@ void setIzena(char **izena, char *helbidea){
 
 }
 
+void normalaKalkulatu(face *aurpegia, vertex *erpin_taula){
+
+    // Aurpegiaren 3 erpin hartu
+    vertex *erpina1 = &(erpin_taula[aurpegia->vertex_table[0]]);
+    vertex *erpina2 = &(erpin_taula[aurpegia->vertex_table[1]]);
+    vertex *erpina3 = &(erpin_taula[aurpegia->vertex_table[2]]);
+
+    //Bi bektoreak kalkulatu
+    vector3 a, b;
+
+    a.x = erpina1->coord.x - erpina2->coord.x;
+    a.y = erpina1->coord.y - erpina2->coord.y;
+    a.z = erpina1->coord.z - erpina2->coord.z;
+
+    b.x = erpina1->coord.x - erpina3->coord.x;
+    b.y = erpina1->coord.y - erpina3->coord.y;
+    b.z = erpina1->coord.z - erpina3->coord.z;
+
+    //Bektoreen biderkadura bektoriala kalkulatu
+    vector3 axb;
+
+    axb.x = a.y*b.z - a.z*b.y;
+    axb.y = a.z*b.x - a.x*b.z;
+    axb.z = a.x*b.y - a.y*b.x;
+
+    //Biderkatura bektoriala normalizatu
+    GLdouble norma = sqrt(axb.x*axb.x + axb.y*axb.y + axb.z*axb.z);
+
+    axb.x = axb.x/norma;
+    axb.y = axb.y/norma;
+    axb.z = axb.z/norma;
+
+
+    //Bektore normala aurpegiaren erpin guztietan gorde
+
+    for(int i=0; i < aurpegia->num_vertices; i++){
+        erpin_taula[i].normal = axb;
+    }
+}
+
 /**
  * @brief Function to read wavefront files (*.obj)
  * @param file_name Path of the file to be read
@@ -70,6 +110,7 @@ void setIzena(char **izena, char *helbidea){
 int read_wavefront(char * file_name, object3d * object_ptr) {
     vertex *vertex_table;
     face *face_table;
+    GLdouble *normal = (GLdouble*)malloc(sizeof(GLdouble)*3);
     int num_vertices = -1, num_faces = -1, count_vertices = 0, count_faces = 0;
     FILE *obj_file;
     char line[MAXLINE], line_1[MAXLINE], aux[45];
@@ -174,6 +215,11 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     }
 
     fclose(obj_file);
+
+
+    for(int i = 0; i<num_faces; i++){
+        normalaKalkulatu(face_table[i], vertex_table);
+    }
 
     printf("2 pasada\n");
 
