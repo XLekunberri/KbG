@@ -23,10 +23,16 @@ extern camera3d* kam_ibil;
 
 int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
-int selected = KG_OBJ;
+int selected_change = KG_OBJ;
 
 int argiztatze_sistema = 0;
+int selected_light = KG_ARGIA_1;
 
+int gaituta_1 = KG_DESGAITUTA;
+int gaituta_2 = KG_DESGAITUTA;
+int gaituta_3 = KG_DESGAITUTA;
+int gaituta_4 = KG_DESGAITUTA;
+int gaituta_5 = KG_DESGAITUTA;
 
 /**
  * @brief This function just prints information about the use
@@ -205,8 +211,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_min = midy - he/2;
             }
             else if(aldaketa == KG_MODE_ESKAL){
-                GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
-                mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
+                GLdouble *mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
                 aldaketakAplikatu(mat, key);
             }
             break;
@@ -228,8 +233,7 @@ void keyboard(unsigned char key, int x, int y) {
                 _ortho_y_min = midy - he/2;
             }
             else if(aldaketa == KG_MODE_ESKAL){
-                GLdouble *mat = (GLdouble*)malloc(sizeof(GLdouble) * 4 * 4);
-                mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
+                GLdouble *mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
                 aldaketakAplikatu(mat, key);
             }
             break;
@@ -305,16 +309,16 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'o':
         case 'O':
-            if(selected==KG_KAM){
-                selected = KG_OBJ;
+            if(selected_change != KG_OBJ){
+                selected_change = KG_OBJ;
                 sprintf(mezua, "Aldaketak objektuei aplikatuko zaizkie");
             }
             break;
 
         case 'k':
         case 'K':
-            if(selected==KG_OBJ){
-                selected = KG_KAM;
+            if(selected_change != KG_KAM){
+                selected_change = KG_KAM;
                 sprintf(mezua, "Aldaketak kamerari aplikatuko zaizkio");
             }
             break;
@@ -339,23 +343,41 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 'a':
         case 'A':
-            sprintf(mezua,"a tekla");
+            if( selected_change != KG_ARG){
+                selected_light = KG_ARG;
+                sprintf(mezua, "Aldaketak argiei aplikatuko zaizkie");
+            }
             break;
 
         case '1':
-            sprintf(mezua,"1 tekla");
+            if(selected_light != KG_ARGIA_1) {
+                selected_light = KG_ARGIA_1;
+                sprintf(mezua, "1. argia aukeratuta");
+            }
             break;
         case '2':
-            sprintf(mezua,"2 tekla");
+            if(selected_light != KG_ARGIA_2) {
+                selected_light = KG_ARGIA_2;
+                sprintf(mezua, "2. argia aukeratuta");
+            }
             break;
         case '3':
-            sprintf(mezua,"3 tekla");
+            if(selected_light != KG_ARGIA_3) {
+                selected_light = KG_ARGIA_3;
+                sprintf(mezua, "3. argia aukeratuta");
+            }
             break;
         case '4':
-            sprintf(mezua,"4 tekla");
+            if(selected_light != KG_ARGIA_4) {
+                selected_light = KG_ARGIA_4;
+                sprintf(mezua, "4. argia aukeratuta");
+            }
             break;
         case '5':
-            sprintf(mezua,"5 tekla");
+            if(selected_light != KG_ARGIA_5) {
+                selected_light = KG_ARGIA_5;
+                sprintf(mezua, "5. argia aukeratuta");
+            }
             break;
 
 
@@ -376,7 +398,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 25: /* <CTRL + y/Y> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + y/Y' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            switch(selected) {
+            switch(selected_change) {
                 case KG_OBJ:
                     if (_selected_object != 0) {
                         if (_selected_object->pila_y != NULL) {
@@ -432,7 +454,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 26: /* <CTRL + z/Z> */
             //Nahiz eta 'if (glutGetModifiers() == GLUT_ACTIVE_CTRL)' baldintza ez egon,
             //'CTRL + z/Z' kasua hartzen du, konbinazio horren emaitza karaktere berezi bat delako
-            switch(selected) {
+            switch(selected_change) {
                 case KG_OBJ:
                     if (_selected_object != 0) {
                         if (_selected_object->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
@@ -499,19 +521,64 @@ void special_keyboard(int key, int x, int y) {
     glPushMatrix();
     switch(key){
         case GLUT_KEY_F1:
-            sprintf(mezua,"F1 tekla\n");
+            switch(gaituta_1){
+                case KG_DESGAITUTA:
+                    gaituta_1 = KG_GAITUTA;
+                    sprintf(mezua, "1. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_1 = KG_DESGAITUTA;
+                    sprintf(mezua, "1. argia desgaituta");
+                    break;
+            }
             break;
         case GLUT_KEY_F2:
-            sprintf(mezua,"F2 tekla");
+            switch(gaituta_2){
+                case KG_DESGAITUTA:
+                    gaituta_2 = KG_GAITUTA;
+                    sprintf(mezua, "2. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_2 = KG_DESGAITUTA;
+                    sprintf(mezua, "2. argia desgaituta");
+                    break;
+            }
             break;
         case GLUT_KEY_F3:
-            sprintf(mezua,"F3 tekla");
+            switch(gaituta_3){
+                case KG_DESGAITUTA:
+                    gaituta_3 = KG_GAITUTA;
+                    sprintf(mezua, "3. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_3 = KG_DESGAITUTA;
+                    sprintf(mezua, "3. argia desgaituta");
+                    break;
+            }
             break;
         case GLUT_KEY_F4:
-            sprintf(mezua,"F4 tekla");
+            switch(gaituta_4){
+                case KG_DESGAITUTA:
+                    gaituta_4 = KG_GAITUTA;
+                    sprintf(mezua, "4. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_4 = KG_DESGAITUTA;
+                    sprintf(mezua, "4. argia desgaituta");
+                    break;
+            }
             break;
         case GLUT_KEY_F5:
-            sprintf(mezua,"F5 tekla");
+            switch(gaituta_5){
+                case KG_DESGAITUTA:
+                    gaituta_5 = KG_GAITUTA;
+                    sprintf(mezua, "5. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_5 = KG_DESGAITUTA;
+                    sprintf(mezua, "5. argia desgaituta");
+                    break;
+            }
             break;
         case GLUT_KEY_F11:
             sprintf(mezua,"F11 tekla");
@@ -520,7 +587,7 @@ void special_keyboard(int key, int x, int y) {
             sprintf(mezua,"F12 tekla");
             break;
     }
-    switch(selected){
+    switch(selected_change){
         case KG_OBJ:
             objektu_keyboard(key,x,y);
             break;

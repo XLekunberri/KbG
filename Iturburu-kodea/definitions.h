@@ -100,10 +100,20 @@
 
 #define KG_OBJ                              0
 #define KG_KAM                              1
+#define KG_ARG								2
 
 #define KG_HAS_ANG                          8
 #define KG_UP                               0
 #define KG_DOWN                             1
+
+#define KG_ARGIA_1							1
+#define KG_ARGIA_2							2
+#define KG_ARGIA_3							3
+#define KG_ARGIA_4							4
+#define KG_ARGIA_5							5
+
+#define KG_DESGAITUTA						0
+#define KG_GAITUTA							1
 
 /** STRUCTURES **/
 
