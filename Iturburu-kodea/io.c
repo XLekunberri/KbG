@@ -21,7 +21,7 @@ int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
 int selected_change = KG_OBJ;
 
-int argiztatze_sistema = 0;
+int argiztatze_sistema = KG_AMATATUTA;
 int selected_light = KG_ARGIA_1;
 
 int gaituta_1 = KG_DESGAITUTA;
@@ -380,31 +380,31 @@ void keyboard(unsigned char key, int x, int y) {
             break;
 
         case '1':
-            if(selected_light != KG_ARGIA_1) {
+            if(argiztatze_sistema == KG_PIZTUTA && selected_light != KG_ARGIA_1) {
                 selected_light = KG_ARGIA_1;
                 sprintf(mezua, "1. argia aukeratuta");
             }
             break;
         case '2':
-            if(selected_light != KG_ARGIA_2) {
+            if(argiztatze_sistema == KG_PIZTUTA && selected_light != KG_ARGIA_2) {
                 selected_light = KG_ARGIA_2;
                 sprintf(mezua, "2. argia aukeratuta");
             }
             break;
         case '3':
-            if(selected_light != KG_ARGIA_3) {
+            if(argiztatze_sistema == KG_PIZTUTA && selected_light != KG_ARGIA_3) {
                 selected_light = KG_ARGIA_3;
                 sprintf(mezua, "3. argia aukeratuta");
             }
             break;
         case '4':
-            if(selected_light != KG_ARGIA_4) {
+            if(argiztatze_sistema == KG_PIZTUTA && selected_light != KG_ARGIA_4) {
                 selected_light = KG_ARGIA_4;
                 sprintf(mezua, "4. argia aukeratuta");
             }
             break;
         case '5':
-            if(selected_light != KG_ARGIA_5) {
+            if(argiztatze_sistema == KG_PIZTUTA && selected_light != KG_ARGIA_5) {
                 selected_light = KG_ARGIA_5;
                 sprintf(mezua, "5. argia aukeratuta");
             }
@@ -412,15 +412,15 @@ void keyboard(unsigned char key, int x, int y) {
 
 
         case 13: /* <ENTER> */
-            if(argiztatze_sistema == 0) {
+            if(argiztatze_sistema == KG_AMATATUTA) {
                 glEnable(GL_LIGHTING);
                 sprintf(mezua, "Argiztatze sistema gaitua.");
-                argiztatze_sistema = 1;
+                argiztatze_sistema = KG_PIZTUTA;
             }
             else{
                 glDisable(GL_LIGHTING);
                 sprintf(mezua, "Argiztatze sistema desgaitua.");
-                argiztatze_sistema = 0;
+                argiztatze_sistema = KG_AMATATUTA;
             }
             break;
 
@@ -972,85 +972,87 @@ void kamera_keyboard(int key, int x, int y) {
 void special_keyboard(int key, int x, int y) {
 
     glPushMatrix();
-    switch(key){
-        case GLUT_KEY_F1:
-            switch(gaituta_1){
-                case KG_DESGAITUTA:
-                    gaituta_1 = KG_GAITUTA;
-                    sprintf(mezua, "1. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_1 = KG_DESGAITUTA;
-                    sprintf(mezua, "1. argia desgaituta");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GLUT_KEY_F2:
-            switch(gaituta_2){
-                case KG_DESGAITUTA:
-                    gaituta_2 = KG_GAITUTA;
-                    sprintf(mezua, "2. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_2 = KG_DESGAITUTA;
-                    sprintf(mezua, "2. argia desgaituta");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GLUT_KEY_F3:
-            switch(gaituta_3){
-                case KG_DESGAITUTA:
-                    gaituta_3 = KG_GAITUTA;
-                    sprintf(mezua, "3. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_3 = KG_DESGAITUTA;
-                    sprintf(mezua, "3. argia desgaituta");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GLUT_KEY_F4:
-            switch(gaituta_4){
-                case KG_DESGAITUTA:
-                    gaituta_4 = KG_GAITUTA;
-                    sprintf(mezua, "4. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_4 = KG_DESGAITUTA;
-                    sprintf(mezua, "4. argia desgaituta");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GLUT_KEY_F5:
-            switch(gaituta_5){
-                case KG_DESGAITUTA:
-                    gaituta_5 = KG_GAITUTA;
-                    sprintf(mezua, "5. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_5 = KG_DESGAITUTA;
-                    sprintf(mezua, "5. argia desgaituta");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GLUT_KEY_F11:
-            sprintf(mezua,"F11 tekla");
-            break;
-        case GLUT_KEY_F12:
-            sprintf(mezua,"F12 tekla");
-            break;
-        default:
-            break;
+    if (argiztatze_sistema == KG_PIZTUTA){
+        switch (key) {
+            case GLUT_KEY_F1:
+                switch (gaituta_1) {
+                    case KG_DESGAITUTA:
+                        gaituta_1 = KG_GAITUTA;
+                        sprintf(mezua, "1. argia gaituta");
+                        break;
+                    case KG_GAITUTA:
+                        gaituta_1 = KG_DESGAITUTA;
+                        sprintf(mezua, "1. argia desgaituta");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GLUT_KEY_F2:
+                switch (gaituta_2) {
+                    case KG_DESGAITUTA:
+                        gaituta_2 = KG_GAITUTA;
+                        sprintf(mezua, "2. argia gaituta");
+                        break;
+                    case KG_GAITUTA:
+                        gaituta_2 = KG_DESGAITUTA;
+                        sprintf(mezua, "2. argia desgaituta");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GLUT_KEY_F3:
+                switch (gaituta_3) {
+                    case KG_DESGAITUTA:
+                        gaituta_3 = KG_GAITUTA;
+                        sprintf(mezua, "3. argia gaituta");
+                        break;
+                    case KG_GAITUTA:
+                        gaituta_3 = KG_DESGAITUTA;
+                        sprintf(mezua, "3. argia desgaituta");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GLUT_KEY_F4:
+                switch (gaituta_4) {
+                    case KG_DESGAITUTA:
+                        gaituta_4 = KG_GAITUTA;
+                        sprintf(mezua, "4. argia gaituta");
+                        break;
+                    case KG_GAITUTA:
+                        gaituta_4 = KG_DESGAITUTA;
+                        sprintf(mezua, "4. argia desgaituta");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GLUT_KEY_F5:
+                switch (gaituta_5) {
+                    case KG_DESGAITUTA:
+                        gaituta_5 = KG_GAITUTA;
+                        sprintf(mezua, "5. argia gaituta");
+                        break;
+                    case KG_GAITUTA:
+                        gaituta_5 = KG_DESGAITUTA;
+                        sprintf(mezua, "5. argia desgaituta");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GLUT_KEY_F11:
+                sprintf(mezua, "F11 tekla sakatuta");
+                break;
+            case GLUT_KEY_F12:
+                sprintf(mezua, "F12 tekla sakatuta");
+                break;
+            default:
+                break;
+        }
     }
     switch(selected_change){
         case KG_OBJ:
@@ -1058,6 +1060,10 @@ void special_keyboard(int key, int x, int y) {
             break;
         case KG_KAM:
             kamera_keyboard(key,x,y);
+            break;
+        case KG_ARG:
+            //TODO
+            //ARGIA_KEYBOARD(KEY,X,Y);
             break;
         default:
             break;

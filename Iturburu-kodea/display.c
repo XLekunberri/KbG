@@ -213,14 +213,14 @@ void display(void) {
 
 
     /*First, we draw the grid and then the axes*/
-    if(argiztatze_sistema == 1){
+    if(argiztatze_sistema == KG_PIZTUTA){
         glDisable(GL_LIGHTING);
     }
     glDisable(GL_DEPTH_TEST);
     draw_grid();
     draw_axes();
     glEnable(GL_DEPTH_TEST);
-    if(argiztatze_sistema == 1){
+    if(argiztatze_sistema == KG_PIZTUTA){
         glEnable(GL_LIGHTING);
     }
 
@@ -266,7 +266,7 @@ void display(void) {
 
 
     /*Make the viewport*/
-    if(argiztatze_sistema == 1){
+    if(argiztatze_sistema == KG_PIZTUTA){
         glDisable(GL_LIGHTING);
     }
 
@@ -291,7 +291,7 @@ void display(void) {
     mezua[0] = '\0';
     glEnable(GL_DEPTH_TEST);
 
-    if(argiztatze_sistema == 1){
+    if(argiztatze_sistema == KG_PIZTUTA){
         glEnable(GL_LIGHTING);
     }
 

@@ -106,6 +106,9 @@
 #define KG_UP                               0
 #define KG_DOWN                             1
 
+#define KG_AMATATUTA                        0
+#define KG_PIZTUTA                          1
+
 #define KG_ARGIA_1							1
 #define KG_ARGIA_2							2
 #define KG_ARGIA_3							3
