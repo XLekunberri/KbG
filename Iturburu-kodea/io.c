@@ -25,6 +25,11 @@ int argiztatze_sistema = KG_AMATATUTA;
 int selected_light = KG_ARGIA_DEFAULT;
 
 extern light3d* argia1;
+extern light3d* argia2;
+extern light3d* argia3;
+extern light3d* argia4;
+extern light3d* argia5;
+
 
 int gaituta_1 = KG_DESGAITUTA;
 int gaituta_2 = KG_DESGAITUTA;
@@ -95,6 +100,35 @@ void aldaketakAplikatu(GLdouble *mat, int key){
     }
     else if (key != GLUT_CTRL){
         //sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
+    }
+}
+
+void argiaAldatu(light3d *argia, int i, GLenum GL_LIGHTi) {
+    switch (argia->mota){
+        case KG_EGUZKI:
+            argia->mota = KG_BONBILA;
+            sprintf(mezua, "%d. argian bonbila bat jarri da", i);
+
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_bonbila);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, argia->ang_bonbila);
+            break;
+        case KG_BONBILA:
+            argia->mota = KG_FOKO;
+            sprintf(mezua, "%d. argian foko bat jarri da", i);
+
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_foko);
+            glLightfv(GL_LIGHTi, GL_SPOT_DIRECTION, argia->norabide_foko);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, argia->ang_foko);
+            glLightf(GL_LIGHTi, GL_SPOT_EXPONENT, 1.0);
+            break;
+        case KG_FOKO:
+            argia->mota = KG_EGUZKI;
+            sprintf(mezua, "%d. argian eguzki bat jarri da", i);
+
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->norabide_eguzki);
+            break;
+        default:
+            break;
     }
 }
 
@@ -385,48 +419,48 @@ void keyboard(unsigned char key, int x, int y) {
             switch(selected_light){
                 case KG_ARGIA_1:
                     if(gaituta_1 == KG_GAITUTA){
-                        switch (argia1->mota){
-                            case KG_EGUZKI:
-                                argia1->mota = KG_BONBILA;
-                                sprintf(mezua, "1. argian bonbila bat jarri da");
-
-                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->coord_bonbila);
-                                glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, argia1->ang_bonbila);
-                                break;
-                            case KG_BONBILA:
-                                argia1->mota = KG_FOKO;
-                                sprintf(mezua, "1. argian foko bat jarri da");
-
-                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->coord_foko);
-                                glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, argia1->norabide_foko);
-                                glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, argia1->ang_foko);
-                                glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 1.0);
-                                break;
-                            case KG_FOKO:
-                                argia1->mota = KG_EGUZKI;
-                                sprintf(mezua, "1. argian eguzki bat jarri da");
-
-                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->norabide_eguzki);
-                                break;
-                            default:
-                                break;
-                        }
+                        argiaAldatu(argia1, 1, GL_LIGHT0);
                     }
                     else{
                         sprintf(mezua, "1. argia ez dago gaituta");
                     }
                     break;
                 case KG_ARGIA_2:
+                    if(gaituta_2 == KG_GAITUTA){
+                        argiaAldatu(argia2, 2, GL_LIGHT1);
+                    }
+                    else{
+                        sprintf(mezua, "2. argia ez dago gaituta");
+                    }
                     break;
                 case KG_ARGIA_3:
+                    if(gaituta_3 == KG_GAITUTA){
+                        argiaAldatu(argia3, 3, GL_LIGHT2);
+                    }
+                    else{
+                        sprintf(mezua, "3. argia ez dago gaituta");
+                    }
                     break;
                 case KG_ARGIA_4:
+                    if(gaituta_4 == KG_GAITUTA){
+                        argiaAldatu(argia4, 4, GL_LIGHT3);
+                    }
+                    else{
+                        sprintf(mezua, "4. argia ez dago gaituta");
+                    }
                     break;
                 case KG_ARGIA_5:
+                    if(gaituta_5 == KG_GAITUTA){
+                        argiaAldatu(argia5, 5, GL_LIGHT4);
+                    }
+                    else{
+                        sprintf(mezua, "5. argia ez dago gaituta");
+                    }                    
                     break;
                 default:
                     sprintf(mezua, "Ez dago argirik aukeratuta");
                     break;
+                
             }
             break;
 
@@ -607,7 +641,7 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
-void objektu_keyboard(int key, int x, int y) {
+void objektu_keyboard(int key) {
     GLdouble *mat = NULL;
     switch (key) {
         case GLUT_KEY_UP:
@@ -826,7 +860,7 @@ void angeluaAldatu(int aldaketa){
     }
 }
 
-void kamera_keyboard(int key, int x, int y) {
+void kamera_keyboard(int key) {
     GLdouble *mat = NULL;
     double angelua, z_ard, x_ard;
     int lokala = 0;
@@ -1044,10 +1078,12 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F2:
                 switch (gaituta_2) {
                     case KG_DESGAITUTA:
+                        glEnable(GL_LIGHT1);
                         gaituta_2 = KG_GAITUTA;
                         sprintf(mezua, "2. argia gaituta");
                         break;
                     case KG_GAITUTA:
+                        glDisable(GL_LIGHT1);
                         gaituta_2 = KG_DESGAITUTA;
                         sprintf(mezua, "2. argia desgaituta");
                         break;
@@ -1058,10 +1094,12 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F3:
                 switch (gaituta_3) {
                     case KG_DESGAITUTA:
+                        glEnable(GL_LIGHT2);
                         gaituta_3 = KG_GAITUTA;
                         sprintf(mezua, "3. argia gaituta");
                         break;
                     case KG_GAITUTA:
+                        glDisable(GL_LIGHT2);
                         gaituta_3 = KG_DESGAITUTA;
                         sprintf(mezua, "3. argia desgaituta");
                         break;
@@ -1072,10 +1110,12 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F4:
                 switch (gaituta_4) {
                     case KG_DESGAITUTA:
+                        glEnable(GL_LIGHT3);
                         gaituta_4 = KG_GAITUTA;
                         sprintf(mezua, "4. argia gaituta");
                         break;
                     case KG_GAITUTA:
+                        glDisable(GL_LIGHT3);
                         gaituta_4 = KG_DESGAITUTA;
                         sprintf(mezua, "4. argia desgaituta");
                         break;
@@ -1086,10 +1126,12 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F5:
                 switch (gaituta_5) {
                     case KG_DESGAITUTA:
+                        glEnable(GL_LIGHT4);
                         gaituta_5 = KG_GAITUTA;
                         sprintf(mezua, "5. argia gaituta");
                         break;
                     case KG_GAITUTA:
+                        glDisable(GL_LIGHT4);
                         gaituta_5 = KG_DESGAITUTA;
                         sprintf(mezua, "5. argia desgaituta");
                         break;
@@ -1109,10 +1151,10 @@ void special_keyboard(int key, int x, int y) {
     }
     switch(selected_change){
         case KG_OBJ:
-            objektu_keyboard(key,x,y);
+            objektu_keyboard(key);
             break;
         case KG_KAM:
-            kamera_keyboard(key,x,y);
+            kamera_keyboard(key);
             break;
         case KG_ARG:
             //TODO

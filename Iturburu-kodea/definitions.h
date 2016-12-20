@@ -178,10 +178,12 @@ typedef struct {
  * matrixes                 *
  ****************************/
 
-typedef struct{
+struct pila{
     GLdouble *matrix;
     struct pila *next;
-} pila;
+};
+
+typedef struct pila pila;
 
 /****************************
  * Structure to store a     *

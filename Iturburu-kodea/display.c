@@ -202,6 +202,22 @@ void display(void) {
     glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
 
+    glLightfv (GL_LIGHT1 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT1 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT1 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT2 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT2 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT2 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT3 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT3 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT3 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT4 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT4 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT4 , GL_SPECULAR , txuria );
+
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);

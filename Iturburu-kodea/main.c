@@ -24,6 +24,10 @@ camera3d* kam_obj;
 camera3d* kam_ibil;
 
 light3d* argia1;
+light3d* argia2;
+light3d* argia3;
+light3d* argia4;
+light3d* argia5;
 
 
 
@@ -90,46 +94,76 @@ void kamerakHasieratu(){
     kam_ibil->angelua = KG_HAS_ANG;
 }
 
-void argiakHasieratu() {
-    argia1 = (light3d *) malloc(sizeof(light3d));
-    
-    //argiaHasieratu(argia1,1);
+void argiaHasieratu(light3d* argia, float zenb){
 
     //Hasieran argi guztiak eguzkiak izango dira
-    argia1->mota = KG_EGUZKI;
+    argia->mota = KG_EGUZKI;
 
     //Eguzkia
-    argia1->norabide_eguzki = (GLfloat *) malloc(sizeof(GLfloat) * 4);
-    argia1->norabide_eguzki[0] = 1.0f;
-    argia1->norabide_eguzki[1] = 0.0f;
-    argia1->norabide_eguzki[2] = 0.0f;
-    argia1->norabide_eguzki[3] = 0.0f;
-    
+    argia->norabide_eguzki = (GLfloat *) malloc(sizeof(GLfloat) * 4);
+    argia->norabide_eguzki[0] = 0.0f;
+    argia->norabide_eguzki[1] = -1.0f;
+    argia->norabide_eguzki[2] = 0.0f;
+    argia->norabide_eguzki[3] = 0.0f;
+
     //Bonbila
-    argia1->coord_bonbila = (GLfloat *) malloc(sizeof(GLfloat) * 4);
-    argia1->coord_bonbila[0] = 0.0f;
-    argia1->coord_bonbila[1] = 5.0f; //Hurregoak += 1
-    argia1->coord_bonbila[2] = 0.0f;
-    argia1->coord_bonbila[3] = 1.0f;
+    argia->coord_bonbila = (GLfloat *) malloc(sizeof(GLfloat) * 4);
+    argia->coord_bonbila[0] = 0.0f;
+    argia->coord_bonbila[1] = 4.0f + zenb;
+    argia->coord_bonbila[2] = 0.0f;
+    argia->coord_bonbila[3] = 1.0f;
     
-    argia1->ang_bonbila = 180.0f;
+    argia->ang_bonbila = 180.0f;
     
     //Fokoa
-    argia1->coord_foko = (GLfloat *) malloc(sizeof(GLfloat) * 4);
-    argia1->coord_foko[0] = 0.0f;
-    argia1->coord_foko[1] = 0.0f; //Hurregoak += 1
-    argia1->coord_foko[2] = 5.0f;
-    argia1->coord_foko[3] = 1.0f;
+    argia->coord_foko = (GLfloat *) malloc(sizeof(GLfloat) * 4);
+    argia->coord_foko[0] = 0.0f;
+    argia->coord_foko[1] = 0.0f;
+    argia->coord_foko[2] = 4.0f + zenb;
+    argia->coord_foko[3] = 1.0f;
 
-    argia1->norabide_foko = (GLfloat *) malloc(sizeof(GLfloat) * 4);
-    argia1->norabide_foko[0] = 0.0f;
-    argia1->norabide_foko[1] = 0.0f; //Hurregoak += 1
-    argia1->norabide_foko[2] = -5.0f;
-    argia1->norabide_foko[3] = 0.0f;
+    argia->norabide_foko = (GLfloat *) malloc(sizeof(GLfloat) * 4);
+    argia->norabide_foko[0] = 0.0f;
+    argia->norabide_foko[1] = 0.0f;
+    argia->norabide_foko[2] = -4.0f;
+    argia->norabide_foko[3] = 0.0f;
 
-    argia1->ang_foko = 30.0f;
+    argia->ang_foko = 30.0f;
 
-    glLightfv(GL_LIGHT0, GL_POSITION, argia1->norabide_eguzki);
+    switch ((int) zenb){
+        case KG_ARGIA_1:
+            glLightfv(GL_LIGHT0, GL_POSITION, argia1->norabide_eguzki);
+            break;
+        case KG_ARGIA_2:
+            glLightfv(GL_LIGHT1, GL_POSITION, argia2->norabide_eguzki);
+            break;
+        case KG_ARGIA_3:
+            glLightfv(GL_LIGHT2, GL_POSITION, argia3->norabide_eguzki);
+            break;
+        case KG_ARGIA_4:
+            glLightfv(GL_LIGHT3, GL_POSITION, argia4->norabide_eguzki);
+            break;
+        case KG_ARGIA_5:
+            glLightfv(GL_LIGHT4, GL_POSITION, argia5->norabide_eguzki);
+            break;
+        default:
+            break;
+    }
+
+}
+
+void argiakHasieratu() {
+    argia1 = (light3d *) malloc(sizeof(light3d));
+    argia2 = (light3d *) malloc(sizeof(light3d));
+    argia3 = (light3d *) malloc(sizeof(light3d));
+    argia4 = (light3d *) malloc(sizeof(light3d));
+    argia5 = (light3d *) malloc(sizeof(light3d));
+
+    argiaHasieratu(argia1, (float) KG_ARGIA_1);
+    argiaHasieratu(argia2, (float) KG_ARGIA_2);
+    argiaHasieratu(argia3, (float) KG_ARGIA_3);
+    argiaHasieratu(argia4, (float) KG_ARGIA_4);
+    argiaHasieratu(argia5, (float) KG_ARGIA_5);
 }
 
 
