@@ -1,9 +1,6 @@
 #include "definitions.h"
 #include <GL/glut.h>
 #include <stdio.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <math.h>
 
 GLdouble *mult(GLdouble *m1, GLdouble *m2) {
     GLdouble *result = malloc(sizeof(GLdouble) * 4 * 4);

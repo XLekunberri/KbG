@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <malloc.h>
 #include "definitions.h"
 #include "matrizeak.h"
 
@@ -10,6 +9,7 @@
 /*
  * Auxiliar function to process each line of the file
  */
+/*
 static int sreadint(char * lerroa, int * zenbakiak) {
     char *s = lerroa;
     int i, zbk, kont = 0;
@@ -20,6 +20,7 @@ static int sreadint(char * lerroa, int * zenbakiak) {
     }
     return (kont);
 }
+ */
 
 static int sreadint2(char * lerroa, int * zenbakiak) {
     char *s = lerroa;
@@ -36,7 +37,7 @@ static int sreadint2(char * lerroa, int * zenbakiak) {
 
 
 void setIzena(char **izena, char *helbidea){
-    int end_ind = strlen(helbidea);
+    int end_ind = (int) strlen(helbidea);
     int start_ind = end_ind;
 
     while( (start_ind != 0) && (helbidea[start_ind]!='/') ){
@@ -217,6 +218,8 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
                 j++;
                 }
               break;
+            default:
+                break;
         }
     }
 

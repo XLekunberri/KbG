@@ -1,11 +1,7 @@
 #include "definitions.h"
 #include "load_obj.h"
 #include "matrizeak.h"
-#include "display.h"
 #include <malloc.h>
-#include <GL/glut.h>
-#include <stdio.h>
-#include <string.h>
 
 extern char* mezua;
 
@@ -71,6 +67,35 @@ void print_help(){
     printf("\n\n");
 }
 
+void aldaketakAplikatu(GLdouble *mat, int key){
+    if (_selected_object != 0){
+        if(mat != NULL){
+            switch (err_sist) {
+                case KG_MODE_GLOBAL:
+                    mat = mult(mat, _selected_object->pila_z->matrix);
+                    break;
+                case KG_MODE_LOKAL:
+                    mat = mult(_selected_object->pila_z->matrix, mat);
+                    break;
+                default:
+                    break;
+            }
+
+            //Aldaketa berria gehitu pila_z pilari
+            pila *new_elem = (pila *) malloc(sizeof(pila));
+            new_elem->matrix = mat;
+            new_elem->next = _selected_object->pila_z;
+            _selected_object->pila_z = new_elem;
+
+            //Aldaketabat egin dugunez, pila_y pila hustu
+            _selected_object->pila_y = NULL;
+        }
+    }
+    else if (key != GLUT_CTRL){
+        //sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
+    }
+}
+
 /**
  * @brief Callback function to control the basic keys
  * @param key Key that has been pressed
@@ -83,7 +108,7 @@ void keyboard(unsigned char key, int x, int y) {
     int read = 0;
     object3d *auxiliar_object = 0;
     GLdouble wd,he,midx,midy;
-	
+
     switch (key) {
         case 'f':
         case 'F':
@@ -116,6 +141,8 @@ void keyboard(unsigned char key, int x, int y) {
                 _selected_object = _first_object;
                 printf("%s\n",KG_MSSG_FILEREAD);
                 break;
+            default:
+                break;
             }
             sprintf(mezua, "Objektua kargatuta");
             break;
@@ -142,6 +169,8 @@ void keyboard(unsigned char key, int x, int y) {
                     _first_object = auxiliar_object;
                     _selected_object = _first_object;
                     printf("%s\n",KG_MSSG_FILEREAD);
+                    break;
+                default:
                     break;
             }
             sprintf(mezua, "al.obj kargatuta");
@@ -257,7 +286,6 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 27: /* <ESC> */
             exit(0);
-            break;
 
         case 'm':
         case 'M':
@@ -337,6 +365,8 @@ void keyboard(unsigned char key, int x, int y) {
                 case KG_KAM_IBIL:
                     kamera = KG_KAM_ORTO;
                     sprintf(mezua, "Kamera ortografikoa hautatua");
+                    break;
+                default:
                     break;
             }
             break;
@@ -421,7 +451,7 @@ void keyboard(unsigned char key, int x, int y) {
                                 if (kam_obj->pila_y != NULL) {
                                     //Aldaketa pila_y-tik pila_z-ra mugitu
                                     pila *add_elem = kam_obj->pila_y;
-                                    kam_obj->pila_y = add_elem->next;
+                                    kam_obj->pila_y =  add_elem->next;
                                     add_elem->next = kam_obj->pila_z;
                                     kam_obj->pila_z = add_elem;
                                 } else {
@@ -446,7 +476,12 @@ void keyboard(unsigned char key, int x, int y) {
                                 sprintf(mezua, "Ez dago objekturik kargatuta");
                             }
                             break;
+
+                        default:
+                            break;
                     }
+                    break;
+                default:
                     break;
             }
             break;
@@ -503,7 +538,12 @@ void keyboard(unsigned char key, int x, int y) {
                                 sprintf(mezua, "Ez dago objekturik kargatuta");
                             }
                             break;
+                        default:
+                            break;
                     }
+                    break;
+
+                default:
                     break;
             }
             break;
@@ -514,92 +554,6 @@ void keyboard(unsigned char key, int x, int y) {
     }
     /*In case we have do any modification affecting the displaying of the object, we redraw them*/
     glutPostRedisplay();
-}
-
-void special_keyboard(int key, int x, int y) {
-
-    glPushMatrix();
-    switch(key){
-        case GLUT_KEY_F1:
-            switch(gaituta_1){
-                case KG_DESGAITUTA:
-                    gaituta_1 = KG_GAITUTA;
-                    sprintf(mezua, "1. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_1 = KG_DESGAITUTA;
-                    sprintf(mezua, "1. argia desgaituta");
-                    break;
-            }
-            break;
-        case GLUT_KEY_F2:
-            switch(gaituta_2){
-                case KG_DESGAITUTA:
-                    gaituta_2 = KG_GAITUTA;
-                    sprintf(mezua, "2. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_2 = KG_DESGAITUTA;
-                    sprintf(mezua, "2. argia desgaituta");
-                    break;
-            }
-            break;
-        case GLUT_KEY_F3:
-            switch(gaituta_3){
-                case KG_DESGAITUTA:
-                    gaituta_3 = KG_GAITUTA;
-                    sprintf(mezua, "3. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_3 = KG_DESGAITUTA;
-                    sprintf(mezua, "3. argia desgaituta");
-                    break;
-            }
-            break;
-        case GLUT_KEY_F4:
-            switch(gaituta_4){
-                case KG_DESGAITUTA:
-                    gaituta_4 = KG_GAITUTA;
-                    sprintf(mezua, "4. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_4 = KG_DESGAITUTA;
-                    sprintf(mezua, "4. argia desgaituta");
-                    break;
-            }
-            break;
-        case GLUT_KEY_F5:
-            switch(gaituta_5){
-                case KG_DESGAITUTA:
-                    gaituta_5 = KG_GAITUTA;
-                    sprintf(mezua, "5. argia gaituta");
-                    break;
-                case KG_GAITUTA:
-                    gaituta_5 = KG_DESGAITUTA;
-                    sprintf(mezua, "5. argia desgaituta");
-                    break;
-            }
-            break;
-        case GLUT_KEY_F11:
-            sprintf(mezua,"F11 tekla");
-            break;
-        case GLUT_KEY_F12:
-            sprintf(mezua,"F12 tekla");
-            break;
-    }
-    switch(selected_change){
-        case KG_OBJ:
-            objektu_keyboard(key,x,y);
-            break;
-        case KG_KAM:
-            kamera_keyboard(key,x,y);
-            break;
-
-    }
-
-
-    glutPostRedisplay();
-	glPopMatrix();
 }
 
 void objektu_keyboard(int key, int x, int y) {
@@ -622,6 +576,8 @@ void objektu_keyboard(int key, int x, int y) {
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
+                default:
+                    break;
             }
             break;
         case GLUT_KEY_DOWN:
@@ -640,6 +596,8 @@ void objektu_keyboard(int key, int x, int y) {
                     break;
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
                     break;
 
             }
@@ -662,6 +620,8 @@ void objektu_keyboard(int key, int x, int y) {
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -681,6 +641,8 @@ void objektu_keyboard(int key, int x, int y) {
                     break;
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
                     break;
             }
             break;
@@ -702,6 +664,8 @@ void objektu_keyboard(int key, int x, int y) {
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -722,6 +686,8 @@ void objektu_keyboard(int key, int x, int y) {
                 case KG_MODE_DEFAULT:
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
+                default:
+                    break;
             }
             break;
         default:
@@ -729,6 +695,84 @@ void objektu_keyboard(int key, int x, int y) {
             break;
     }
     aldaketakAplikatu(mat, key);
+}
+
+void kameraAldatu(GLdouble *mat, int lokala){
+    GLdouble *matEm = NULL;
+    pila *new_elem = (pila*)malloc(sizeof(pila));
+    printf("Aldaketa matrizea:\n");
+    print_matrix(mat);
+    switch (kamera) {
+        case KG_KAM_OBJ:
+            switch (err_sist) {
+                case KG_MODE_GLOBAL:
+                    matEm = mult(mat, kam_obj->pila_z->matrix);
+                    break;
+                case KG_MODE_LOKAL:
+                    matEm = mult(kam_obj->pila_z->matrix, mat);
+                    break;
+                default:
+                    break;
+            }
+            printf("Kameraren matrizea\n");
+            print_matrix(matEm);
+            //Pilak eguneratu
+            new_elem->matrix = matEm;
+            new_elem->next = kam_obj->pila_z;
+            kam_obj->pila_z = new_elem;
+            kam_obj->pila_y = NULL;
+
+            break;
+        case KG_KAM_IBIL:
+            switch (lokala) {
+                case 0:
+                    matEm = mult(mat, kam_ibil->pila_z->matrix);
+                    break;
+                case 1:
+                    matEm = mult(kam_ibil->pila_z->matrix, mat);
+                    break;
+                default:
+                    break;
+            }
+            //Pilak eguneratu
+            new_elem->matrix = matEm;
+            new_elem->next = kam_ibil->pila_z;
+            kam_ibil->pila_z = new_elem;
+            kam_ibil->pila_y = NULL;
+
+            break;
+        default:
+            break;
+    }
+
+}
+
+int mugituDaiteke(int nora){
+    int mugitu = 0;
+    switch (nora){
+        case KG_UP:
+            if(kam_ibil->mugapena <= 8){
+                kam_ibil->mugapena = kam_ibil->mugapena + 1;
+                mugitu = 1;
+            }
+            break;
+        case KG_DOWN:
+            if(kam_ibil->mugapena >= -8){
+                kam_ibil->mugapena = kam_ibil->mugapena - 1;
+                mugitu = 1;
+            }
+            break;
+        default:
+            break;
+    }
+    return(mugitu);
+}
+
+void angeluaAldatu(int aldaketa){
+    kam_ibil->angelua = kam_ibil->angelua + aldaketa;
+    if( kam_ibil->angelua == KG_HAS_ANG+16 || kam_ibil->angelua == KG_HAS_ANG-16){
+        kam_ibil->angelua = KG_HAS_ANG;
+    }
 }
 
 void kamera_keyboard(int key, int x, int y) {
@@ -761,6 +805,8 @@ void kamera_keyboard(int key, int x, int y) {
                     x_ard = -cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
                     break;
+                default:
+                    break;
             }
             break;
         case GLUT_KEY_DOWN:
@@ -788,6 +834,8 @@ void kamera_keyboard(int key, int x, int y) {
                     x_ard = cos(angelua);
                     mat = translazioa(x_ard, 0, z_ard);
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -814,6 +862,8 @@ void kamera_keyboard(int key, int x, int y) {
                     angeluaAldatu(1);
                     mat = biraketa(0, -1, 0);
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -839,6 +889,8 @@ void kamera_keyboard(int key, int x, int y) {
                     lokala = 1;
                     angeluaAldatu(-1);
                     mat = biraketa(0, 1, 0);
+                    break;
+                default:
                     break;
             }
             break;
@@ -872,6 +924,8 @@ void kamera_keyboard(int key, int x, int y) {
 
 
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -902,6 +956,8 @@ void kamera_keyboard(int key, int x, int y) {
                         mat = NULL;
                     }
                     break;
+                default:
+                    break;
             }
             break;
         default:
@@ -913,99 +969,103 @@ void kamera_keyboard(int key, int x, int y) {
     }
 }
 
-void aldaketakAplikatu(GLdouble *mat, int key){
-    if (_selected_object != 0){
-        if(mat != NULL){
-            switch (err_sist) {
-                case KG_MODE_GLOBAL:
-                    mat = mult(mat, _selected_object->pila_z->matrix);
+void special_keyboard(int key, int x, int y) {
+
+    glPushMatrix();
+    switch(key){
+        case GLUT_KEY_F1:
+            switch(gaituta_1){
+                case KG_DESGAITUTA:
+                    gaituta_1 = KG_GAITUTA;
+                    sprintf(mezua, "1. argia gaituta");
                     break;
-                case KG_MODE_LOKAL:
-                    mat = mult(_selected_object->pila_z->matrix, mat);
+                case KG_GAITUTA:
+                    gaituta_1 = KG_DESGAITUTA;
+                    sprintf(mezua, "1. argia desgaituta");
                     break;
-            }
-
-            //Aldaketa berria gehitu pila_z pilari
-            pila *new_elem = (pila *) malloc(sizeof(pila));
-            new_elem->matrix = mat;
-            new_elem->next = _selected_object->pila_z;
-            _selected_object->pila_z = new_elem;
-
-            //Aldaketabat egin dugunez, pila_y pila hustu
-            _selected_object->pila_y = NULL;
-        }
-    }
-    else if (key != GLUT_CTRL){
-        //sprintf(mezua, "Ez dago objekturik transformazioa aplikatzeko");
-    }
-}
-
-void kameraAldatu(GLdouble *mat, int lokala){
-    GLdouble *matEm;
-    pila *new_elem = (pila*)malloc(sizeof(pila));
-    printf("Aldaketa matrizea:\n");
-    print_matrix(mat);
-    switch (kamera) {
-        case KG_KAM_OBJ:
-            switch (err_sist) {
-                case KG_MODE_GLOBAL:
-                    matEm = mult(mat, kam_obj->pila_z->matrix);
+                default:
                     break;
-                case KG_MODE_LOKAL:
-                    matEm = mult(kam_obj->pila_z->matrix, mat);
-                    break;
-            }
-            printf("Kameraren matrizea\n");
-            print_matrix(matEm);
-            //Pilak eguneratu
-            new_elem->matrix = matEm;
-            new_elem->next = kam_obj->pila_z;
-            kam_obj->pila_z = new_elem;
-            kam_obj->pila_y = NULL;
-
-            break;
-        case KG_KAM_IBIL:
-            switch (lokala) {
-                case 0:
-                    matEm = mult(mat, kam_ibil->pila_z->matrix);
-                    break;
-                case 1:
-                    matEm = mult(kam_ibil->pila_z->matrix, mat);
-                    break;
-            }
-            //Pilak eguneratu
-            new_elem->matrix = matEm;
-            new_elem->next = kam_ibil->pila_z;
-            kam_ibil->pila_z = new_elem;
-            kam_ibil->pila_y = NULL;
-
-            break;
-    }
-
-}
-
-void angeluaAldatu(int aldaketa){
-    kam_ibil->angelua = kam_ibil->angelua + aldaketa;
-    if( kam_ibil->angelua == KG_HAS_ANG+16 || kam_ibil->angelua == KG_HAS_ANG-16){
-        kam_ibil->angelua = KG_HAS_ANG;
-    }
-}
-
-int mugituDaiteke(int nora){
-    int mugitu = 0;
-    switch (nora){
-        case KG_UP:
-            if(kam_ibil->mugapena <= 8){
-                kam_ibil->mugapena = kam_ibil->mugapena + 1;
-                mugitu = 1;
             }
             break;
-        case KG_DOWN:
-            if(kam_ibil->mugapena >= -8){
-                kam_ibil->mugapena = kam_ibil->mugapena - 1;
-                mugitu = 1;
+        case GLUT_KEY_F2:
+            switch(gaituta_2){
+                case KG_DESGAITUTA:
+                    gaituta_2 = KG_GAITUTA;
+                    sprintf(mezua, "2. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_2 = KG_DESGAITUTA;
+                    sprintf(mezua, "2. argia desgaituta");
+                    break;
+                default:
+                    break;
             }
             break;
+        case GLUT_KEY_F3:
+            switch(gaituta_3){
+                case KG_DESGAITUTA:
+                    gaituta_3 = KG_GAITUTA;
+                    sprintf(mezua, "3. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_3 = KG_DESGAITUTA;
+                    sprintf(mezua, "3. argia desgaituta");
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case GLUT_KEY_F4:
+            switch(gaituta_4){
+                case KG_DESGAITUTA:
+                    gaituta_4 = KG_GAITUTA;
+                    sprintf(mezua, "4. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_4 = KG_DESGAITUTA;
+                    sprintf(mezua, "4. argia desgaituta");
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case GLUT_KEY_F5:
+            switch(gaituta_5){
+                case KG_DESGAITUTA:
+                    gaituta_5 = KG_GAITUTA;
+                    sprintf(mezua, "5. argia gaituta");
+                    break;
+                case KG_GAITUTA:
+                    gaituta_5 = KG_DESGAITUTA;
+                    sprintf(mezua, "5. argia desgaituta");
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case GLUT_KEY_F11:
+            sprintf(mezua,"F11 tekla");
+            break;
+        case GLUT_KEY_F12:
+            sprintf(mezua,"F12 tekla");
+            break;
+        default:
+            break;
     }
-    return(mugitu);
+    switch(selected_change){
+        case KG_OBJ:
+            objektu_keyboard(key,x,y);
+            break;
+        case KG_KAM:
+            kamera_keyboard(key,x,y);
+            break;
+        default:
+            break;
+
+    }
+
+
+    glutPostRedisplay();
+	glPopMatrix();
 }
+

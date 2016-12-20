@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <GL/gl.h>
-#include <GL/glu.h>
 #include <GL/glut.h>
 #include "display.h"
 #include "io.h"
@@ -16,7 +15,7 @@ GLdouble _ortho_x_min,_ortho_x_max;         /*Variables for the control of the o
 GLdouble _ortho_y_min ,_ortho_y_max;        /*Variables for the control of the orthographic projection*/
 GLdouble _ortho_z_min,_ortho_z_max;         /*Variables for the control of the orthographic projection*/
 
-object3d * _first_object= 0;                /*List of objects*/
+object3d * _first_object = 0;                /*List of objects*/
 object3d * _selected_object = 0;            /*Object currently selected*/
 
 char* mezua;

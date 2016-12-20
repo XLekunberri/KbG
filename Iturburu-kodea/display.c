@@ -1,9 +1,6 @@
 #include "definitions.h"
 #include <stdio.h>
 #include "matrizeak.h"
-#include <GL/glut.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
 
 /** GLOBAL VARIABLES **/
 
@@ -110,6 +107,8 @@ void kokatuKamera(GLdouble *eye, GLdouble *center, GLdouble *up){
                       center[0],    center[1],    center[2],
                       up[0],        up[1],        up[2]);
             break;
+        default:
+            break;
     }
 }
 
@@ -191,6 +190,8 @@ void display(void) {
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
             gluPerspective(KG_KAM_FOV,_window_ratio,KG_KAM_N,KG_KAM_F);
+            break;
+        default:
             break;
     }
 
