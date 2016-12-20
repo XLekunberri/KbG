@@ -17,6 +17,7 @@ extern GLdouble _window_width;
 extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
+extern int argia;
 
 extern object3d *_first_object;
 extern object3d *_selected_object;
@@ -200,10 +201,6 @@ void display(void) {
     glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
 
-    GLfloat  kokapena  [4] = {0.0, 10.0, 0.0, 1.0};
-    glLightfv (GL_LIGHT0 , GL_POSITION , kokapena );
-    glLightf (GL_LIGHT0 , GL_SPOT_CUTOFF , 180.0);
-
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
@@ -215,11 +212,16 @@ void display(void) {
 
 
     /*First, we draw the grid and then the axes*/
+    if(argia == 1){
+        glDisable(GL_LIGHTING);
+    }
     glDisable(GL_DEPTH_TEST);
     draw_grid();
     draw_axes();
     glEnable(GL_DEPTH_TEST);
-
+    if(argia == 1){
+        glEnable(GL_LIGHTING);
+    }
 
 	glPopMatrix();
 
@@ -263,6 +265,9 @@ void display(void) {
 
 
     /*Make the viewport*/
+    if(argia == 1){
+        glDisable(GL_LIGHTING);
+    }
     glLoadIdentity();
     glViewport(0,0, (GLsizei) _window_width, 24);
     glMatrixMode(GL_PROJECTION);
@@ -283,6 +288,10 @@ void display(void) {
     pantailaratu(mezua);
     mezua[0] = '\0';
     glEnable(GL_DEPTH_TEST);
+
+    if(argia == 1){
+        glEnable(GL_LIGHTING);
+    }
 
     /*Do the actual drawing*/
     glFlush();

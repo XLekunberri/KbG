@@ -363,11 +363,9 @@ void keyboard(unsigned char key, int x, int y) {
             sprintf(mezua, "ENTER");
             if(argia == 0) {
                 glEnable(GL_LIGHTING);
-                glEnable(GL_LIGHT0);
                 argia = 1;
             }
             else{
-                glDisable(GL_LIGHT0);
                 glDisable(GL_LIGHTING);
                 argia = 0;
             }
