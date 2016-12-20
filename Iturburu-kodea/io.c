@@ -22,7 +22,9 @@ int aldaketa = KG_MODE_DEFAULT;
 int selected_change = KG_OBJ;
 
 int argiztatze_sistema = KG_AMATATUTA;
-int selected_light = KG_ARGIA_1;
+int selected_light = KG_ARGIA_DEFAULT;
+
+extern light3d* argia1;
 
 int gaituta_1 = KG_DESGAITUTA;
 int gaituta_2 = KG_DESGAITUTA;
@@ -377,6 +379,48 @@ void keyboard(unsigned char key, int x, int y) {
                 selected_light = KG_ARG;
                 sprintf(mezua, "Aldaketak argiei aplikatuko zaizkie");
             }
+            break;
+
+        case '0':
+            switch(selected_light){
+                case KG_ARGIA_1:
+                    if(gaituta_1 == KG_GAITUTA){
+                        switch (argia1->mota){
+                            case KG_EGUZKI:
+                                argia1->mota = KG_BONBILA;
+                                sprintf(mezua, "1. argian bonbila bat jarri da");
+
+                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->coord_bonbila);
+                                break;
+                            case KG_BONBILA:
+                                argia1->mota = KG_FOKO;
+                                sprintf(mezua, "1. argian foko bat jarri da");
+                                break;
+                            case KG_FOKO:
+                                argia1->mota = KG_EGUZKI;
+                                sprintf(mezua, "1. argian eguzki bat jarri da");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else{
+                        sprintf(mezua, "1. argia ez dago gaituta");
+                    }
+                    break;
+                case KG_ARGIA_2:
+                    break;
+                case KG_ARGIA_3:
+                    break;
+                case KG_ARGIA_4:
+                    break;
+                case KG_ARGIA_5:
+                    break;
+                default:
+                    sprintf(mezua, "Ez dago argirik aukeratuta");
+                    break;
+            }
+            argiaAldatu(selected_light);
             break;
 
         case '1':
@@ -977,10 +1021,12 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F1:
                 switch (gaituta_1) {
                     case KG_DESGAITUTA:
+                        glEnable(GL_LIGHT0);
                         gaituta_1 = KG_GAITUTA;
                         sprintf(mezua, "1. argia gaituta");
                         break;
                     case KG_GAITUTA:
+                        glDisable(GL_LIGHT0);
                         gaituta_1 = KG_DESGAITUTA;
                         sprintf(mezua, "1. argia desgaituta");
                         break;

@@ -263,6 +263,8 @@ void display(void) {
         aux_obj = aux_obj->next;
     }
 
+    /*
+
 
 
     /*Make the viewport*/

@@ -109,6 +109,7 @@
 #define KG_AMATATUTA                        0
 #define KG_PIZTUTA                          1
 
+#define KG_ARGIA_DEFAULT                    0
 #define KG_ARGIA_1							1
 #define KG_ARGIA_2							2
 #define KG_ARGIA_3							3
@@ -117,6 +118,10 @@
 
 #define KG_DESGAITUTA						0
 #define KG_GAITUTA							1
+
+#define KG_EGUZKI                           0
+#define KG_BONBILA                          1
+#define KG_FOKO                             2
 
 /** STRUCTURES **/
 
@@ -197,6 +202,11 @@ struct object3d{
 
 typedef struct object3d object3d;
 
+/****************************
+ * Structure to store a     *
+ * pile of 3D cameras       *
+ ****************************/
+
 struct camera3d{
     GLdouble *eye;                      /* position of the camera */
     GLdouble *center;                   /* where is the camera looking at */
@@ -208,6 +218,34 @@ struct camera3d{
 };
 
 typedef struct camera3d camera3d;
+
+/****************************
+ * Structure to store a     *
+ * pile of 3D lights        *
+ ****************************/
+
+struct light3d{
+    int mota;                   //KG_EGUZKI, KG_BONBILA, KG_FOKO
+
+    //Eguzkia
+    GLfloat *norabide_eguzki;
+
+    //Bonbila
+    GLfloat *coord_bonbila;
+    GLfloat ang_bonbila;
+
+    //Fokoa
+    GLfloat *coord_foko;
+    GLfloat *norabide_foko;
+    GLfloat ang_foko;
+
+    //Aldaketa pilak
+        //Eguzkiaren z eta y
+        //Bonbilaren z eta y
+        //Fokoaren z eta y
+};
+
+typedef struct light3d light3d;
 
 
 
