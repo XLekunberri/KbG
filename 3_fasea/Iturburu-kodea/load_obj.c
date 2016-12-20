@@ -113,7 +113,6 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
 int read_wavefront(char * file_name, object3d * object_ptr) {
     vertex *vertex_table;
     face *face_table;
-    vector3 normal;
     int num_vertices = -1, num_faces = -1, count_vertices = 0, count_faces = 0;
     FILE *obj_file;
     char line[MAXLINE], line_1[MAXLINE], aux[45];

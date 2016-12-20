@@ -69,7 +69,7 @@ void reshape(int width, int height) {
 }
 
 void draw_grid(){
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glColor3f(KG_COL_GRID_R, KG_COL_GRID_G, KG_COL_GRID_B);
 
     int max_value = 1000;
@@ -127,7 +127,7 @@ void pantailaratu(char* string){
  */
 void display(void) {
     glViewport(0, 24, (GLsizei) _window_width, (GLsizei) _window_height);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     GLint v_index, v, f;
     object3d *aux_obj = _first_object;
 
@@ -193,6 +193,16 @@ void display(void) {
             break;
     }
 
+    GLfloat  horia  [4] = {0.0, 1.0, 1.0,  1.0};
+    GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
+    GLfloat  txuria  [4] = {1.0, 1.0, 1.0,  1.0};
+    glLightfv (GL_LIGHT0 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
+
+    GLfloat  kokapena  [4] = {0.0, 10.0, 0.0, 1.0};
+    glLightfv (GL_LIGHT0 , GL_POSITION , kokapena );
+    glLightf (GL_LIGHT0 , GL_SPOT_CUTOFF , 180.0);
 
     /* Now we start drawing the object */
 	glPushMatrix();
@@ -235,17 +245,14 @@ void display(void) {
             glBegin(GL_POLYGON);
             for (v = 0; v < aux_obj->face_table[f].num_vertices; v++) {
 
-                /*
-                glVertex3d(aux_obj->x,
-                           y,
-                           z);
-                */
-
                 v_index = aux_obj->face_table[f].vertex_table[v];
                 glVertex3d(aux_obj->vertex_table[v_index].coord.x,
                         aux_obj->vertex_table[v_index].coord.y,
                         aux_obj->vertex_table[v_index].coord.z);
 
+                glNormal3d(aux_obj->vertex_table[v_index].normala.x,
+                           aux_obj->vertex_table[v_index].normala.y,
+                           aux_obj->vertex_table[v_index].normala.z);
 
             }
             glEnd();
@@ -261,7 +268,7 @@ void display(void) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     glColor3d(1,1,1);
     glBegin(GL_QUADS);

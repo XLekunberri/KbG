@@ -25,6 +25,8 @@ int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
 int selected = KG_OBJ;
 
+int argia = 0;
+
 
 /**
  * @brief This function just prints information about the use
@@ -359,6 +361,16 @@ void keyboard(unsigned char key, int x, int y) {
 
         case 13: /* <ENTER> */
             sprintf(mezua, "ENTER");
+            if(argia == 0) {
+                glEnable(GL_LIGHTING);
+                glEnable(GL_LIGHT0);
+                argia = 1;
+            }
+            else{
+                glDisable(GL_LIGHT0);
+                glDisable(GL_LIGHTING);
+                argia = 0;
+            }
             break;
 
 
