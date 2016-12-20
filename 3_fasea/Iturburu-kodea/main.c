@@ -10,6 +10,8 @@
 /** GLOBAL VARIABLES **/
 
 GLdouble _window_ratio;                     /*Control of window's proportions */
+GLdouble _window_height;
+GLdouble _window_width;
 GLdouble _ortho_x_min,_ortho_x_max;         /*Variables for the control of the orthographic projection*/
 GLdouble _ortho_y_min ,_ortho_y_max;        /*Variables for the control of the orthographic projection*/
 GLdouble _ortho_z_min,_ortho_z_max;         /*Variables for the control of the orthographic projection*/
@@ -107,7 +109,7 @@ int main(int argc, char** argv) {
     glutInitWindowPosition(KG_WINDOW_X, KG_WINDOW_Y);
     glutCreateWindow(KG_WINDOW_TITLE);
 
-    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
 
 
 

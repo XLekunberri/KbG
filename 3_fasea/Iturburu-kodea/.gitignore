@@ -1,2 +1,3 @@
-cmake-build-debug
-Objektuak/
+cmake-build-debug/
+CMakeLists.txt
+.idea

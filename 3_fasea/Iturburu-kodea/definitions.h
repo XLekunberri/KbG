@@ -95,7 +95,7 @@
 
 #define KG_KAM_FOV                          90
 #define KG_KAM_AP                           1.9
-#define KG_KAM_N                            0
+#define KG_KAM_N                            1
 #define KG_KAM_F                            1000
 
 #define KG_OBJ                              0
@@ -136,15 +136,10 @@ typedef struct {
  * objects' vertices         *
  ****************************/
 
-typedef  struct{
-    vector3 vector;
-    GLint face_ind;
-} normal;
-
 typedef struct {
     point3 coord;                       /* coordinates,x, y, z */
     GLint num_faces;                    /* number of faces that share this vertex */
-    normal normala;                   /* normal vector of the vertex */
+	vector3 normala;                   /* normal vector of the vertex */
 } vertex;
 
 /****************************
@@ -155,6 +150,7 @@ typedef struct {
 typedef struct {
     GLint num_vertices;                 /* number of vertices in the face */
     GLint *vertex_table;                /* table with the index of each vertex */
+	vector3 normala;
 } face;
 
 

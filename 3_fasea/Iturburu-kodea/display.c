@@ -12,6 +12,8 @@ int kamera = KG_KAM_ORTO;
 /** EXTERNAL VARIABLES **/
 
 extern GLdouble _window_ratio;
+extern GLdouble _window_height;
+extern GLdouble _window_width;
 extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
@@ -27,8 +29,7 @@ extern camera3d* kam_ibil;
 /**
  * @brief Function to draw the axes
  */
-void draw_axes()
-{
+void draw_axes() {
 	glTranslatef(0.0, 0.0, 0.0);
     /*Draw X axis*/
     glColor3f(KG_COL_X_AXIS_R,KG_COL_X_AXIS_G,KG_COL_X_AXIS_B);
@@ -60,11 +61,14 @@ void reshape(int width, int height) {
     glViewport(0, 0, width, height);
     /*  Take care, the width and height are integer numbers, but the ratio is a GLdouble so, in order to avoid
      *  rounding the ratio to integer values we need to cast width and height before computing the ratio */
-    _window_ratio = (GLdouble) width / (GLdouble) height;
+    GLdouble window = height-24.0;
+    _window_ratio = (GLdouble) width / (GLdouble) window;
+    _window_height = (GLdouble) height-24;
+    _window_width = (GLdouble) width;
+
 }
 
 void draw_grid(){
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glColor3f(KG_COL_GRID_R, KG_COL_GRID_G, KG_COL_GRID_B);
 
@@ -108,21 +112,32 @@ void kokatuKamera(GLdouble *eye, GLdouble *center, GLdouble *up){
     }
 }
 
+void pantailaratu(char* string){
+    char *c;
+    glColor3f(KG_COL_TEXT_R,KG_COL_TEXT_G,KG_COL_TEXT_B);
+    glRasterPos2f(KG_POS_TEXT_X, KG_POS_TEXT_Y);
+    for (c=string; *c != '\0'; c++) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    }
+
+}
 
 /**
  * @brief Callback display function
  */
 void display(void) {
-    glViewport(0,24,KG_WINDOW_WIDTH, KG_WINDOW_HEIGHT);
+    glViewport(0, 24, (GLsizei) _window_width, (GLsizei) _window_height);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     GLint v_index, v, f;
     object3d *aux_obj = _first_object;
 
     /* Clear the screen */
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     /* Define the projection */
-    GLdouble *eye, *center, *up;
+    GLdouble *eye = NULL;
+    GLdouble *center = NULL;
+    GLdouble *up = NULL;
 
     switch(kamera){
         case KG_KAM_ORTO:
@@ -154,7 +169,7 @@ void display(void) {
             //kokatuKamera(eye, center, up);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
-            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
+            gluPerspective(KG_KAM_FOV,_window_ratio,KG_KAM_N,KG_KAM_F);
             break;
 
         case KG_KAM_IBIL:
@@ -174,7 +189,7 @@ void display(void) {
             //kokatuKamera(eye, center, up);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
-            gluPerspective(KG_KAM_FOV,KG_KAM_AP,KG_KAM_N,KG_KAM_F);
+            gluPerspective(KG_KAM_FOV,_window_ratio,KG_KAM_N,KG_KAM_F);
             break;
     }
 
@@ -190,8 +205,11 @@ void display(void) {
 
 
     /*First, we draw the grid and then the axes*/
+    glDisable(GL_DEPTH_TEST);
     draw_grid();
     draw_axes();
+    glEnable(GL_DEPTH_TEST);
+
 
 	glPopMatrix();
 
@@ -235,9 +253,11 @@ void display(void) {
         aux_obj = aux_obj->next;
     }
 
+
+
     /*Make the viewport*/
     glLoadIdentity();
-    glViewport(0,0,KG_WINDOW_WIDTH, 24);
+    glViewport(0,0, (GLsizei) _window_width, 24);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
@@ -251,19 +271,13 @@ void display(void) {
     glVertex2d(-1, 1);
     glEnd();
 
+    glDisable(GL_DEPTH_TEST);
     /*Print at the viewport*/
     pantailaratu(mezua);
     mezua[0] = '\0';
+    glEnable(GL_DEPTH_TEST);
 
     /*Do the actual drawing*/
     glFlush();
 }
 
-void pantailaratu(char* string){
-    char *c;
-    glColor3f(KG_COL_TEXT_R,KG_COL_TEXT_G,KG_COL_TEXT_B);
-    glRasterPos2f(KG_POS_TEXT_X, KG_POS_TEXT_Y);
-    for (c=string; *c != '\0'; c++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
-    }
-}
