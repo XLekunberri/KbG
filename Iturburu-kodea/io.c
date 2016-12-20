@@ -391,14 +391,22 @@ void keyboard(unsigned char key, int x, int y) {
                                 sprintf(mezua, "1. argian bonbila bat jarri da");
 
                                 glLightfv(GL_LIGHT0, GL_POSITION, argia1->coord_bonbila);
+                                glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, argia1->ang_bonbila);
                                 break;
                             case KG_BONBILA:
                                 argia1->mota = KG_FOKO;
                                 sprintf(mezua, "1. argian foko bat jarri da");
+
+                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->coord_foko);
+                                glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, argia1->norabide_foko);
+                                glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, argia1->ang_foko);
+                                glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 1.0);
                                 break;
                             case KG_FOKO:
                                 argia1->mota = KG_EGUZKI;
                                 sprintf(mezua, "1. argian eguzki bat jarri da");
+
+                                glLightfv(GL_LIGHT0, GL_POSITION, argia1->norabide_eguzki);
                                 break;
                             default:
                                 break;
@@ -420,7 +428,6 @@ void keyboard(unsigned char key, int x, int y) {
                     sprintf(mezua, "Ez dago argirik aukeratuta");
                     break;
             }
-            argiaAldatu(selected_light);
             break;
 
         case '1':

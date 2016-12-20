@@ -139,8 +139,9 @@ int main(int argc, char** argv) {
     mezua = (char*)malloc(sizeof(char)*1024);
     mezua[0] = '\0';
 
-    // Garbiago egoteko kanpoan eginda, funtzio batean
+    // Garbiago egoteko kanpoan eginda
     kamerakHasieratu();
+    argiakHasieratu();
 
     /*First of all, print the help information*/
     print_help();
