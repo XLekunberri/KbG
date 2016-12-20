@@ -17,7 +17,7 @@ extern GLdouble _window_width;
 extern GLdouble _ortho_x_min,_ortho_x_max;
 extern GLdouble _ortho_y_min,_ortho_y_max;
 extern GLdouble _ortho_z_min,_ortho_z_max;
-extern int argia;
+extern int argiztatze_sistema;
 
 extern object3d *_first_object;
 extern object3d *_selected_object;
@@ -212,14 +212,14 @@ void display(void) {
 
 
     /*First, we draw the grid and then the axes*/
-    if(argia == 1){
+    if(argiztatze_sistema == 1){
         glDisable(GL_LIGHTING);
     }
     glDisable(GL_DEPTH_TEST);
     draw_grid();
     draw_axes();
     glEnable(GL_DEPTH_TEST);
-    if(argia == 1){
+    if(argiztatze_sistema == 1){
         glEnable(GL_LIGHTING);
     }
 
@@ -265,9 +265,10 @@ void display(void) {
 
 
     /*Make the viewport*/
-    if(argia == 1){
+    if(argiztatze_sistema == 1){
         glDisable(GL_LIGHTING);
     }
+
     glLoadIdentity();
     glViewport(0,0, (GLsizei) _window_width, 24);
     glMatrixMode(GL_PROJECTION);
@@ -289,7 +290,7 @@ void display(void) {
     mezua[0] = '\0';
     glEnable(GL_DEPTH_TEST);
 
-    if(argia == 1){
+    if(argiztatze_sistema == 1){
         glEnable(GL_LIGHTING);
     }
 

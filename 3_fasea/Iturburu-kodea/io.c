@@ -25,7 +25,7 @@ int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
 int selected = KG_OBJ;
 
-int argia = 0;
+int argiztatze_sistema = 0;
 
 
 /**
@@ -360,14 +360,15 @@ void keyboard(unsigned char key, int x, int y) {
 
 
         case 13: /* <ENTER> */
-            sprintf(mezua, "ENTER");
-            if(argia == 0) {
+            if(argiztatze_sistema == 0) {
                 glEnable(GL_LIGHTING);
-                argia = 1;
+                sprintf(mezua, "Argiztatze sistema gaitua.");
+                argiztatze_sistema = 1;
             }
             else{
                 glDisable(GL_LIGHTING);
-                argia = 0;
+                sprintf(mezua, "Argiztatze sistema desgaitua.");
+                argiztatze_sistema = 0;
             }
             break;
 
