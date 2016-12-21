@@ -102,7 +102,6 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
         erpin_taula[ind].normala->x += axb->x;
         erpin_taula[ind].normala->y += axb->y;
         erpin_taula[ind].normala->z += axb->z;
-        //printf("x:%f y:%f z:%f\n", aurpegia->normala->x, aurpegia->normala->y, aurpegia->normala->z);
     }
 
 
@@ -110,7 +109,6 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
     aurpegia->normala->x = axb->x;
     aurpegia->normala->y = axb->y;
     aurpegia->normala->z = axb->z;
-    printf("x:%f y:%f z:%f\n", aurpegia->normala->x, aurpegia->normala->y, aurpegia->normala->z);
 }
 
 /**
@@ -239,7 +237,6 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     }
 
     for (i = 0; i < num_vertices; i++) {
-        printf("%f %f %f\n", vertex_table[i].normala->x, vertex_table[i].normala->y, vertex_table[i].normala->z);
         vertex_table[i].normala->x = vertex_table[i].normala->x/(GLdouble)vertex_table[i].num_faces;
         vertex_table[i].normala->y = vertex_table[i].normala->y/(GLdouble)vertex_table[i].num_faces;
         vertex_table[i].normala->z = vertex_table[i].normala->z/(GLdouble)vertex_table[i].num_faces;
@@ -297,4 +294,3 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     object_ptr->pila_y = NULL;
     return (0);
 }
-

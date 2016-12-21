@@ -129,27 +129,6 @@ void argiaHasieratu(light3d* argia, float zenb){
     argia->norabide_foko[3] = 0.0f;
 
     argia->ang_foko = 30.0f;
-
-    switch ((int) zenb){
-        case KG_ARGIA_1:
-            glLightfv(GL_LIGHT0, GL_POSITION, argia1->norabide_eguzki);
-            break;
-        case KG_ARGIA_2:
-            glLightfv(GL_LIGHT1, GL_POSITION, argia2->norabide_eguzki);
-            break;
-        case KG_ARGIA_3:
-            glLightfv(GL_LIGHT2, GL_POSITION, argia3->norabide_eguzki);
-            break;
-        case KG_ARGIA_4:
-            glLightfv(GL_LIGHT3, GL_POSITION, argia4->norabide_eguzki);
-            break;
-        case KG_ARGIA_5:
-            glLightfv(GL_LIGHT4, GL_POSITION, argia5->norabide_eguzki);
-            break;
-        default:
-            break;
-    }
-
 }
 
 void argiakHasieratu() {

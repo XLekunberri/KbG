@@ -135,7 +135,6 @@ void pantailaratu(char* string){
 }
 
 void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
-    printf("%f %f %f %f\n", argia->coord_bonbila[0], argia->coord_bonbila[1], argia->coord_bonbila[2], argia->coord_bonbila[3]);
     glLoadIdentity();
     //kokatuKamera(eye, center, up);
     //Matrizea biderkatu
@@ -348,7 +347,6 @@ void display(void) {
                            aux_obj->vertex_table[v_index].normala->y,
                            aux_obj->vertex_table[v_index].normala->z);
 
-
                 glVertex3d(aux_obj->vertex_table[v_index].coord.x,
                         aux_obj->vertex_table[v_index].coord.y,
                         aux_obj->vertex_table[v_index].coord.z);
@@ -398,4 +396,5 @@ void display(void) {
     /*Do the actual drawing*/
     glFlush();
 }
+
 
