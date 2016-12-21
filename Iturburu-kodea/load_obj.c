@@ -251,7 +251,6 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     object_ptr->num_vertices = num_vertices;
     object_ptr->num_faces = num_faces;
 
-
     /*
      * The maximum and minimum coordinates are obtained **/
     object_ptr->max.x = object_ptr->vertex_table[0].coord.x;

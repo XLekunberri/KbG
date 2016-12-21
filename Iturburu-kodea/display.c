@@ -41,6 +41,7 @@ extern int gaituta_5;
  */
 void draw_axes() {
 	glTranslatef(0.0, 0.0, 0.0);
+    glLineWidth(3.0f);
     /*Draw X axis*/
     glColor3f(KG_COL_X_AXIS_R,KG_COL_X_AXIS_G,KG_COL_X_AXIS_B);
     glBegin(GL_LINES);
@@ -59,6 +60,7 @@ void draw_axes() {
     glVertex3d(0,0,KG_MAX_DOUBLE);
     glVertex3d(0,0,-1*KG_MAX_DOUBLE);
     glEnd();
+    glLineWidth(1.0f);
 }
 
 
