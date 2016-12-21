@@ -1051,12 +1051,10 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F1:
                 switch (gaituta_1) {
                     case KG_DESGAITUTA:
-                        glEnable(GL_LIGHT0);
                         gaituta_1 = KG_GAITUTA;
                         sprintf(mezua, "1. argia gaituta");
                         break;
                     case KG_GAITUTA:
-                        glDisable(GL_LIGHT0);
                         gaituta_1 = KG_DESGAITUTA;
                         sprintf(mezua, "1. argia desgaituta");
                         break;
@@ -1067,12 +1065,10 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F2:
                 switch (gaituta_2) {
                     case KG_DESGAITUTA:
-                        glEnable(GL_LIGHT1);
                         gaituta_2 = KG_GAITUTA;
                         sprintf(mezua, "2. argia gaituta");
                         break;
                     case KG_GAITUTA:
-                        glDisable(GL_LIGHT1);
                         gaituta_2 = KG_DESGAITUTA;
                         sprintf(mezua, "2. argia desgaituta");
                         break;
@@ -1083,12 +1079,10 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F3:
                 switch (gaituta_3) {
                     case KG_DESGAITUTA:
-                        glEnable(GL_LIGHT2);
                         gaituta_3 = KG_GAITUTA;
                         sprintf(mezua, "3. argia gaituta");
                         break;
                     case KG_GAITUTA:
-                        glDisable(GL_LIGHT2);
                         gaituta_3 = KG_DESGAITUTA;
                         sprintf(mezua, "3. argia desgaituta");
                         break;
@@ -1099,12 +1093,10 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F4:
                 switch (gaituta_4) {
                     case KG_DESGAITUTA:
-                        glEnable(GL_LIGHT3);
                         gaituta_4 = KG_GAITUTA;
                         sprintf(mezua, "4. argia gaituta");
                         break;
                     case KG_GAITUTA:
-                        glDisable(GL_LIGHT3);
                         gaituta_4 = KG_DESGAITUTA;
                         sprintf(mezua, "4. argia desgaituta");
                         break;
@@ -1115,12 +1107,10 @@ void special_keyboard(int key, int x, int y) {
             case GLUT_KEY_F5:
                 switch (gaituta_5) {
                     case KG_DESGAITUTA:
-                        glEnable(GL_LIGHT4);
                         gaituta_5 = KG_GAITUTA;
                         sprintf(mezua, "5. argia gaituta");
                         break;
                     case KG_GAITUTA:
-                        glDisable(GL_LIGHT4);
                         gaituta_5 = KG_DESGAITUTA;
                         sprintf(mezua, "5. argia desgaituta");
                         break;

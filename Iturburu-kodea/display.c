@@ -157,19 +157,39 @@ void argiaPantailaratu(light3d *argia, int i, GLenum GL_LIGHTi) {
 void argiakPantailaratu(){
     glLoadIdentity();
     if(gaituta_1 == KG_GAITUTA){
+        glEnable(GL_LIGHT0);
         argiaPantailaratu(argia1, 1, GL_LIGHT0);
     }
+    else{
+        glDisable(GL_LIGHT0);
+    }
     if(gaituta_2 == KG_GAITUTA){
+        glEnable(GL_LIGHT1);
         argiaPantailaratu(argia2, 2, GL_LIGHT1);
     }
+    else{
+        glDisable(GL_LIGHT1);
+    }
     if(gaituta_3 == KG_GAITUTA){
+        glEnable(GL_LIGHT2);
         argiaPantailaratu(argia3, 3, GL_LIGHT2);
     }
+    else{
+        glDisable(GL_LIGHT2);
+    }
     if(gaituta_4 == KG_GAITUTA){
+        glEnable(GL_LIGHT3);
         argiaPantailaratu(argia4, 4, GL_LIGHT3);
     }
+    else{
+        glDisable(GL_LIGHT3);
+    }
     if(gaituta_5 == KG_GAITUTA){
+        glEnable(GL_LIGHT4);
         argiaPantailaratu(argia5, 5, GL_LIGHT4);
+    }
+    else{
+        glDisable(GL_LIGHT4);
     }
 }
 
