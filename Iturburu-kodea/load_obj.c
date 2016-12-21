@@ -103,6 +103,7 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
         erpin_taula[i].normala.z += axb.z;
     }
     aurpegia->normala = axb;
+    printf("x:%f y:%f z:%f\n", axb.x, axb.y, axb.z);
 }
 
 /**

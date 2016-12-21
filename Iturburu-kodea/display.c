@@ -24,6 +24,18 @@ extern char* mezua;
 extern camera3d* kam_obj;
 extern camera3d* kam_ibil;
 
+extern light3d* argia1;
+extern light3d* argia2;
+extern light3d* argia3;
+extern light3d* argia4;
+extern light3d* argia5;
+
+extern int gaituta_1;
+extern int gaituta_2;
+extern int gaituta_3;
+extern int gaituta_4;
+extern int gaituta_5;
+
 /**
  * @brief Function to draw the axes
  */
@@ -120,6 +132,45 @@ void pantailaratu(char* string){
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
     }
 
+}
+
+void argiaPantailaratu(light3d *argia, int i, GLenum GL_LIGHTi) {
+    switch (argia->mota){
+        case KG_EGUZKI:
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->norabide_eguzki);
+            break;
+        case KG_BONBILA:
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_bonbila);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, argia->ang_bonbila);
+            break;
+        case KG_FOKO:
+            glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_foko);
+            glLightfv(GL_LIGHTi, GL_SPOT_DIRECTION, argia->norabide_foko);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, argia->ang_foko);
+            glLightf(GL_LIGHTi, GL_SPOT_EXPONENT, 1.0);
+            break;
+        default:
+            break;
+    }
+}
+
+void argiakPantailaratu(){
+    glLoadIdentity();
+    if(gaituta_1 == KG_GAITUTA){
+        argiaPantailaratu(argia1, 1, GL_LIGHT0);
+    }
+    if(gaituta_2 == KG_GAITUTA){
+        argiaPantailaratu(argia2, 2, GL_LIGHT1);
+    }
+    if(gaituta_3 == KG_GAITUTA){
+        argiaPantailaratu(argia3, 3, GL_LIGHT2);
+    }
+    if(gaituta_4 == KG_GAITUTA){
+        argiaPantailaratu(argia4, 4, GL_LIGHT3);
+    }
+    if(gaituta_5 == KG_GAITUTA){
+        argiaPantailaratu(argia5, 5, GL_LIGHT4);
+    }
 }
 
 /**
@@ -241,6 +292,8 @@ void display(void) {
     }
 
 	glPopMatrix();
+
+    argiakPantailaratu();
 
 
     /*Now each of the objects in the list*/
