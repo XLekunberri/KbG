@@ -134,7 +134,7 @@ void pantailaratu(char* string){
 
 }
 
-void argiaPantailaratu(light3d *argia, int i, GLenum GL_LIGHTi) {
+void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
     switch (argia->mota){
         case KG_EGUZKI:
             glLightfv(GL_LIGHTi, GL_POSITION, argia->norabide_eguzki);
@@ -155,38 +155,63 @@ void argiaPantailaratu(light3d *argia, int i, GLenum GL_LIGHTi) {
 }
 
 void argiakPantailaratu(){
+    GLfloat  horia  [4] = {0.0, 1.0, 1.0,  1.0};
+    GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
+    GLfloat  txuria  [4] = {1.0, 1.0, 1.0,  1.0};
+
+    glLightfv (GL_LIGHT0 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT1 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT1 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT1 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT2 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT2 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT2 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT3 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT3 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT3 , GL_SPECULAR , txuria );
+
+    glLightfv (GL_LIGHT4 , GL_AMBIENT , grisa );
+    glLightfv (GL_LIGHT4 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT4 , GL_SPECULAR , txuria );
+
     glLoadIdentity();
+
     if(gaituta_1 == KG_GAITUTA){
+        argiaPantailaratu(argia1, GL_LIGHT0);
         glEnable(GL_LIGHT0);
-        argiaPantailaratu(argia1, 1, GL_LIGHT0);
     }
     else{
         glDisable(GL_LIGHT0);
     }
     if(gaituta_2 == KG_GAITUTA){
+        argiaPantailaratu(argia2, GL_LIGHT1);
         glEnable(GL_LIGHT1);
-        argiaPantailaratu(argia2, 2, GL_LIGHT1);
     }
     else{
         glDisable(GL_LIGHT1);
     }
     if(gaituta_3 == KG_GAITUTA){
+        argiaPantailaratu(argia3, GL_LIGHT2);
         glEnable(GL_LIGHT2);
-        argiaPantailaratu(argia3, 3, GL_LIGHT2);
     }
     else{
         glDisable(GL_LIGHT2);
     }
     if(gaituta_4 == KG_GAITUTA){
+        argiaPantailaratu(argia4, GL_LIGHT3);
         glEnable(GL_LIGHT3);
-        argiaPantailaratu(argia4, 4, GL_LIGHT3);
     }
     else{
         glDisable(GL_LIGHT3);
     }
     if(gaituta_5 == KG_GAITUTA){
+        argiaPantailaratu(argia5, GL_LIGHT4);
         glEnable(GL_LIGHT4);
-        argiaPantailaratu(argia5, 5, GL_LIGHT4);
     }
     else{
         glDisable(GL_LIGHT4);
@@ -266,29 +291,6 @@ void display(void) {
             break;
     }
 
-    GLfloat  horia  [4] = {0.0, 1.0, 1.0,  1.0};
-    GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
-    GLfloat  txuria  [4] = {1.0, 1.0, 1.0,  1.0};
-    glLightfv (GL_LIGHT0 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
-    glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
-
-    glLightfv (GL_LIGHT1 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT1 , GL_DIFFUSE , horia );
-    glLightfv (GL_LIGHT1 , GL_SPECULAR , txuria );
-
-    glLightfv (GL_LIGHT2 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT2 , GL_DIFFUSE , horia );
-    glLightfv (GL_LIGHT2 , GL_SPECULAR , txuria );
-
-    glLightfv (GL_LIGHT3 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT3 , GL_DIFFUSE , horia );
-    glLightfv (GL_LIGHT3 , GL_SPECULAR , txuria );
-
-    glLightfv (GL_LIGHT4 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT4 , GL_DIFFUSE , horia );
-    glLightfv (GL_LIGHT4 , GL_SPECULAR , txuria );
-
     /* Now we start drawing the object */
 	glPushMatrix();
     glMatrixMode(GL_MODELVIEW);
@@ -297,7 +299,6 @@ void display(void) {
     if(kamera != KG_KAM_ORTO) {
         kokatuKamera(eye, center, up);
     }
-
 
     /*First, we draw the grid and then the axes*/
     if(argiztatze_sistema == KG_PIZTUTA){
@@ -314,7 +315,6 @@ void display(void) {
 	glPopMatrix();
 
     argiakPantailaratu();
-
 
     /*Now each of the objects in the list*/
     while (aux_obj != 0) {
