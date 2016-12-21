@@ -103,12 +103,6 @@ void draw_grid(){
 }
 
 void kokatuKamera(GLdouble *eye, GLdouble *center, GLdouble *up){
-    printf("eye\n");
-    print_vector(eye);
-    printf("center\n");
-    print_vector(center);
-    printf("up\n");
-    print_vector(up);
     switch(kamera){
         case KG_KAM_OBJ:
 
@@ -284,14 +278,6 @@ void display(void) {
             eye = multBek(kam_ibil->pila_z->matrix, kam_ibil->eye);
             center = multBek(kam_ibil->pila_z->matrix, kam_ibil->center);
             up = multBek(kam_ibil->pila_z->matrix, kam_ibil->up);
-
-            printf("eye:\n");
-            print_vector(eye);
-            printf("center:\n");
-            print_vector(center);
-            printf("up:\n");
-            print_vector(up);
-            //sprintf(mezua, "center: %f %f %f\tup: %f %f %f", center[0], center[1],center[2], up[0], up[1], up[2]);
 
             //kokatuKamera(eye, center, up);
             glMatrixMode(GL_PROJECTION);
