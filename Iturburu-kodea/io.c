@@ -822,6 +822,79 @@ void kameraAldatu(GLdouble *mat, int lokala){
 
 }
 
+void argiaTransformatu(GLdouble *mat){
+    //TODO
+    //Argien posizioak/norabideak GLfloat* dira eta multBek()-ek GLdouble* erabiltzen du
+    GLdouble *matEm = NULL;//aldaketa
+    switch(selected_light){
+        case KG_ARGIA_1:
+            switch(argia1->mota){
+                case KG_EGUZKI:
+                    if(aldaketa != KG_MODE_TRANS){
+
+                    }
+                    break;
+                case KG_BONBILA:
+                    break;
+                case KG_FOKO:
+                    break;
+            }
+            break;
+        case KG_ARGIA_2:
+            switch(argia2->mota){
+                case KG_EGUZKI:
+                    if(aldaketa != KG_MODE_TRANS){
+
+                    }
+                    break;
+                case KG_BONBILA:
+                    break;
+                case KG_FOKO:
+                    break;
+            }
+            break;
+        case KG_ARGIA_3:
+            switch(argia3->mota){
+                case KG_EGUZKI:
+                    if(aldaketa != KG_MODE_TRANS){
+
+                    }
+                    break;
+                case KG_BONBILA:
+                    break;
+                case KG_FOKO:
+                    break;
+            }
+            break;
+        case KG_ARGIA_4:
+            switch(argia4->mota){
+                case KG_EGUZKI:
+                    if(aldaketa != KG_MODE_TRANS){
+
+                    }
+                    break;
+                case KG_BONBILA:
+                    break;
+                case KG_FOKO:
+                    break;
+            }
+            break;
+        case KG_ARGIA_5:
+            switch(argia5->mota){
+                case KG_EGUZKI:
+                    if(aldaketa != KG_MODE_TRANS){
+
+                    }
+                    break;
+                case KG_BONBILA:
+                    break;
+                case KG_FOKO:
+                    break;
+            }
+            break;
+    }
+}
+
 int mugituDaiteke(int nora){
     int mugitu = 0;
     switch (nora){
@@ -1044,6 +1117,122 @@ void kamera_keyboard(int key) {
     }
 }
 
+void argia_keyboard(int key){
+    GLdouble *mat = NULL;
+    int lokala = 0;
+    switch (key) {
+        case GLUT_KEY_UP:
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(0, 1, 0);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(1, 0, 0);
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+            }
+            break;
+        case GLUT_KEY_DOWN:
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(0, -1, 0);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(-1, 0, 0);
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+
+            }
+            break;
+
+        case GLUT_KEY_RIGHT:
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(1, 0, 0);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(0, 1, 0);
+                    break;
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_LEFT:
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(-1, 0, 0);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(0, -1, 0);
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_UP: //av_pag
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(0, 0, 1);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(0, 0, 1);
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+            }
+            break;
+
+        case GLUT_KEY_PAGE_DOWN: //re_pag
+            switch (aldaketa) {
+                case KG_MODE_TRANS:
+                    mat = translazioa(0, 0, -1);
+                    break;
+                case KG_MODE_BIRAK:
+                    mat = biraketa(0, 0, -1);
+                    break;
+                case KG_MODE_DEFAULT:
+                    sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
+                    break;
+                default:
+                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    break;
+            }
+            break;
+        default:
+            printf("Espeziala: %d %c\n", key, key);
+            break;
+    }
+    if (mat != NULL) {
+        argiaTransformatu(mat);
+    }
+}
+
+
 void special_keyboard(int key, int x, int y) {
 
     glPushMatrix();
@@ -1138,7 +1327,7 @@ void special_keyboard(int key, int x, int y) {
             break;
         case KG_ARG:
             //TODO
-            //ARGIA_KEYBOARD(KEY,X,Y);
+            argia_keyboard(key);
             break;
         default:
             break;

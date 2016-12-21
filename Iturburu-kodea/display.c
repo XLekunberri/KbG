@@ -132,8 +132,10 @@ void pantailaratu(char* string){
 
 void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
     glLoadIdentity();
+    //TODO
     //kokatuKamera(eye, center, up);
     //Matrizea biderkatu
+
     switch (argia->mota){
         case KG_EGUZKI:
             glLightfv(GL_LIGHTi, GL_POSITION, argia->norabide_eguzki);
