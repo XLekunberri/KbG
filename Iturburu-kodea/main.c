@@ -109,7 +109,7 @@ void argiaHasieratu(light3d* argia, float zenb){
     //Bonbila
     argia->coord_bonbila = (GLfloat *) malloc(sizeof(GLfloat) * 4);
     argia->coord_bonbila[0] = 0.0f;
-    argia->coord_bonbila[1] = 4.0f + zenb;
+    argia->coord_bonbila[1] = 0.0f + zenb;
     argia->coord_bonbila[2] = 0.0f;
     argia->coord_bonbila[3] = 1.0f;
     

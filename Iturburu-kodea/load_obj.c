@@ -81,29 +81,32 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
     b.z = erpina1->coord.z - erpina3->coord.z;
 
     //Bektoreen biderkadura bektoriala kalkulatu
-    vector3 axb;
+    vector3 *axb = (vector3*)malloc(sizeof(vector3));
 
-    axb.x = a.y*b.z - a.z*b.y;
-    axb.y = a.z*b.x - a.x*b.z;
-    axb.z = a.x*b.y - a.y*b.x;
+    axb->x = a.y*b.z - a.z*b.y;
+    axb->y = a.z*b.x - a.x*b.z;
+    axb->z = a.x*b.y - a.y*b.x;
 
     //Biderkatura bektoriala normalizatu
-    GLdouble norma = sqrt(axb.x*axb.x + axb.y*axb.y + axb.z*axb.z);
+    GLdouble norma = sqrt(axb->x*axb->x + axb->y*axb->y + axb->z*axb->z);
 
-    axb.x = axb.x/norma;
-    axb.y = axb.y/norma;
-    axb.z = axb.z/norma;
+    axb->x = axb->x/norma;
+    axb->y = axb->y/norma;
+    axb->z = axb->z/norma;
 
 
     //Bektore normala aurpegiaren erpin guztietan gorde
 
     for(int i=0; i < aurpegia->num_vertices; i++){
-        erpin_taula[i].normala.x += axb.x;
-        erpin_taula[i].normala.y += axb.y;
-        erpin_taula[i].normala.z += axb.z;
+        erpin_taula[i].normala->x += axb->x;
+        erpin_taula[i].normala->y += axb->y;
+        erpin_taula[i].normala->z += axb->z;
     }
-    aurpegia->normala = axb;
-    printf("x:%f y:%f z:%f\n", axb.x, axb.y, axb.z);
+    aurpegia->normala = (vector3*)malloc(sizeof(vector3));
+    aurpegia->normala->x = axb->x;
+    aurpegia->normala->y = axb->y;
+    aurpegia->normala->z = axb->z;
+    printf("x:%f y:%f z:%f\n", aurpegia->normala->x, aurpegia->normala->y, aurpegia->normala->z);
 }
 
 /**
@@ -183,12 +186,15 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     k = 0;
     j = 0;
 
+    //Normalak hasieratu
     for (i = 0; i < num_vertices; i++) {
         vertex_table[i].num_faces = 0;
-        vertex_table[i].normala.x = 0;
-        vertex_table[i].normala.y = 0;
-        vertex_table[i].normala.z = 0;
+        vertex_table[i].normala = (vector3*)malloc(sizeof(vector3));
+        vertex_table[i].normala->x = 0.0;
+        vertex_table[i].normala->y = 0.0;
+        vertex_table[i].normala->z = 0.0;
     }
+
     while (fscanf(obj_file, "\n%[^\n]", line) > 0) {
         switch (line[0]) {
             case 'v':
@@ -228,9 +234,9 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
         normalaKalkulatu(&(face_table[ind]), vertex_table);
     }
     for (i = 0; i < num_vertices; i++) {
-        vertex_table[i].normala.x = vertex_table[i].normala.x/vertex_table[i].num_faces;
-        vertex_table[i].normala.y = vertex_table[i].normala.y/vertex_table[i].num_faces;
-        vertex_table[i].normala.z = vertex_table[i].normala.z/vertex_table[i].num_faces;
+        vertex_table[i].normala->x = vertex_table[i].normala->x/(GLdouble)vertex_table[i].num_faces;
+        vertex_table[i].normala->y = vertex_table[i].normala->y/(GLdouble)vertex_table[i].num_faces;
+        vertex_table[i].normala->z = vertex_table[i].normala->z/(GLdouble)vertex_table[i].num_faces;
     }
 
     printf("2 pasada\n");
