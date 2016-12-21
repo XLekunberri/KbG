@@ -143,10 +143,11 @@ void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
     switch (argia->mota){
         case KG_EGUZKI:
             glLightfv(GL_LIGHTi, GL_POSITION, argia->norabide_eguzki);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, 180.0);
             break;
         case KG_BONBILA:
             glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_bonbila);
-            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, argia->ang_bonbila);
+            glLightf(GL_LIGHTi, GL_SPOT_CUTOFF, 180.0);
             break;
         case KG_FOKO:
             glLightfv(GL_LIGHTi, GL_POSITION, argia->coord_foko);

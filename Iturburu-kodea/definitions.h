@@ -234,7 +234,6 @@ struct light3d{
 
     //Bonbila
     GLfloat *coord_bonbila;
-    GLfloat ang_bonbila;
 
     //Fokoa
     GLfloat *coord_foko;
