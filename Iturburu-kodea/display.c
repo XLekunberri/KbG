@@ -228,7 +228,13 @@ void argiakPantailaratu(){
  */
 void display(void) {
     glViewport(0, 24, (GLsizei) _window_width, (GLsizei) _window_height);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    if(argiztatze_sistema == KG_AMATATUTA) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    else{
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+
     GLint v_index, v, f;
     object3d *aux_obj = _first_object;
 
@@ -377,6 +383,10 @@ void display(void) {
     glLoadIdentity();
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    if(argiztatze_sistema == KG_AMATATUTA) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
 
     glColor3d(1,1,1);
     glBegin(GL_QUADS);

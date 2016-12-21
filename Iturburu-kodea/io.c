@@ -22,12 +22,13 @@ extern light3d* argia2;
 extern light3d* argia3;
 extern light3d* argia4;
 extern light3d* argia5;
+extern int argiztatze_sistema;
 
 int err_sist = KG_MODE_GLOBAL;
 int aldaketa = KG_MODE_DEFAULT;
 int selected_change = KG_OBJ;
 
-int argiztatze_sistema = KG_AMATATUTA;
+
 int selected_light = KG_ARGIA_DEFAULT;
 
 int gaituta_1 = KG_DESGAITUTA;

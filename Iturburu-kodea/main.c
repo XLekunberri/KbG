@@ -29,6 +29,7 @@ light3d* argia3;
 light3d* argia4;
 light3d* argia5;
 
+int argiztatze_sistema = KG_AMATATUTA;
 
 
 /** GENERAL INITIALIZATION **/
@@ -102,7 +103,7 @@ void argiaHasieratu(light3d* argia, float zenb){
     //Eguzkia
     argia->norabide_eguzki = (GLfloat *) malloc(sizeof(GLfloat) * 4);
     argia->norabide_eguzki[0] = 0.0f;
-    argia->norabide_eguzki[1] = -1.0f;
+    argia->norabide_eguzki[1] = 1.0f;
     argia->norabide_eguzki[2] = 0.0f;
     argia->norabide_eguzki[3] = 0.0f;
 
