@@ -96,12 +96,16 @@ void normalaKalkulatu(face *aurpegia, vertex *erpin_taula) {
 
 
     //Bektore normala aurpegiaren erpin guztietan gorde
-
+    int ind = 0;
     for(int i=0; i < aurpegia->num_vertices; i++){
-        erpin_taula[i].normala->x += axb->x;
-        erpin_taula[i].normala->y += axb->y;
-        erpin_taula[i].normala->z += axb->z;
+        ind = aurpegia->vertex_table[i];
+        erpin_taula[ind].normala->x += axb->x;
+        erpin_taula[ind].normala->y += axb->y;
+        erpin_taula[ind].normala->z += axb->z;
+        //printf("x:%f y:%f z:%f\n", aurpegia->normala->x, aurpegia->normala->y, aurpegia->normala->z);
     }
+
+
     aurpegia->normala = (vector3*)malloc(sizeof(vector3));
     aurpegia->normala->x = axb->x;
     aurpegia->normala->y = axb->y;
@@ -233,7 +237,9 @@ int read_wavefront(char * file_name, object3d * object_ptr) {
     for(int ind = 0; ind < num_faces; ind++){
         normalaKalkulatu(&(face_table[ind]), vertex_table);
     }
+
     for (i = 0; i < num_vertices; i++) {
+        printf("%f %f %f\n", vertex_table[i].normala->x, vertex_table[i].normala->y, vertex_table[i].normala->z);
         vertex_table[i].normala->x = vertex_table[i].normala->x/(GLdouble)vertex_table[i].num_faces;
         vertex_table[i].normala->y = vertex_table[i].normala->y/(GLdouble)vertex_table[i].num_faces;
         vertex_table[i].normala->z = vertex_table[i].normala->z/(GLdouble)vertex_table[i].num_faces;

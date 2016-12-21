@@ -317,9 +317,8 @@ void display(void) {
 
 	glPopMatrix();
 
-    //argiakPantailaratu();
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    argiakPantailaratu();
+
 
 
     /*Now each of the objects in the list*/
