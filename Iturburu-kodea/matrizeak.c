@@ -123,10 +123,3 @@ void print_matrix(GLdouble *matrix){
     }
     printf("\n");
 }
-
-void print_vector(GLdouble *vector){
-
-    for(int i =0; i<4;i++){
-        printf("%g\n",(double)vector[i]);
-    }
-}

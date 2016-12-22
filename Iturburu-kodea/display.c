@@ -1,5 +1,4 @@
 #include "definitions.h"
-#include <stdio.h>
 #include "matrizeak.h"
 
 /** GLOBAL VARIABLES **/
@@ -136,7 +135,6 @@ void pantailaratu(char* string){
 
 void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
     glLoadIdentity();
-    //TODO
     if(kamera != KG_KAM_ORTO) {
         kokatuKamera(eye, center, up);
     }
