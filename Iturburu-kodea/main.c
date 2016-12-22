@@ -127,7 +127,7 @@ void argiaHasieratu(light3d* argia, float zenb){
     argia->norabide_foko[2] = -4.0f;
     argia->norabide_foko[3] = 0.0f;
 
-    argia->ang_foko = 30.0f;
+    argia->ang_foko = KG_FOKO_ANG_DEFAULT;
 
     GLdouble* lag = translazioa(0,0,4+(int)zenb);
     GLdouble* has = mult(identitatea(),lag);

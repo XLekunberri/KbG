@@ -269,6 +269,62 @@ void keyboard(unsigned char key, int x, int y) {
                 GLdouble *mat = eskalaketa(KG_ESKAL_TXIK, KG_ESKAL_TXIK, KG_ESKAL_TXIK);
                 aldaketakAplikatu(mat, key);
             }
+            else if(selected_change == KG_ARG) {
+                switch (selected_light) {
+                    case KG_ARGIA_1:
+                        if(argia1->mota == KG_FOKO){
+                            if(argia1->ang_foko > 0) {
+                                argia1->ang_foko = argia1->ang_foko - KG_FOKO_ANG_TX;
+                            }
+                            else{
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago txikitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_2:
+                        if(argia2->mota == KG_FOKO){
+                            if(argia2->ang_foko > 0) {
+                                argia2->ang_foko = argia2->ang_foko - KG_FOKO_ANG_TX;
+                            }
+                            else{
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago txikitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_3:
+                        if(argia3->mota == KG_FOKO){
+                            if(argia3->ang_foko > 0) {
+                                argia3->ang_foko = argia3->ang_foko - KG_FOKO_ANG_TX;
+                            }
+                            else{
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago txikitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_4:
+                        if(argia4->mota == KG_FOKO){
+                            if(argia4->ang_foko > 0) {
+                                argia4->ang_foko = argia4->ang_foko - KG_FOKO_ANG_TX;
+                            }
+                            else{
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago txikitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_5:
+                        if(argia5->mota == KG_FOKO){
+                            if(argia5->ang_foko > 0) {
+                                argia5->ang_foko = argia5->ang_foko - KG_FOKO_ANG_TX;
+                            }
+                            else{
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago txikitu.");
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
             break;
 
         case '+':
@@ -290,6 +346,57 @@ void keyboard(unsigned char key, int x, int y) {
             else if(aldaketa == KG_MODE_ESKAL){
                 GLdouble *mat = eskalaketa(KG_ESKAL_HAND, KG_ESKAL_HAND, KG_ESKAL_HAND);
                 aldaketakAplikatu(mat, key);
+            }
+            else if(selected_change == KG_ARG) {
+                switch (selected_light) {
+                    case KG_ARGIA_1:
+                        if (argia1->mota == KG_FOKO) {
+                            if (argia1->ang_foko < 90) {
+                                argia1->ang_foko = argia1->ang_foko + KG_FOKO_ANG_HA;
+                            } else {
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago handitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_2:
+                        if (argia2->mota == KG_FOKO) {
+                            if (argia2->ang_foko < 90) {
+                                argia2->ang_foko = argia2->ang_foko + KG_FOKO_ANG_HA;
+                            } else {
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago handitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_3:
+                        if (argia3->mota == KG_FOKO) {
+                            if (argia3->ang_foko < 90) {
+                                argia3->ang_foko = argia3->ang_foko + KG_FOKO_ANG_HA;
+                            } else {
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago handitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_4:
+                        if (argia4->mota == KG_FOKO) {
+                            if (argia4->ang_foko < 90) {
+                                argia4->ang_foko = argia4->ang_foko + KG_FOKO_ANG_HA;
+                            } else {
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago handitu.");
+                            }
+                        }
+                        break;
+                    case KG_ARGIA_5:
+                        if (argia5->mota == KG_FOKO) {
+                            if (argia5->ang_foko < 90) {
+                                argia5->ang_foko = argia5->ang_foko + KG_FOKO_ANG_HA;
+                            } else {
+                                sprintf(mezua, "Ezin da fokuaren angelua gehiago handitu.");
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             break;
 
@@ -960,8 +1067,6 @@ void *biderkatuMatrizeak(light3d *argia, GLdouble *mat){
     new_elem->next = argia->pila_z;
     argia->pila_z = new_elem;
     argia->pila_y = NULL;
-    printf("Argiaren matrize berria:\n");
-    print_matrix(argia->pila_z);
 }
 
 void argiaTransformatu(GLdouble *mat){

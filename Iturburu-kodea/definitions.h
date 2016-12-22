@@ -123,6 +123,10 @@
 #define KG_BONBILA                          1
 #define KG_FOKO                             2
 
+#define KG_FOKO_ANG_DEFAULT                 30.0f
+#define KG_FOKO_ANG_HA                      3.0f
+#define KG_FOKO_ANG_TX                      3.0f
+
 /** STRUCTURES **/
 
 /****************************
