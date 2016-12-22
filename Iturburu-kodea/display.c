@@ -163,29 +163,49 @@ void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
 }
 
 void argiakPantailaratu(){
-    GLfloat  horia  [4] = {0.0, 1.0, 1.0,  1.0};
+    GLfloat  horia  [4] = {0.5, 0.5, 0.5,  1.0};
     GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
-    GLfloat  txuria  [4] = {1.0, 1.0, 1.0,  1.0};
+    GLfloat  txuria  [4] = {1.0, 1.0, 0.0,  1.0};
 
     glLightfv (GL_LIGHT0 , GL_AMBIENT , grisa );
     glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
 
+    glLightf (GL_LIGHT0 , GL_CONSTANT_ATTENUATION , 0.1);
+    glLightf (GL_LIGHT0 , GL_LINEAR_ATTENUATION , 0.0);
+    glLightf (GL_LIGHT0 , GL_QUADRATIC_ATTENUATION , 0.1);
+
     glLightfv (GL_LIGHT1 , GL_AMBIENT , grisa );
     glLightfv (GL_LIGHT1 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT1 , GL_SPECULAR , txuria );
+
+    glLightf (GL_LIGHT1 , GL_CONSTANT_ATTENUATION , 0.1);
+    glLightf (GL_LIGHT1 , GL_LINEAR_ATTENUATION , 0.0);
+    glLightf (GL_LIGHT1 , GL_QUADRATIC_ATTENUATION , 0.1);
 
     glLightfv (GL_LIGHT2 , GL_AMBIENT , grisa );
     glLightfv (GL_LIGHT2 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT2 , GL_SPECULAR , txuria );
 
+    glLightf (GL_LIGHT2 , GL_CONSTANT_ATTENUATION , 0.1);
+    glLightf (GL_LIGHT2 , GL_LINEAR_ATTENUATION , 0.0);
+    glLightf (GL_LIGHT2 , GL_QUADRATIC_ATTENUATION , 0.1);
+
     glLightfv (GL_LIGHT3 , GL_AMBIENT , grisa );
     glLightfv (GL_LIGHT3 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT3 , GL_SPECULAR , txuria );
 
+    glLightf (GL_LIGHT3 , GL_CONSTANT_ATTENUATION , 0.1);
+    glLightf (GL_LIGHT3 , GL_LINEAR_ATTENUATION , 0.0);
+    glLightf (GL_LIGHT3 , GL_QUADRATIC_ATTENUATION , 0.1);
+
     glLightfv (GL_LIGHT4 , GL_AMBIENT , grisa );
     glLightfv (GL_LIGHT4 , GL_DIFFUSE , horia );
     glLightfv (GL_LIGHT4 , GL_SPECULAR , txuria );
+
+    glLightf (GL_LIGHT4 , GL_CONSTANT_ATTENUATION , 0.1);
+    glLightf (GL_LIGHT4 , GL_LINEAR_ATTENUATION , 0.0);
+    glLightf (GL_LIGHT4 , GL_QUADRATIC_ATTENUATION , 0.1);
 
 
     if(gaituta_1 == KG_GAITUTA){

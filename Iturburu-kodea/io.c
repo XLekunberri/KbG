@@ -843,8 +843,6 @@ void *biderkatuMatrizeak(light3d *argia, GLdouble *mat){
 }
 
 void argiaTransformatu(GLdouble *mat){
-    //TODO
-    GLdouble *matEm = NULL;//aldaketa
     switch(selected_light){
         case KG_ARGIA_1:
             switch(argia1->mota){
@@ -852,10 +850,16 @@ void argiaTransformatu(GLdouble *mat){
                     if(aldaketa != KG_MODE_TRANS){
                         biderkatuMatrizeak(argia1, mat);
                     }
+                    else{
+                        sprintf(mezua, "Ezin duzu eguzkia mugitu, oso urrun dago.");
+                    }
                     break;
                 case KG_BONBILA:
                     if(aldaketa != KG_MODE_BIRAK){
                         biderkatuMatrizeak(argia1, mat);
+                    }
+                    else{
+                        sprintf(mezua, "Bonbila biratzen baduzu lanpara-zorrotik eroriko da!");
                     }
                     break;
                 case KG_FOKO:

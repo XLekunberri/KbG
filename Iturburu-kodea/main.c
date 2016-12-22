@@ -136,9 +136,6 @@ void argiaHasieratu(light3d* argia, float zenb){
     argia->pila_z->matrix = has;
     argia->pila_z->next   = NULL;
     argia->pila_y = NULL;
-
-    free(lag);
-    free(has);
 }
 
 void argiakHasieratu() {
