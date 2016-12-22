@@ -165,7 +165,7 @@ void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
 void argiakPantailaratu(){
     //GLfloat  horia  [4] = {0.5, 0.5, 0.5,  1.0};
     //GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
-    GLfloat  txuria  [4] = {1.0, 1.0, 0.0,  1.0};
+    GLfloat  txuria  [4] = {1.0, 1.0, 1.0,  1.0};
 
     glLightfv (GL_LIGHT0 , GL_AMBIENT , txuria );
     glLightfv (GL_LIGHT0 , GL_DIFFUSE , txuria );
@@ -346,25 +346,25 @@ void display(void) {
     if(argiztatze_sistema == KG_PIZTUTA){
         glDisable(GL_COLOR_MATERIAL);
     }
-    GLfloat ambient_gold [4] = {0.24725,  0.1995 ,  0.0745 ,  1.0};
-    GLfloat diffuse_gold [4] = {0.75164,  0.60648 ,  0.22648 ,  1.0};
-    GLfloat specular_gold [4] = {0.628281,  0.555802 ,  0.366065 ,  1.0};
-    GLfloat shininess_gold = 0.8;
+    GLfloat ambient_selected [4] = {0.0215, 0.1745,	0.0215, 1.0};
+    GLfloat diffuse_selected [4] = {0.07568, 0.61424, 0.07568, 1.0};
+    GLfloat specular_selected [4] = {0.633,	0.727811, 0.633, 1.0};
+    GLfloat shininess_selected = 0.8;
 
-    GLfloat ambient_silver [4] = {0.19225, 0.19225, 0.19225, 1.0};
-    GLfloat diffuse_silver [4] = {0.50754, 0.50754, 0.50754, 1.0};
-    GLfloat specular_silver [4] = {0.508273, 0.508273, 0.508273, 1.0};
-    GLfloat shininess_silver = 0.8;
+    GLfloat ambient_nonselected [4] = {0.25, 0.20725, 0.20725, 1.0};
+    GLfloat diffuse_nonselected [4] = {1, 0.829, 0.829, 1.0};
+    GLfloat specular_nonselected [4] = {0.296648, 0.296648, 0.296648, 1.0};
+    GLfloat shininess_nonselected = 0.088;
     while (aux_obj != 0) {
 
 
         /* Select the color, depending on whether the current object is the selected one or not */
         if (aux_obj == _selected_object){
             if(argiztatze_sistema == KG_PIZTUTA) {
-                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_gold);
-                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_gold);
-                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_gold);
-                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_gold);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_selected);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_selected);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_selected);
+                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_selected);
             }
             else {
                 glColor3f(KG_COL_SELECTED_R, KG_COL_SELECTED_G, KG_COL_SELECTED_B);
@@ -372,10 +372,10 @@ void display(void) {
         }
         else{
             if(argiztatze_sistema == KG_PIZTUTA) {
-                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_silver);
-                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_silver);
-                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_silver);
-                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_silver);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_nonselected);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_nonselected);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_nonselected);
+                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_nonselected);
             }
             else {
                 glColor3f(KG_COL_NONSELECTED_R, KG_COL_NONSELECTED_G, KG_COL_NONSELECTED_B);
