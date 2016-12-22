@@ -556,6 +556,67 @@ void keyboard(unsigned char key, int x, int y) {
                             break;
                     }
                     break;
+                case KG_ARG:
+                    switch(selected_light){
+                        case KG_ARGIA_1:
+                            if (argia1->pila_y != NULL) {
+                                //Aldaketa pila_y-tik pila_z-ra mugitu
+                                pila *add_elem = argia1->pila_y;
+                                argia1->pila_y = add_elem->next;
+                                add_elem->next = argia1->pila_z;
+                                argia1->pila_z = add_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                            }
+                            break;
+                        case KG_ARGIA_2:
+                            if (argia2->pila_y != NULL) {
+                                //Aldaketa pila_y-tik pila_z-ra mugitu
+                                pila *add_elem = argia2->pila_y;
+                                argia2->pila_y = add_elem->next;
+                                add_elem->next = argia2->pila_z;
+                                argia2->pila_z = add_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                            }
+                            break;
+                        case KG_ARGIA_3:
+                            if (argia3->pila_y != NULL) {
+                                //Aldaketa pila_y-tik pila_z-ra mugitu
+                                pila *add_elem = argia3->pila_y;
+                                argia3->pila_y = add_elem->next;
+                                add_elem->next = argia3->pila_z;
+                                argia3->pila_z = add_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                            }
+                            break;
+                        case KG_ARGIA_4:
+                            if (argia4->pila_y != NULL) {
+                                //Aldaketa pila_y-tik pila_z-ra mugitu
+                                pila *add_elem = argia4->pila_y;
+                                argia4->pila_y = add_elem->next;
+                                add_elem->next = argia4->pila_z;
+                                argia4->pila_z = add_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                            }
+                            break;
+                        case KG_ARGIA_5:
+                            if (argia5->pila_y != NULL) {
+                                //Aldaketa pila_y-tik pila_z-ra mugitu
+                                pila *add_elem = argia5->pila_y;
+                                argia5->pila_y = add_elem->next;
+                                add_elem->next = argia5->pila_z;
+                                argia5->pila_z = add_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik berregiteko");
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -584,7 +645,7 @@ void keyboard(unsigned char key, int x, int y) {
                     switch(kamera){
                         case KG_KAM_OBJ:
                             if (kam_obj != 0) {
-                                if (kam_obj->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                if (kam_obj->pila_z->next != NULL) {
                                     //Aldaketa pila_z-tik pila_y-ra mugitu
                                     pila *del_elem = kam_obj->pila_z;
                                     kam_obj->pila_z = del_elem->next;
@@ -599,7 +660,7 @@ void keyboard(unsigned char key, int x, int y) {
                             break;
                         case KG_KAM_IBIL:
                             if (kam_ibil != 0) {
-                                if (kam_ibil->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                if (kam_ibil->pila_z->next != NULL) {
 
                                     //Aldaketa pila_z-tik pila_y-ra mugitu
                                     pila *del_elem = kam_ibil->pila_z;
@@ -614,6 +675,65 @@ void keyboard(unsigned char key, int x, int y) {
                             }
                             break;
                         default:
+                            break;
+                    }
+                    break;
+                case KG_ARG:
+                    switch(selected_light){
+                        case KG_ARGIA_1:
+                            if (argia1->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                //Aldaketa pila_z-tik pila_y-ra mugitu
+                                pila *del_elem = argia1->pila_z;
+                                argia1->pila_z = del_elem->next;
+                                del_elem->next = argia1->pila_y;
+                                argia1->pila_y = del_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                            }
+                            break;
+                        case KG_ARGIA_2:
+                            if (argia2->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                //Aldaketa pila_z-tik pila_y-ra mugitu
+                                pila *del_elem = argia2->pila_z;
+                                argia2->pila_z = del_elem->next;
+                                del_elem->next = argia2->pila_y;
+                                argia2->pila_y = del_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                            }
+                            break;
+                        case KG_ARGIA_3:
+                            if (argia3->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                //Aldaketa pila_z-tik pila_y-ra mugitu
+                                pila *del_elem = argia3->pila_z;
+                                argia3->pila_z = del_elem->next;
+                                del_elem->next = argia3->pila_y;
+                                argia3->pila_y = del_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                            }
+                            break;
+                        case KG_ARGIA_4:
+                            if (argia4->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                //Aldaketa pila_z-tik pila_y-ra mugitu
+                                pila *del_elem = argia4->pila_z;
+                                argia4->pila_z = del_elem->next;
+                                del_elem->next = argia4->pila_y;
+                                argia4->pila_y = del_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                            }
+                            break;
+                        case KG_ARGIA_5:
+                            if (argia5->pila_z->next != NULL) { //Hasierako matrizean (unitarioan) ez bagaude
+                                //Aldaketa pila_z-tik pila_y-ra mugitu
+                                pila *del_elem = argia5->pila_z;
+                                argia5->pila_z = del_elem->next;
+                                del_elem->next = argia5->pila_y;
+                                argia5->pila_y = del_elem;
+                            } else {
+                                sprintf(mezua, "Ez dago aldaketarik desegiteko");
+                            }
                             break;
                     }
                     break;
