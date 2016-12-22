@@ -840,6 +840,8 @@ void *biderkatuMatrizeak(light3d *argia, GLdouble *mat){
     new_elem->next = argia->pila_z;
     argia->pila_z = new_elem;
     argia->pila_y = NULL;
+    printf("Argiaren matrize berria:\n");
+    print_matrix(argia->pila_z);
 }
 
 void argiaTransformatu(GLdouble *mat){
@@ -873,10 +875,16 @@ void argiaTransformatu(GLdouble *mat){
                     if(aldaketa != KG_MODE_TRANS){
                         biderkatuMatrizeak(argia2, mat);
                     }
+                    else{
+                        sprintf(mezua, "Ezin duzu eguzkia mugitu, oso urrun dago.");
+                    }
                     break;
                 case KG_BONBILA:
                     if(aldaketa != KG_MODE_BIRAK){
                         biderkatuMatrizeak(argia2, mat);
+                    }
+                    else{
+                        sprintf(mezua, "Bonbila biratzen baduzu lanpara-zorrotik eroriko da!");
                     }
                     break;
                 case KG_FOKO:
@@ -890,10 +898,16 @@ void argiaTransformatu(GLdouble *mat){
                     if(aldaketa != KG_MODE_TRANS){
                         biderkatuMatrizeak(argia3, mat);
                     }
+                    else{
+                        sprintf(mezua, "Ezin duzu eguzkia mugitu, oso urrun dago.");
+                    }
                     break;
                 case KG_BONBILA:
                     if(aldaketa != KG_MODE_BIRAK){
                         biderkatuMatrizeak(argia3, mat);
+                    }
+                    else{
+                        sprintf(mezua, "Bonbila biratzen baduzu lanpara-zorrotik eroriko da!");
                     }
                     break;
                 case KG_FOKO:
@@ -907,10 +921,16 @@ void argiaTransformatu(GLdouble *mat){
                     if(aldaketa != KG_MODE_TRANS){
                         biderkatuMatrizeak(argia4, mat);
                     }
+                    else{
+                        sprintf(mezua, "Ezin duzu eguzkia mugitu, oso urrun dago.");
+                    }
                     break;
                 case KG_BONBILA:
                     if(aldaketa != KG_MODE_BIRAK){
                         biderkatuMatrizeak(argia4, mat);
+                    }
+                    else{
+                        sprintf(mezua, "Bonbila biratzen baduzu lanpara-zorrotik eroriko da!");
                     }
                     break;
                 case KG_FOKO:
@@ -924,10 +944,16 @@ void argiaTransformatu(GLdouble *mat){
                     if(aldaketa != KG_MODE_TRANS){
                         biderkatuMatrizeak(argia5, mat);
                     }
+                    else{
+                        sprintf(mezua, "Ezin duzu eguzkia mugitu, oso urrun dago.");
+                    }
                     break;
                 case KG_BONBILA:
                     if(aldaketa != KG_MODE_BIRAK){
                         biderkatuMatrizeak(argia5, mat);
+                    }
+                    else{
+                        sprintf(mezua, "Bonbila biratzen baduzu lanpara-zorrotik eroriko da!");
                     }
                     break;
                 case KG_FOKO:

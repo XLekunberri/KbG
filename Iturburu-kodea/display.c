@@ -163,44 +163,44 @@ void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
 }
 
 void argiakPantailaratu(){
-    GLfloat  horia  [4] = {0.5, 0.5, 0.5,  1.0};
-    GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
+    //GLfloat  horia  [4] = {0.5, 0.5, 0.5,  1.0};
+    //GLfloat  grisa  [4] = {0.2, 0.2, 0.2,  1.0};
     GLfloat  txuria  [4] = {1.0, 1.0, 0.0,  1.0};
 
-    glLightfv (GL_LIGHT0 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT0 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT0 , GL_AMBIENT , txuria );
+    glLightfv (GL_LIGHT0 , GL_DIFFUSE , txuria );
     glLightfv (GL_LIGHT0 , GL_SPECULAR , txuria );
 
     glLightf (GL_LIGHT0 , GL_CONSTANT_ATTENUATION , 0.1);
     glLightf (GL_LIGHT0 , GL_LINEAR_ATTENUATION , 0.0);
     glLightf (GL_LIGHT0 , GL_QUADRATIC_ATTENUATION , 0.1);
 
-    glLightfv (GL_LIGHT1 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT1 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT1 , GL_AMBIENT , txuria );
+    glLightfv (GL_LIGHT1 , GL_DIFFUSE , txuria );
     glLightfv (GL_LIGHT1 , GL_SPECULAR , txuria );
 
     glLightf (GL_LIGHT1 , GL_CONSTANT_ATTENUATION , 0.1);
     glLightf (GL_LIGHT1 , GL_LINEAR_ATTENUATION , 0.0);
     glLightf (GL_LIGHT1 , GL_QUADRATIC_ATTENUATION , 0.1);
 
-    glLightfv (GL_LIGHT2 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT2 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT2 , GL_AMBIENT , txuria );
+    glLightfv (GL_LIGHT2 , GL_DIFFUSE , txuria );
     glLightfv (GL_LIGHT2 , GL_SPECULAR , txuria );
 
     glLightf (GL_LIGHT2 , GL_CONSTANT_ATTENUATION , 0.1);
     glLightf (GL_LIGHT2 , GL_LINEAR_ATTENUATION , 0.0);
     glLightf (GL_LIGHT2 , GL_QUADRATIC_ATTENUATION , 0.1);
 
-    glLightfv (GL_LIGHT3 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT3 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT3 , GL_AMBIENT , txuria );
+    glLightfv (GL_LIGHT3 , GL_DIFFUSE , txuria );
     glLightfv (GL_LIGHT3 , GL_SPECULAR , txuria );
 
     glLightf (GL_LIGHT3 , GL_CONSTANT_ATTENUATION , 0.1);
     glLightf (GL_LIGHT3 , GL_LINEAR_ATTENUATION , 0.0);
     glLightf (GL_LIGHT3 , GL_QUADRATIC_ATTENUATION , 0.1);
 
-    glLightfv (GL_LIGHT4 , GL_AMBIENT , grisa );
-    glLightfv (GL_LIGHT4 , GL_DIFFUSE , horia );
+    glLightfv (GL_LIGHT4 , GL_AMBIENT , txuria );
+    glLightfv (GL_LIGHT4 , GL_DIFFUSE , txuria );
     glLightfv (GL_LIGHT4 , GL_SPECULAR , txuria );
 
     glLightf (GL_LIGHT4 , GL_CONSTANT_ATTENUATION , 0.1);
@@ -325,6 +325,7 @@ void display(void) {
     /*First, we draw the grid and then the axes*/
     if(argiztatze_sistema == KG_PIZTUTA){
         glDisable(GL_LIGHTING);
+        glDisable(GL_COLOR_MATERIAL);
     }
     glDisable(GL_DEPTH_TEST);
     draw_grid();
@@ -332,6 +333,7 @@ void display(void) {
     glEnable(GL_DEPTH_TEST);
     if(argiztatze_sistema == KG_PIZTUTA){
         glEnable(GL_LIGHTING);
+        glEnable(GL_COLOR_MATERIAL);
     }
 
 	glPopMatrix();
@@ -341,13 +343,43 @@ void display(void) {
 
 
     /*Now each of the objects in the list*/
+    if(argiztatze_sistema == KG_PIZTUTA){
+        glDisable(GL_COLOR_MATERIAL);
+    }
+    GLfloat ambient_gold [4] = {0.24725,  0.1995 ,  0.0745 ,  1.0};
+    GLfloat diffuse_gold [4] = {0.75164,  0.60648 ,  0.22648 ,  1.0};
+    GLfloat specular_gold [4] = {0.628281,  0.555802 ,  0.366065 ,  1.0};
+    GLfloat shininess_gold = 0.8;
+
+    GLfloat ambient_silver [4] = {0.19225, 0.19225, 0.19225, 1.0};
+    GLfloat diffuse_silver [4] = {0.50754, 0.50754, 0.50754, 1.0};
+    GLfloat specular_silver [4] = {0.508273, 0.508273, 0.508273, 1.0};
+    GLfloat shininess_silver = 0.8;
     while (aux_obj != 0) {
+
 
         /* Select the color, depending on whether the current object is the selected one or not */
         if (aux_obj == _selected_object){
-            glColor3f(KG_COL_SELECTED_R,KG_COL_SELECTED_G,KG_COL_SELECTED_B);
-        }else{
-            glColor3f(KG_COL_NONSELECTED_R,KG_COL_NONSELECTED_G,KG_COL_NONSELECTED_B);
+            if(argiztatze_sistema == KG_PIZTUTA) {
+                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_gold);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_gold);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_gold);
+                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_gold);
+            }
+            else {
+                glColor3f(KG_COL_SELECTED_R, KG_COL_SELECTED_G, KG_COL_SELECTED_B);
+            }
+        }
+        else{
+            if(argiztatze_sistema == KG_PIZTUTA) {
+                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient_silver);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse_silver);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_silver);
+                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess_silver);
+            }
+            else {
+                glColor3f(KG_COL_NONSELECTED_R, KG_COL_NONSELECTED_G, KG_COL_NONSELECTED_B);
+            }
         }
 
         /* Draw the object; fFFor each face create a new polygon with the corresponding vertices */
@@ -379,13 +411,15 @@ void display(void) {
         aux_obj = aux_obj->next;
     }
 
-    /*
-
+    if(argiztatze_sistema == KG_PIZTUTA){
+        glEnable(GL_COLOR_MATERIAL);
+    }
 
 
     /*Make the viewport*/
     if(argiztatze_sistema == KG_PIZTUTA){
         glDisable(GL_LIGHTING);
+        glDisable(GL_COLOR_MATERIAL);
     }
 
     glLoadIdentity();
@@ -415,6 +449,7 @@ void display(void) {
 
     if(argiztatze_sistema == KG_PIZTUTA){
         glEnable(GL_LIGHTING);
+        glEnable(GL_COLOR_MATERIAL);
     }
 
     /*Do the actual drawing*/
