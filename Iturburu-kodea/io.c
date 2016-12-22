@@ -842,6 +842,8 @@ void keyboard(unsigned char key, int x, int y) {
                                 sprintf(mezua, "Ez dago aldaketarik desegiteko");
                             }
                             break;
+                        default:
+                            break;
                     }
                     break;
 
@@ -1062,7 +1064,6 @@ void *biderkatuMatrizeak(light3d *argia, GLdouble *mat){
         default:
             break;
     }
-
     new_elem->matrix = matEm;
     new_elem->next = argia->pila_z;
     argia->pila_z = new_elem;
@@ -1115,6 +1116,8 @@ void argiaTransformatu(GLdouble *mat){
                 case KG_FOKO:
                     biderkatuMatrizeak(argia2, mat);
                     break;
+                default:
+                    break;
             }
             break;
         case KG_ARGIA_3:
@@ -1137,6 +1140,8 @@ void argiaTransformatu(GLdouble *mat){
                     break;
                 case KG_FOKO:
                     biderkatuMatrizeak(argia3, mat);
+                    break;
+                default:
                     break;
             }
             break;
@@ -1161,6 +1166,8 @@ void argiaTransformatu(GLdouble *mat){
                 case KG_FOKO:
                     biderkatuMatrizeak(argia4, mat);
                     break;
+                default:
+                    break;
             }
             break;
         case KG_ARGIA_5:
@@ -1183,6 +1190,8 @@ void argiaTransformatu(GLdouble *mat){
                     break;
                 case KG_FOKO:
                     biderkatuMatrizeak(argia5, mat);
+                    break;
+                default:
                     break;
             }
             break;
