@@ -400,7 +400,7 @@ void keyboard(unsigned char key, int x, int y) {
         case 'a':
         case 'A':
             if( selected_change != KG_ARG){
-                selected_light = KG_ARG;
+                selected_change = KG_ARG;
                 sprintf(mezua, "Aldaketak argiei aplikatuko zaizkie");
             }
             break;
@@ -822,21 +822,44 @@ void kameraAldatu(GLdouble *mat, int lokala){
 
 }
 
+void *biderkatuMatrizeak(light3d *argia, GLdouble *mat){
+    GLdouble *matEm = NULL;
+    pila *new_elem = (pila*)malloc(sizeof(pila));
+    switch (err_sist) {
+        case KG_MODE_GLOBAL:
+            matEm = mult(mat, argia->pila_z->matrix);
+            break;
+        case KG_MODE_LOKAL:
+            matEm = mult(argia->pila_z->matrix, mat);
+            break;
+        default:
+            break;
+    }
+
+    new_elem->matrix = matEm;
+    new_elem->next = argia->pila_z;
+    argia->pila_z = new_elem;
+    argia->pila_y = NULL;
+}
+
 void argiaTransformatu(GLdouble *mat){
     //TODO
-    //Argien posizioak/norabideak GLfloat* dira eta multBek()-ek GLdouble* erabiltzen du
     GLdouble *matEm = NULL;//aldaketa
     switch(selected_light){
         case KG_ARGIA_1:
             switch(argia1->mota){
                 case KG_EGUZKI:
                     if(aldaketa != KG_MODE_TRANS){
-
+                        biderkatuMatrizeak(argia1, mat);
                     }
                     break;
                 case KG_BONBILA:
+                    if(aldaketa != KG_MODE_BIRAK){
+                        biderkatuMatrizeak(argia1, mat);
+                    }
                     break;
                 case KG_FOKO:
+                    biderkatuMatrizeak(argia1, mat);
                     break;
             }
             break;
@@ -844,12 +867,16 @@ void argiaTransformatu(GLdouble *mat){
             switch(argia2->mota){
                 case KG_EGUZKI:
                     if(aldaketa != KG_MODE_TRANS){
-
+                        biderkatuMatrizeak(argia2, mat);
                     }
                     break;
                 case KG_BONBILA:
+                    if(aldaketa != KG_MODE_BIRAK){
+                        biderkatuMatrizeak(argia2, mat);
+                    }
                     break;
                 case KG_FOKO:
+                    biderkatuMatrizeak(argia2, mat);
                     break;
             }
             break;
@@ -857,12 +884,16 @@ void argiaTransformatu(GLdouble *mat){
             switch(argia3->mota){
                 case KG_EGUZKI:
                     if(aldaketa != KG_MODE_TRANS){
-
+                        biderkatuMatrizeak(argia3, mat);
                     }
                     break;
                 case KG_BONBILA:
+                    if(aldaketa != KG_MODE_BIRAK){
+                        biderkatuMatrizeak(argia3, mat);
+                    }
                     break;
                 case KG_FOKO:
+                    biderkatuMatrizeak(argia3, mat);
                     break;
             }
             break;
@@ -870,12 +901,16 @@ void argiaTransformatu(GLdouble *mat){
             switch(argia4->mota){
                 case KG_EGUZKI:
                     if(aldaketa != KG_MODE_TRANS){
-
+                        biderkatuMatrizeak(argia4, mat);
                     }
                     break;
                 case KG_BONBILA:
+                    if(aldaketa != KG_MODE_BIRAK){
+                        biderkatuMatrizeak(argia4, mat);
+                    }
                     break;
                 case KG_FOKO:
+                    biderkatuMatrizeak(argia4, mat);
                     break;
             }
             break;
@@ -883,12 +918,16 @@ void argiaTransformatu(GLdouble *mat){
             switch(argia5->mota){
                 case KG_EGUZKI:
                     if(aldaketa != KG_MODE_TRANS){
-
+                        biderkatuMatrizeak(argia5, mat);
                     }
                     break;
                 case KG_BONBILA:
+                    if(aldaketa != KG_MODE_BIRAK){
+                        biderkatuMatrizeak(argia5, mat);
+                    }
                     break;
                 case KG_FOKO:
+                    biderkatuMatrizeak(argia5, mat);
                     break;
             }
             break;
@@ -1119,7 +1158,6 @@ void kamera_keyboard(int key) {
 
 void argia_keyboard(int key){
     GLdouble *mat = NULL;
-    int lokala = 0;
     switch (key) {
         case GLUT_KEY_UP:
             switch (aldaketa) {
@@ -1133,7 +1171,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
             }
             break;
@@ -1149,7 +1187,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
 
             }
@@ -1168,7 +1206,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
             }
             break;
@@ -1185,7 +1223,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
             }
             break;
@@ -1202,7 +1240,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
             }
             break;
@@ -1219,7 +1257,7 @@ void argia_keyboard(int key){
                     sprintf(mezua, "Ez dago aldaketarik aukeratuta, aukeratu bat");
                     break;
                 default:
-                    sprintf(mezua, "Ezin da aldaketa horiegin argiei");
+                    sprintf(mezua, "Ezin da aldaketa hori egin argiei");
                     break;
             }
             break;
@@ -1231,7 +1269,6 @@ void argia_keyboard(int key){
         argiaTransformatu(mat);
     }
 }
-
 
 void special_keyboard(int key, int x, int y) {
 

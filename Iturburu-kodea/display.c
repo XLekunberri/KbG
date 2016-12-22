@@ -6,6 +6,10 @@
 
 int kamera = KG_KAM_ORTO;
 
+GLdouble *eye = NULL;
+GLdouble *center = NULL;
+GLdouble *up = NULL;
+
 /** EXTERNAL VARIABLES **/
 
 extern GLdouble _window_ratio;
@@ -133,8 +137,10 @@ void pantailaratu(char* string){
 void argiaPantailaratu(light3d *argia, GLenum GL_LIGHTi) {
     glLoadIdentity();
     //TODO
-    //kokatuKamera(eye, center, up);
-    //Matrizea biderkatu
+    if(kamera != KG_KAM_ORTO) {
+        kokatuKamera(eye, center, up);
+    }
+    glMultMatrixd(argia->pila_z->matrix);
 
     switch (argia->mota){
         case KG_EGUZKI:
@@ -238,9 +244,6 @@ void display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     /* Define the projection */
-    GLdouble *eye = NULL;
-    GLdouble *center = NULL;
-    GLdouble *up = NULL;
 
     switch(kamera){
         case KG_KAM_ORTO:

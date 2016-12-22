@@ -241,9 +241,8 @@ struct light3d{
     GLfloat ang_foko;
 
     //Aldaketa pilak
-        //Eguzkiaren z eta y
-        //Bonbilaren z eta y
-        //Fokoaren z eta y
+    pila *pila_z;					    /* egindako aldaketak */
+    pila *pila_y;			            /* desegindako aldaketak */
 };
 
 typedef struct light3d light3d;

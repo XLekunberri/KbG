@@ -128,6 +128,17 @@ void argiaHasieratu(light3d* argia, float zenb){
     argia->norabide_foko[3] = 0.0f;
 
     argia->ang_foko = 30.0f;
+
+    GLdouble* lag = translazioa(0,0,4+(int)zenb);
+    GLdouble* has = mult(identitatea(),lag);
+
+    argia->pila_z = (pila*)malloc(sizeof(pila));
+    argia->pila_z->matrix = has;
+    argia->pila_z->next   = NULL;
+    argia->pila_y = NULL;
+
+    free(lag);
+    free(has);
 }
 
 void argiakHasieratu() {
